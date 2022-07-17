@@ -13,5 +13,6 @@ namespace Project_Yahiko
         public bool Gender;
         public int CharacterRace;
         public Stats CharacterStats;
+        public SavThrows SavingThrows;
     }
 }

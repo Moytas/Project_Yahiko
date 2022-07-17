@@ -18,7 +18,19 @@ namespace Project_Yahiko
         public CharacterSheet()
         {
             InitializeComponent();
-           
+            InitialConfig();
+        }
+
+        private void InitialConfig()
+        {
+            tb_LastName.Enabled = false;
+            btn_RandomName.Enabled = true;
+            btn_RandomName.Visible = true;
+        }
+
+        private void SetWeapon(Weapon weapon)
+        {
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -30,15 +42,36 @@ namespace Project_Yahiko
         public void GetPlayer(Player player)
         {
             _player = player;
+            SetUpWeapon(_player);
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
-                tb_FirstName.Enabled = false;
-                EnableStatRoll();
+                if (tb_FirstName.Enabled)
+                {
+                    tb_FirstName.Enabled = false;
+                    tb_LastName.Enabled = true;
+                    tb_LastName.Focus();
+                }
+                else
+                {
+                    btn_RandomName.Enabled = false;
+                    btn_RandomName.Visible = false;
+                    tb_LastName.Enabled = false;
+                    EnableStatRoll();
+                }
             }
+        }
+
+        public void SetUpWeapon(Player p)
+        {
+            tb_WeaponName.Text = p.EquipedWeapon.Name;
+            tb_WeaponSpeedValue.Text = p.EquipedWeapon.Speed.ToString();
+            tb_WeaponTypeValue.Text = p.EquipedWeapon.Type;
+            tb_DmgSValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.MinDamageSmall, p.EquipedWeapon.MaxDamageSmall);
+            tb_DmgLValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.MinDamageLarge, p.EquipedWeapon.MaxDamageLarge);
         }
 
         private void EnableStatRoll()
@@ -228,6 +261,8 @@ namespace Project_Yahiko
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
                     btn_confirm.Location = new Point(677, 45);
+                    cb_Gender.Enabled = true;
+                    cb_Gender.Visible = true;
                     break;
                 case 8://677; 45 Gender
                     cb_Gender.Enabled = false;
@@ -329,5 +364,12 @@ namespace Project_Yahiko
             btn_confirm.Enabled = true;
             btn_confirm.Visible = true;
         }
+
+        private void btn_RandomName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

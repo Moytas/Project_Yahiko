@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Armor.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharacterSheet.cs">
       <SubType>Form</SubType>
@@ -61,12 +62,15 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="DMOptions.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="SavThrows.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="Stats.cs" />
+    <Compile Include="Weapon.cs" />
     <EmbeddedResource Include="CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
