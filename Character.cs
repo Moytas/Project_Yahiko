@@ -14,5 +14,8 @@ namespace Project_Yahiko
         public int CharacterRace;
         public Stats CharacterStats;
         public SavThrows SavingThrows;
+        public int HP_Max, HP_Current;
+
+        public int AlignmentLaw, AlignmentGood;
     }
 }

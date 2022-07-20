@@ -140,6 +140,8 @@ namespace Project_Yahiko
                         lb_ChaValue.Text = total.ToString();
                         _player.CharacterStats.Initial_Cha = total;
                         _player.CharacterStats.Current_Cha = _player.CharacterStats.Initial_Cha;
+                        btn_Restart.Enabled = true;
+                        btn_Restart.Visible = true;
                         break;
                 }
                 _index++;
@@ -154,9 +156,9 @@ namespace Project_Yahiko
             {
                 if (_index > 1)
                 {
-                    lb_RollResult.Location = new Point(lb_RollResult.Location.X, lb_RollResult.Location.Y + 30);
+                    lb_RollResult.Location = new Point(lb_RollResult.Location.X, lb_RollResult.Location.Y + 15);
                 }
-                btn_RollStats.Location = new Point(btn_RollStats.Location.X, btn_RollStats.Location.Y + 30);
+                btn_RollStats.Location = new Point(btn_RollStats.Location.X, btn_RollStats.Location.Y + 10);
             }
             else
             {
@@ -168,7 +170,8 @@ namespace Project_Yahiko
 
         private void EnableRacePicker()
         {
-            btn_confirm.Location = new Point(301, 45);
+            btn_confirm.Location = new Point(cb_Race.Location.X + 150, cb_Race.Location.Y);
+            btn_confirm.BringToFront();
             cb_Race.Enabled = true;
             cb_Race.Visible = true;
             cb_Race.Items.Clear();
@@ -245,10 +248,11 @@ namespace Project_Yahiko
         {
             switch(_index)
             {
-                case 6: //location 301; 45 Race
-                    btn_confirm.Location = new Point(464, 45);
+                case 6: // Race
+                    btn_confirm.Location = new Point(cb_Class.Location.X + 150, cb_Class.Location.Y);
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
+                    btn_confirm.BringToFront();
                     _player.CharacterRace = cb_Race.SelectedIndex;
                     cb_Race.Enabled = false;
                     cb_Class.Enabled = true;
@@ -256,19 +260,30 @@ namespace Project_Yahiko
                     BindStatsToPlayer(_player);
                     SetAvailableClasses(_player);
                     break;
-                case 7: //location 464; 45 Class
+                case 7: // Class
                     cb_Class.Enabled = false;
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
-                    btn_confirm.Location = new Point(677, 45);
+                    btn_confirm.Location = new Point(cb_Alignment.Location.X + 150, cb_Alignment.Location.Y);
+                    cb_Alignment.Enabled = true;
+                    cb_Alignment.Visible = true;
+                    break;
+                case 8: // Alignment
+                    cb_Alignment.Enabled = false;
                     cb_Gender.Enabled = true;
                     cb_Gender.Visible = true;
-                    break;
-                case 8://677; 45 Gender
-                    cb_Gender.Enabled = false;
-                    btn_confirm.Visible = false;
                     btn_confirm.Enabled = false;
-
+                    btn_confirm.Visible = false;
+                    btn_confirm.Location = new Point(cb_Gender.Location.X + 100, cb_Gender.Location.Y);
+                    break;
+                case 9:// Gender
+                    btn_confirm.Enabled = false;
+                    btn_confirm.Visible = false;
+                    btn_confirm.Location = new Point(cb_Gender.Location.X + 100, cb_Gender.Location.Y);
+                    cb_Gender.Enabled = false;
+                    break;
+                case 10:
+                    lb_InfoText.Text = "mpika";
                     break;
             }
             _index++;
@@ -357,12 +372,14 @@ namespace Project_Yahiko
         {
             btn_confirm.Enabled = true;
             btn_confirm.Visible = true;
+            btn_confirm.BringToFront();
         }
 
         private void cb_Gender_SelectedIndexChanged(object sender, EventArgs e)
         {
             btn_confirm.Enabled = true;
             btn_confirm.Visible = true;
+            btn_confirm.BringToFront();
         }
 
         private void btn_RandomName_Click(object sender, EventArgs e)
@@ -370,6 +387,38 @@ namespace Project_Yahiko
 
         }
 
-       
+        private void cb_Alignment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_confirm.Enabled = true;
+            btn_confirm.Visible = true;
+            btn_confirm.BringToFront();
+        }
+
+        private void SetHP()
+        {
+            switch(_player.PlayerClass)
+            {
+                case 1://warrior
+                    _player.HP_Max = 10;
+                    _player.HP_Current = _player.HP_Max;
+                    lb_HPValue.Text = _player.HP_Max.ToString();
+                    break;
+                case 2://rogue
+                    _player.HP_Max = 6;
+                    _player.HP_Current = _player.HP_Max;
+                    lb_HPValue.Text = _player.HP_Max.ToString();
+                    break;
+                case 3://priest
+                    _player.HP_Max = 8;
+                    _player.HP_Current = _player.HP_Max;
+                    lb_HPValue.Text = _player.HP_Max.ToString();
+                    break;
+                case 4://mage
+                    _player.HP_Max = 4;
+                    _player.HP_Current = _player.HP_Max;
+                    lb_HPValue.Text = _player.HP_Max.ToString();
+                    break;
+            }
+        }
     }
 }
