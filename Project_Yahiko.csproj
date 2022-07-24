@@ -87,7 +87,14 @@
     <Compile Include="Shop.Designer.cs">
       <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Specialization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Specialization.Designer.cs">
+      <DependentUpon>Specialization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stats.cs" />
+    <Compile Include="ThiefSkills.cs" />
     <Compile Include="Weapon.cs" />
     <EmbeddedResource Include="CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
@@ -109,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="Shop.resx">
       <DependentUpon>Shop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Specialization.resx">
+      <DependentUpon>Specialization.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -15,8 +15,10 @@ namespace Project_Yahiko
     {
         public Player _player;
         private int _index = 0;
+        private DMOptions DM;
         public CharacterSheet()
         {
+            DM = new DMOptions();
             InitializeComponent();
             InitialConfig();
         }
@@ -253,6 +255,7 @@ namespace Project_Yahiko
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
                     btn_confirm.BringToFront();
+                    Console.WriteLine(cb_Race.SelectedIndex);
                     _player.CharacterRace = cb_Race.SelectedIndex;
                     cb_Race.Enabled = false;
                     cb_Class.Enabled = true;
@@ -262,6 +265,24 @@ namespace Project_Yahiko
                     break;
                 case 7: // Class
                     cb_Class.Enabled = false;
+                    switch(cb_Class.Text)
+                    {
+                        case "Samurai":
+                            _player.PlayerClass = 1;
+                            break;
+                        case "Shinobi":
+                            _player.PlayerClass = 2;
+                            break;
+                        case "Monk":
+                            _player.PlayerClass = 3;
+                            break;
+                        case "Mage":
+                            _player.PlayerClass = 4;
+                            break;
+                    }
+                    _player.XPToNext = DM.GetXPToNext(_player.PlayerClass, 1);
+                    lb_XPToNextValue.Text = _player.XPToNext.ToString();
+                    SetHP();
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
                     btn_confirm.Location = new Point(cb_Alignment.Location.X + 150, cb_Alignment.Location.Y);
