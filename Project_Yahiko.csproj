@@ -93,6 +93,7 @@
     <Compile Include="Specialization.Designer.cs">
       <DependentUpon>Specialization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Spell.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="ThiefSkills.cs" />
     <Compile Include="Weapon.cs" />
@@ -134,4 +135,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
+if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -73,7 +73,6 @@
             this.lb_WisValue = new System.Windows.Forms.Label();
             this.lb_ChaValue = new System.Windows.Forms.Label();
             this.btn_Restart = new System.Windows.Forms.Button();
-            this.btn_ConfirmChar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -374,7 +373,6 @@
             this.groupBox1.Controls.Add(this.tb_LastName);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lb_XPCurValue);
-            this.groupBox1.Controls.Add(this.btn_confirm);
             this.groupBox1.Controls.Add(this.lb_XPCur);
             this.groupBox1.Controls.Add(this.lb_LevelValue);
             this.groupBox1.Controls.Add(this.lb_InfoText);
@@ -587,7 +585,7 @@
             // btn_confirm
             // 
             this.btn_confirm.Enabled = false;
-            this.btn_confirm.Location = new System.Drawing.Point(203, 12);
+            this.btn_confirm.Location = new System.Drawing.Point(620, 378);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(75, 23);
             this.btn_confirm.TabIndex = 25;
@@ -737,17 +735,6 @@
             this.btn_Restart.Text = "Restart Character";
             this.btn_Restart.UseVisualStyleBackColor = true;
             this.btn_Restart.Visible = false;
-            // 
-            // btn_ConfirmChar
-            // 
-            this.btn_ConfirmChar.Enabled = false;
-            this.btn_ConfirmChar.Location = new System.Drawing.Point(588, 396);
-            this.btn_ConfirmChar.Name = "btn_ConfirmChar";
-            this.btn_ConfirmChar.Size = new System.Drawing.Size(75, 23);
-            this.btn_ConfirmChar.TabIndex = 26;
-            this.btn_ConfirmChar.Text = "Confirm Character";
-            this.btn_ConfirmChar.UseVisualStyleBackColor = true;
-            this.btn_ConfirmChar.Visible = false;
             // 
             // groupBox2
             // 
@@ -1700,9 +1687,9 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btn_ConfirmChar);
             this.Controls.Add(this.btn_Restart);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_confirm);
             this.Name = "CharacterSheet";
             this.Text = "Character\'s Sheet";
             this.groupBox1.ResumeLayout(false);
@@ -1766,7 +1753,6 @@
         private System.Windows.Forms.Label lb_LevelValue;
         private System.Windows.Forms.Button btn_RandomName;
         private System.Windows.Forms.Button btn_Restart;
-        private System.Windows.Forms.Button btn_ConfirmChar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox3;

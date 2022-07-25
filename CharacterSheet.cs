@@ -298,13 +298,14 @@ namespace Project_Yahiko
                     btn_confirm.Location = new Point(cb_Gender.Location.X + 100, cb_Gender.Location.Y);
                     break;
                 case 9:// Gender
-                    btn_confirm.Enabled = false;
-                    btn_confirm.Visible = false;
-                    btn_confirm.Location = new Point(cb_Gender.Location.X + 100, cb_Gender.Location.Y);
+                    btn_confirm.Text = "Continue";
+                    btn_confirm.Location = new Point(620, 378);
                     cb_Gender.Enabled = false;
                     break;
                 case 10:
-                    lb_InfoText.Text = "mpika";
+                    
+                    Specialization spec = new Specialization(ref _player);
+                    spec.Show();
                     break;
             }
             _index++;
