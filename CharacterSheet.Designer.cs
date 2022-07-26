@@ -60,10 +60,10 @@
             this.tb_LastName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lb_XPCurValue = new System.Windows.Forms.Label();
-            this.btn_confirm = new System.Windows.Forms.Button();
             this.lb_XPCur = new System.Windows.Forms.Label();
             this.lb_LevelValue = new System.Windows.Forms.Label();
             this.lb_InfoText = new System.Windows.Forms.Label();
+            this.btn_confirm = new System.Windows.Forms.Button();
             this.btn_RollStats = new System.Windows.Forms.Button();
             this.lb_RollResult = new System.Windows.Forms.Label();
             this.lb_StrValue = new System.Windows.Forms.Label();
@@ -333,7 +333,7 @@
             this.cb_Class.Size = new System.Drawing.Size(121, 21);
             this.cb_Class.TabIndex = 13;
             this.cb_Class.Visible = false;
-            this.cb_Class.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cb_Class.SelectedIndexChanged += new System.EventHandler(this.cb_Class_SelectedIndexChanged);
             // 
             // cb_Gender
             // 
@@ -582,18 +582,6 @@
             this.lb_XPCurValue.TabIndex = 28;
             this.lb_XPCurValue.Text = "0";
             // 
-            // btn_confirm
-            // 
-            this.btn_confirm.Enabled = false;
-            this.btn_confirm.Location = new System.Drawing.Point(620, 378);
-            this.btn_confirm.Name = "btn_confirm";
-            this.btn_confirm.Size = new System.Drawing.Size(75, 23);
-            this.btn_confirm.TabIndex = 25;
-            this.btn_confirm.Text = "Confirm";
-            this.btn_confirm.UseVisualStyleBackColor = true;
-            this.btn_confirm.Visible = false;
-            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
-            // 
             // lb_XPCur
             // 
             this.lb_XPCur.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -623,6 +611,18 @@
             this.lb_InfoText.Size = new System.Drawing.Size(60, 13);
             this.lb_InfoText.TabIndex = 18;
             this.lb_InfoText.Text = "lb_InfoText";
+            // 
+            // btn_confirm
+            // 
+            this.btn_confirm.Enabled = false;
+            this.btn_confirm.Location = new System.Drawing.Point(620, 378);
+            this.btn_confirm.Name = "btn_confirm";
+            this.btn_confirm.Size = new System.Drawing.Size(75, 23);
+            this.btn_confirm.TabIndex = 25;
+            this.btn_confirm.Text = "Confirm";
+            this.btn_confirm.UseVisualStyleBackColor = true;
+            this.btn_confirm.Visible = false;
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
             // 
             // btn_RollStats
             // 
@@ -735,6 +735,7 @@
             this.btn_Restart.Text = "Restart Character";
             this.btn_Restart.UseVisualStyleBackColor = true;
             this.btn_Restart.Visible = false;
+            this.btn_Restart.Click += new System.EventHandler(this.btn_Restart_Click);
             // 
             // groupBox2
             // 

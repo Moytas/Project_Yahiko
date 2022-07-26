@@ -178,12 +178,13 @@ namespace Project_Yahiko
             cb_Race.Visible = true;
             cb_Race.Items.Clear();
             List<string> ClanNames = new List<string>();
-            ClanNames.Add("Oda / Human");
-            ClanNames.Add("Tokugawa / Elf");
-            ClanNames.Add("Mori / Dwarf");
-            ClanNames.Add("Ogami / Gnome");
-            ClanNames.Add("Yagyu / Halfling");
-            ClanNames.Add("Clanless / Half-Elf");
+            ClanNames.Add("Human");
+            ClanNames.Add("Elf");
+            ClanNames.Add("Dwarf");
+            ClanNames.Add("Gnome");
+            ClanNames.Add("Halfling");
+            ClanNames.Add("Half-Elf");
+
             foreach(string s in ClanNames)
             {
                 cb_Race.Items.Add(s);
@@ -265,23 +266,35 @@ namespace Project_Yahiko
                     break;
                 case 7: // Class
                     cb_Class.Enabled = false;
-                    switch(cb_Class.Text)
+                    string _class = cb_Class.Text;
+                    int index = 0;
+                    if(_class.Contains("Bushi"))
                     {
-                        case "Samurai":
-                            _player.PlayerClass = 1;
-                            break;
-                        case "Shinobi":
-                            _player.PlayerClass = 2;
-                            break;
-                        case "Monk":
-                            _player.PlayerClass = 3;
-                            break;
-                        case "Mage":
-                            _player.PlayerClass = 4;
-                            break;
+                        index = 1;
+                    }
+                    else if (_class.Contains("Shinobi"))
+                    {
+                        index = 2;
+                    }
+                    else if (_class.Contains("Sohei"))
+                    {
+                        index = 3;
+                    }
+                    else if (_class.Contains("Onmyoji"))
+                    {
+                        index = 4;
+                    }
+
+                    if (index != 0)
+                    {
+                        _player.PlayerClass = index;
                     }
                     _player.XPToNext = DM.GetXPToNext(_player.PlayerClass, 1);
                     lb_XPToNextValue.Text = _player.XPToNext.ToString();
+                    if(_player.PlayerClass == 1)
+                    {
+                        _player.CharacterStats.ChangeHPWarrior(_player.CharacterStats.Current_Con);
+                    }
                     SetHP();
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
@@ -315,16 +328,27 @@ namespace Project_Yahiko
         {
             p.CharacterStats.Initial_Str = int.Parse(lb_StrValue.Text);
             p.CharacterStats.Current_Str = p.CharacterStats.Initial_Str;
+            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Str, "STR", 0); //PROSOXH EDW
+
             p.CharacterStats.Initial_Dex = int.Parse(lb_DexValue.Text);
             p.CharacterStats.Current_Dex = p.CharacterStats.Initial_Dex;
+            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Dex, "DEX");
+            
             p.CharacterStats.Initial_Con = int.Parse(lb_ConValue.Text);
             p.CharacterStats.Current_Con = p.CharacterStats.Initial_Con;
+            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Con, "CON");
+            
             p.CharacterStats.Initial_Int = int.Parse(lb_IntValue.Text);
             p.CharacterStats.Current_Int = p.CharacterStats.Initial_Int;
+            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Int, "INT");
+
             p.CharacterStats.Initial_Wis = int.Parse(lb_WisValue.Text);
             p.CharacterStats.Current_Wis = p.CharacterStats.Initial_Wis;
+            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Wis, "WIS");
+
             p.CharacterStats.Initial_Cha = int.Parse(lb_ChaValue.Text);
             p.CharacterStats.Current_Cha = p.CharacterStats.Initial_Cha;
+            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Cha, "CHA");
         }
 
         private void SetAvailableClasses(Player player)
@@ -333,15 +357,15 @@ namespace Project_Yahiko
             switch (_player.CharacterRace)
             {
                 default:
-                    available.Add("Samurai");
+                    available.Add("Bushi");
                     available.Add("Shinobi");
-                    available.Add("Mage");
-                    available.Add("Monk");
+                    available.Add("Onmyoji");
+                    available.Add("Sohei");
                     break;
                 case 2://dwarf
-                    available.Add("Samurai");
+                    available.Add("Bushi");
                     available.Add("Shinobi");
-                    available.Add("Monk");
+                    available.Add("Sohei");
                     break;
             }
 
@@ -355,31 +379,31 @@ namespace Project_Yahiko
 
             if (_player.CharacterStats.Initial_Wis < 9)
             {
-                if (available.Contains("Monk"))
+                if (available.Contains("Sohei"))
                 {
-                    available.Remove("Monk");
+                    available.Remove("Sohei");
                 }
             }
 
             if (_player.CharacterStats.Initial_Int < 9)
             {
-                if (available.Contains("Mage"))
+                if (available.Contains("Onmyoji"))
                 {
-                    available.Remove("Mage");
+                    available.Remove("Onmyoji");
                 }
             }
 
             if (_player.CharacterStats.Initial_Str < 9)
             {
-                if (available.Contains("Samurai"))
+                if (available.Contains("Busi"))
                 {
-                    available.Remove("Samurai");
+                    available.Remove("Bushi");
                 }
             }
 
             if (available.Count == 0)
             {
-
+                RestartChar();
             }
             else
             {
@@ -390,7 +414,7 @@ namespace Project_Yahiko
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void cb_Class_SelectedIndexChanged(object sender, EventArgs e)
         {
             btn_confirm.Enabled = true;
             btn_confirm.Visible = true;
@@ -422,25 +446,39 @@ namespace Project_Yahiko
             {
                 case 1://warrior
                     _player.HP_Max = 10;
+                    _player.HP_Max += _player.CharacterStats.HPAdj;
                     _player.HP_Current = _player.HP_Max;
                     lb_HPValue.Text = _player.HP_Max.ToString();
                     break;
                 case 2://rogue
                     _player.HP_Max = 6;
+                    _player.HP_Max += _player.CharacterStats.HPAdj;
                     _player.HP_Current = _player.HP_Max;
                     lb_HPValue.Text = _player.HP_Max.ToString();
                     break;
                 case 3://priest
                     _player.HP_Max = 8;
+                    _player.HP_Max += _player.CharacterStats.HPAdj;
                     _player.HP_Current = _player.HP_Max;
                     lb_HPValue.Text = _player.HP_Max.ToString();
                     break;
                 case 4://mage
                     _player.HP_Max = 4;
+                    _player.HP_Max += _player.CharacterStats.HPAdj;
                     _player.HP_Current = _player.HP_Max;
                     lb_HPValue.Text = _player.HP_Max.ToString();
                     break;
             }
+        }
+
+        private void btn_Restart_Click(object sender, EventArgs e)
+        {
+            RestartChar();
+        }
+
+        void RestartChar()
+        {
+
         }
     }
 }

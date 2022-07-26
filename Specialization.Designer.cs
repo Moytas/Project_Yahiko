@@ -206,7 +206,7 @@
             this.btn_LearnAvProf.TabIndex = 2;
             this.btn_LearnAvProf.Text = "Learn";
             this.btn_LearnAvProf.UseVisualStyleBackColor = true;
-            this.btn_LearnAvProf.Click += new System.EventHandler(this.button1_Click);
+            this.btn_LearnAvProf.Click += new System.EventHandler(this.btn_LearnAvProf_Clicked);
             // 
             // lb_AvailableList
             // 
@@ -471,7 +471,7 @@
             this.tabMonk.Name = "tabMonk";
             this.tabMonk.Size = new System.Drawing.Size(571, 273);
             this.tabMonk.TabIndex = 2;
-            this.tabMonk.Text = "Monk";
+            this.tabMonk.Text = "Sohei";
             this.tabMonk.UseVisualStyleBackColor = true;
             // 
             // tabMage
@@ -480,7 +480,7 @@
             this.tabMage.Name = "tabMage";
             this.tabMage.Size = new System.Drawing.Size(571, 273);
             this.tabMage.TabIndex = 3;
-            this.tabMage.Text = "Mage";
+            this.tabMage.Text = "Onmyoji";
             this.tabMage.UseVisualStyleBackColor = true;
             // 
             // lb_AvailablePoints

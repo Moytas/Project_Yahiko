@@ -11,6 +11,9 @@ namespace Project_Yahiko
         public int XP, XPToNext;
         public List<Items> Inventory = new List<Items>();
         public ThiefSkills Skills = new ThiefSkills();
+        public int NumWeaponProf,NumNonWeaponProf;
+        public List<Proficiency> WeaponProf = new List<Proficiency>();
+        public List<Proficiency> NonWeaponProf = new List<Proficiency>();
         public Player()
         {
             CharacterStats = new Stats();

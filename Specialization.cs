@@ -14,6 +14,7 @@ namespace Project_Yahiko
     {
         Player player;
         int pool = 60;
+        int weaponProf = 4;
 
         int initial_pp, initial_ol, initial_frt, initial_ms, initial_hs, initial_dn, initial_cw, initial_rl;
 
@@ -25,11 +26,13 @@ namespace Project_Yahiko
             switch(player.PlayerClass)
             {
                 case 1: // warrior
-                    this.Text = "Samurai specialization";
+                    this.Text = "Bushi specialization";
                     tabControl1.SelectedTab = tabSamurai;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabMonk);
                     tabControl1.TabPages.Remove(tabShinobi);
+                    //weaponProf = _p.WeaponProf; UNCOMENT THIS
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
                     PopulateOptionsWeapon();
                     break;
                 case 2: // thief
@@ -41,14 +44,14 @@ namespace Project_Yahiko
                     AdjustThiefSkills();
                     break;
                 case 3: // priest
-                    this.Text = "Monk spells";
+                    this.Text = "Sohei spells";
                     tabControl1.SelectedTab = tabMonk;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabSamurai);
                     break;
                 case 4: // mage
-                    this.Text = "Mage skills";
+                    this.Text = "Onmyoji spells";
                     tabControl1.SelectedTab = tabShinobi;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabMonk);
@@ -67,6 +70,8 @@ namespace Project_Yahiko
             Weapons.Add("Tanto");
             Weapons.Add("Yoroi-toshi");
             Weapons.Add("Wakizashi");
+            Weapons.Add("Daikyu");
+            Weapons.Add("Hankyu");
             lb_AvailableList.Items.Clear();
             foreach(string s in Weapons)
             {
@@ -277,9 +282,14 @@ namespace Project_Yahiko
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_LearnAvProf_Clicked(object sender, EventArgs e)
         {
-
+            if(weaponProf > 0)
+            {
+                weaponProf -= 1;
+                lb_AvailablePointsValue.Text = weaponProf.ToString();
+                lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
