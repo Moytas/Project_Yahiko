@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Armor.cs" />
+    <Compile Include="Player\Bushi.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CharacterSheet.cs">
       <SubType>Form</SubType>
@@ -75,7 +76,10 @@
       <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Items.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Player\Onmyoji.cs" />
+    <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\Shinobi.cs" />
+    <Compile Include="Player\Sohei.cs" />
     <Compile Include="Proficiencies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +105,7 @@
       <DependentUpon>Specialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Spell.cs" />
+    <Compile Include="SpellBook.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="ThiefSkills.cs" />
     <Compile Include="Weapon.cs" />

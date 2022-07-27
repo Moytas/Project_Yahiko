@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSamurai = new System.Windows.Forms.TabPage();
+            this.lb_AvailablePointsValue = new System.Windows.Forms.Label();
+            this.lb_AvailablePoints = new System.Windows.Forms.Label();
             this.btn_SamuraiAccept = new System.Windows.Forms.Button();
             this.lb_specializedWeapons = new System.Windows.Forms.Label();
             this.lb_proficientWeapons = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabMonk = new System.Windows.Forms.TabPage();
             this.tabMage = new System.Windows.Forms.TabPage();
-            this.lb_AvailablePoints = new System.Windows.Forms.Label();
-            this.lb_AvailablePointsValue = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabSamurai.SuspendLayout();
             this.tabShinobi.SuspendLayout();
@@ -117,6 +117,24 @@
             this.tabSamurai.Text = "Samurai";
             this.tabSamurai.UseVisualStyleBackColor = true;
             // 
+            // lb_AvailablePointsValue
+            // 
+            this.lb_AvailablePointsValue.AutoSize = true;
+            this.lb_AvailablePointsValue.Location = new System.Drawing.Point(114, 57);
+            this.lb_AvailablePointsValue.Name = "lb_AvailablePointsValue";
+            this.lb_AvailablePointsValue.Size = new System.Drawing.Size(13, 13);
+            this.lb_AvailablePointsValue.TabIndex = 13;
+            this.lb_AvailablePointsValue.Text = "4";
+            // 
+            // lb_AvailablePoints
+            // 
+            this.lb_AvailablePoints.AutoSize = true;
+            this.lb_AvailablePoints.Location = new System.Drawing.Point(24, 57);
+            this.lb_AvailablePoints.Name = "lb_AvailablePoints";
+            this.lb_AvailablePoints.Size = new System.Drawing.Size(84, 13);
+            this.lb_AvailablePoints.TabIndex = 12;
+            this.lb_AvailablePoints.Text = "Available points:";
+            // 
             // btn_SamuraiAccept
             // 
             this.btn_SamuraiAccept.Location = new System.Drawing.Point(262, 230);
@@ -161,6 +179,7 @@
             this.btn_ForgetProfSpec.TabIndex = 7;
             this.btn_ForgetProfSpec.Text = "Forget";
             this.btn_ForgetProfSpec.UseVisualStyleBackColor = true;
+            this.btn_ForgetProfSpec.Click += new System.EventHandler(this.btn_ForgetProfSpec_Click);
             // 
             // btn_LearnProfSpec
             // 
@@ -170,7 +189,7 @@
             this.btn_LearnProfSpec.TabIndex = 6;
             this.btn_LearnProfSpec.Text = "Learn";
             this.btn_LearnProfSpec.UseVisualStyleBackColor = true;
-            this.btn_LearnProfSpec.Click += new System.EventHandler(this.button3_Click);
+            this.btn_LearnProfSpec.Click += new System.EventHandler(this.btn_LearnProfSpec_Click);
             // 
             // btn_ForgetAvProf
             // 
@@ -180,7 +199,7 @@
             this.btn_ForgetAvProf.TabIndex = 5;
             this.btn_ForgetAvProf.Text = "Forget";
             this.btn_ForgetAvProf.UseVisualStyleBackColor = true;
-            this.btn_ForgetAvProf.Click += new System.EventHandler(this.button2_Click);
+            this.btn_ForgetAvProf.Click += new System.EventHandler(this.btn_ForgetAvProf_Click);
             // 
             // lb_SpecializationList
             // 
@@ -482,24 +501,6 @@
             this.tabMage.TabIndex = 3;
             this.tabMage.Text = "Onmyoji";
             this.tabMage.UseVisualStyleBackColor = true;
-            // 
-            // lb_AvailablePoints
-            // 
-            this.lb_AvailablePoints.AutoSize = true;
-            this.lb_AvailablePoints.Location = new System.Drawing.Point(24, 57);
-            this.lb_AvailablePoints.Name = "lb_AvailablePoints";
-            this.lb_AvailablePoints.Size = new System.Drawing.Size(84, 13);
-            this.lb_AvailablePoints.TabIndex = 12;
-            this.lb_AvailablePoints.Text = "Available points:";
-            // 
-            // lb_AvailablePointsValue
-            // 
-            this.lb_AvailablePointsValue.AutoSize = true;
-            this.lb_AvailablePointsValue.Location = new System.Drawing.Point(114, 57);
-            this.lb_AvailablePointsValue.Name = "lb_AvailablePointsValue";
-            this.lb_AvailablePointsValue.Size = new System.Drawing.Size(13, 13);
-            this.lb_AvailablePointsValue.TabIndex = 13;
-            this.lb_AvailablePointsValue.Text = "4";
             // 
             // Specialization
             // 

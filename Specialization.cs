@@ -284,27 +284,89 @@ namespace Project_Yahiko
 
         private void btn_LearnAvProf_Clicked(object sender, EventArgs e)
         {
-            if(weaponProf > 0)
+            if (lb_AvailableList.Text.Contains("Daikyu") || lb_AvailableList.Text.Contains("Hankyu") || lb_AvailableList.Text.Contains("Bow"))
             {
-                weaponProf -= 1;
-                lb_AvailablePointsValue.Text = weaponProf.ToString();
-                lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+
+                if (weaponProf > 0 && weaponProf - 2 >= 0)
+                {
+                    weaponProf -= 2;
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+                }
+            }
+            else
+            {
+                if (weaponProf > 0 && weaponProf - 1 >= 0)
+                {
+                    weaponProf -= 1;
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+                }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_LearnProfSpec_Click(object sender, EventArgs e)
         {
-
+            if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
+            {
+                if (weaponProf > 0 && weaponProf - 3 >= 0)
+                {
+                    weaponProf -= 3;
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    lb_SpecializationList.Items.Add(lb_ProficientList);
+                }
+            }
+            else
+            {
+                if (weaponProf > 0 && weaponProf - 2 >= 0)
+                {
+                    weaponProf -= 2;
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    lb_SpecializationList.Items.Add(lb_ProficientList);
+                }
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_ForgetAvProf_Click(object sender, EventArgs e)
         {
+            if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
+            {
+                weaponProf += 3;
+                lb_AvailablePointsValue.Text = weaponProf.ToString();
+                lb_ProficientList.Items.Remove(lb_ProficientList.Text);
+                lb_AvailableList.Items.Add(lb_ProficientList.Text);
+            }
+            else
+            {   
+                weaponProf += 2;
+                lb_AvailablePointsValue.Text = weaponProf.ToString();
+                lb_ProficientList.Items.Remove(lb_ProficientList.Text);
+                lb_AvailableList.Items.Add(lb_ProficientList.Text);
+            }
 
         }
 
         private void lb_AvailableList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_ForgetProfSpec_Click(object sender, EventArgs e)
+        {
+            if (lb_SpecializationList.Text.Contains("Daikyu") || lb_SpecializationList.Text.Contains("Hankyu") || lb_SpecializationList.Text.Contains("Bow"))
+            {
+                    weaponProf += 3;
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    lb_SpecializationList.Items.Remove(lb_SpecializationList.Text);
+                    lb_ProficientList.Items.Add(lb_SpecializationList.Text);
+            }
+            else
+            {
+                    weaponProf += 2;
+                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    lb_SpecializationList.Items.Remove(lb_SpecializationList.Text);
+                    lb_ProficientList.Items.Add(lb_SpecializationList.Text);
+            }
         }
 
         private void ud_OL_ValueChanged(object sender, EventArgs e)
