@@ -14,20 +14,33 @@ namespace Project_Yahiko
     public partial class CharacterSheet : Form
     {
         public Player _player;
+        
+        public Bushi _Bushi;
+        public Shinobi _Shinobi;
+        public Onmyoji _Onmyoji;
+        public Sohei _Sohei;
+
         private int _index = 0;
+        
         private DMOptions DM;
+        
         public CharacterSheet()
         {
             DM = new DMOptions();
             InitializeComponent();
-            InitialConfig();
+            EnableStatRoll();
         }
 
         private void InitialConfig()
         {
+            tb_FirstName.Enabled = true;
             tb_LastName.Enabled = false;
             btn_RandomName.Enabled = true;
             btn_RandomName.Visible = true;
+        }
+
+        private void CreateRandomPlayer()
+        {
         }
 
         private void SetWeapon(Weapon weapon)
@@ -41,7 +54,7 @@ namespace Project_Yahiko
 
         }
 
-        public void GetPlayer(Player player)
+        public void GetPlayer(ref Player player)
         {
             _player = player;
             SetUpWeapon(_player);
@@ -62,7 +75,8 @@ namespace Project_Yahiko
                     btn_RandomName.Enabled = false;
                     btn_RandomName.Visible = false;
                     tb_LastName.Enabled = false;
-                    EnableStatRoll();
+                    btn_confirm.Enabled = true;
+                    btn_confirm.Visible = true;
                 }
             }
         }
@@ -72,8 +86,8 @@ namespace Project_Yahiko
             tb_WeaponName.Text = p.EquipedWeapon.Name;
             tb_WeaponSpeedValue.Text = p.EquipedWeapon.Speed.ToString();
             tb_WeaponTypeValue.Text = p.EquipedWeapon.Type;
-            tb_DmgSValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.MinDamageSmall, p.EquipedWeapon.MaxDamageSmall);
-            tb_DmgLValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.MinDamageLarge, p.EquipedWeapon.MaxDamageLarge);
+            tb_DmgSValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Small, p.EquipedWeapon.TypeOfDie_Small);
+            tb_DmgLValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Large, p.EquipedWeapon.TypeOfDie_Large);
         }
 
         private void EnableStatRoll()
@@ -160,7 +174,7 @@ namespace Project_Yahiko
                 {
                     lb_RollResult.Location = new Point(lb_RollResult.Location.X, lb_RollResult.Location.Y + 15);
                 }
-                btn_RollStats.Location = new Point(btn_RollStats.Location.X, btn_RollStats.Location.Y + 10);
+                btn_RollStats.Location = new Point(btn_RollStats.Location.X, btn_RollStats.Location.Y + 15);
             }
             else
             {
@@ -177,15 +191,15 @@ namespace Project_Yahiko
             cb_Race.Enabled = true;
             cb_Race.Visible = true;
             cb_Race.Items.Clear();
-            List<string> ClanNames = new List<string>();
-            ClanNames.Add("Human");
-            ClanNames.Add("Elf");
-            ClanNames.Add("Dwarf");
-            ClanNames.Add("Gnome");
-            ClanNames.Add("Halfling");
-            ClanNames.Add("Half-Elf");
+            List<string> Races = new List<string>();
+            Races.Add("Human");
+            Races.Add("Elf");
+            Races.Add("Dwarf");
+            Races.Add("Gnome");
+            Races.Add("Halfling");
+            Races.Add("Half-Elf");
 
-            foreach(string s in ClanNames)
+            foreach(string s in Races)
             {
                 cb_Race.Items.Add(s);
             }
@@ -256,13 +270,13 @@ namespace Project_Yahiko
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
                     btn_confirm.BringToFront();
-                    Console.WriteLine(cb_Race.SelectedIndex);
-                    _player.CharacterRace = cb_Race.SelectedIndex;
+                    _player.CharacterRace = cb_Race.SelectedIndex; // 0 = Human 1 = Elf 2 = Dwarf 3 = Gnome 4 = Halfling 5 = Half Elf
                     cb_Race.Enabled = false;
                     cb_Class.Enabled = true;
                     cb_Class.Visible = true;
-                    BindStatsToPlayer(_player);
-                    SetAvailableClasses(_player);
+                    BindStatsToPlayer(ref _player);
+                    SetAvailableClasses(ref _player);
+                    SetMovementRates();
                     break;
                 case 7: // Class
                     cb_Class.Enabled = false;
@@ -289,6 +303,10 @@ namespace Project_Yahiko
                     {
                         _player.PlayerClass = index;
                     }
+                    else
+                    {
+                        RestartChar();
+                    }
                     _player.XPToNext = DM.GetXPToNext(_player.PlayerClass, 1);
                     lb_XPToNextValue.Text = _player.XPToNext.ToString();
                     if(_player.PlayerClass == 1)
@@ -296,6 +314,7 @@ namespace Project_Yahiko
                         _player.CharacterStats.ChangeHPWarrior(_player.CharacterStats.Current_Con);
                     }
                     SetHP();
+                   
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
                     btn_confirm.Location = new Point(cb_Alignment.Location.X + 150, cb_Alignment.Location.Y);
@@ -311,20 +330,47 @@ namespace Project_Yahiko
                     btn_confirm.Location = new Point(cb_Gender.Location.X + 100, cb_Gender.Location.Y);
                     break;
                 case 9:// Gender
+                    InitialConfig();
+                    cb_Gender.Enabled = false;
+                    btn_confirm.Enabled = false;
+                    btn_confirm.Visible = false;
                     btn_confirm.Text = "Continue";
                     btn_confirm.Location = new Point(620, 378);
-                    cb_Gender.Enabled = false;
                     break;
                 case 10:
-                    
                     Specialization spec = new Specialization(ref _player);
                     spec.Show();
+                    btn_confirm.Enabled = true;
+                    btn_confirm.Visible = true;
+                    break;
+                case 11:
+                    
                     break;
             }
             _index++;
         }
 
-        private void BindStatsToPlayer(Player p)
+        private void SetMovementRates()
+        {
+            switch(_player.CharacterRace)
+            {
+                case 3:
+                    _player.MovementRate = 6;
+                    break;
+                case 4:
+                    _player.MovementRate = 6;
+                    break;
+                case 5:
+                    _player.MovementRate = 6;
+                    break;
+                default:
+                    _player.MovementRate = 12;
+                    break;
+            }
+            lb_MoveBValue.Text = _player.MovementRate.ToString();
+        }
+
+        private void BindStatsToPlayer(ref Player p)
         {
             p.CharacterStats.Initial_Str = int.Parse(lb_StrValue.Text);
             p.CharacterStats.Current_Str = p.CharacterStats.Initial_Str;
@@ -351,7 +397,7 @@ namespace Project_Yahiko
             p.CharacterStats.SetAbilities(p.CharacterStats.Current_Cha, "CHA");
         }
 
-        private void SetAvailableClasses(Player player)
+        private void SetAvailableClasses(ref Player player)
         {
             List<string> available = new List<string>();
             switch (_player.CharacterRace)
@@ -395,9 +441,12 @@ namespace Project_Yahiko
 
             if (_player.CharacterStats.Initial_Str < 9)
             {
-                if (available.Contains("Busi"))
+                for(int i = 0; i < available.Count; i++)
                 {
-                    available.Remove("Bushi");
+                    if (available[i] == "Bushi")
+                    {
+                        available.RemoveAt(i);
+                    }
                 }
             }
 
@@ -430,7 +479,29 @@ namespace Project_Yahiko
 
         private void btn_RandomName_Click(object sender, EventArgs e)
         {
-
+            if (tb_FirstName.Enabled)
+            {
+                Random rand = new Random();
+                
+                if (cb_Gender.Text == "Otoko")
+                {
+                    int _r = rand.Next(0, DM.FirstNames_Male.Count);
+                    tb_FirstName.Text = DM.FirstNames_Male[_r];
+                }
+                else
+                {
+                    int _r = rand.Next(0, DM.FirstNames_Female.Count);
+                    tb_FirstName.Text = DM.FirstNames_Female[_r];
+                }
+                tb_FirstName.Select();
+            }
+            else
+            {
+                Random rand = new Random();
+                int _r = rand.Next(0, DM.LastNames.Count);
+                tb_LastName.Text = DM.LastNames[_r];
+                tb_LastName.Select();
+            }
         }
 
         private void cb_Alignment_SelectedIndexChanged(object sender, EventArgs e)
@@ -478,7 +549,29 @@ namespace Project_Yahiko
 
         void RestartChar()
         {
-
+            _index = 0;
+            cb_Race.Enabled = false;
+            cb_Class.Enabled = false;
+            cb_Gender.Enabled = false;
+            tb_FirstName.Enabled = false;
+            lb_Cha.Visible = false;
+            lb_ChaValue.Visible = false;
+            lb_Wis.Visible = false;
+            lb_WisValue.Visible = false;
+            lb_Int.Visible = false;
+            lb_IntValue.Visible = false;
+            lb_Con.Visible = false;
+            lb_ConValue.Visible = false;
+            lb_Dex.Visible = false;
+            lb_DexValue.Visible = false;
+            btn_RollStats.Location = new Point(6, 13);
+            btn_RollStats.BringToFront();
+            btn_RollStats.Enabled = true;
+            btn_RollStats.Visible = true;
+            lb_RollResult.Text = "";
+            lb_StrValue.Text = "";
+            lb_RollResult.Location = new Point(15, 13);
+            lb_RollResult.BringToFront();
         }
     }
 }

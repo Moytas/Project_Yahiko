@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Armor.cs" />
-    <Compile Include="Player\Bushi.cs" />
-    <Compile Include="Character.cs" />
+    <Compile Include="Characters\Armor.cs" />
+    <Compile Include="Characters\Enemy\Monster.cs" />
+    <Compile Include="Characters\Enemy\Undead.cs" />
+    <Compile Include="Characters\Player\Bushi.cs" />
+    <Compile Include="Characters\Character.cs" />
     <Compile Include="CharacterSheet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,21 +78,16 @@
       <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Items.cs" />
-    <Compile Include="Player\Onmyoji.cs" />
-    <Compile Include="Player\Player.cs" />
-    <Compile Include="Player\Shinobi.cs" />
-    <Compile Include="Player\Sohei.cs" />
-    <Compile Include="Proficiencies.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Proficiencies.Designer.cs">
-      <DependentUpon>Proficiencies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Proficiency.cs" />
+    <Compile Include="Characters\Player\Onmyoji.cs" />
+    <Compile Include="Characters\Player\Player.cs" />
+    <Compile Include="Characters\Player\Shinobi.cs" />
+    <Compile Include="Characters\Player\Sohei.cs" />
+    <Compile Include="Characters\Proficiency.cs" />
+    <Compile Include="NonWeapProficiency.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Race.cs" />
-    <Compile Include="SavThrows.cs" />
+    <Compile Include="Characters\Race.cs" />
+    <Compile Include="Characters\SavThrows.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="Shop.cs">
       <SubType>Form</SubType>
@@ -105,10 +102,11 @@
       <DependentUpon>Specialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Spell.cs" />
-    <Compile Include="SpellBook.cs" />
-    <Compile Include="Stats.cs" />
-    <Compile Include="ThiefSkills.cs" />
-    <Compile Include="Weapon.cs" />
+    <Compile Include="Characters\SpellBook.cs" />
+    <Compile Include="Characters\Stats.cs" />
+    <Compile Include="Characters\ThiefSkills.cs" />
+    <Compile Include="Characters\Weapon.cs" />
+    <Compile Include="SpellComponent.cs" />
     <EmbeddedResource Include="CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,9 +144,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
-if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

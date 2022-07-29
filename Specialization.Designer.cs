@@ -66,7 +66,26 @@
             this.lb_PP = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabMonk = new System.Windows.Forms.TabPage();
+            this.btn_RemoveSpellP = new System.Windows.Forms.Button();
+            this.btn_AddSpellP = new System.Windows.Forms.Button();
+            this.lb_PriestInfoText = new System.Windows.Forms.Label();
+            this.btn_confirmPriest = new System.Windows.Forms.Button();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.tabMage = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_RemoveSpellM = new System.Windows.Forms.Button();
+            this.btn_AddSpellM = new System.Windows.Forms.Button();
+            this.btn_ConfirmMage = new System.Windows.Forms.Button();
+            this.lb_SpellBook = new System.Windows.Forms.ListBox();
+            this.lb_AvailableSpells = new System.Windows.Forms.ListBox();
+            this.tabProficiencies = new System.Windows.Forms.TabPage();
+            this.lb_NonWeapProfsText = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_AddNonWeaponProf = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lb_LearnedProficienies = new System.Windows.Forms.ListBox();
+            this.lb_AvailableNonWeaponList = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabSamurai.SuspendLayout();
             this.tabShinobi.SuspendLayout();
@@ -78,6 +97,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ud_OL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_PP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_HS)).BeginInit();
+            this.tabMonk.SuspendLayout();
+            this.tabMage.SuspendLayout();
+            this.tabProficiencies.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -86,6 +108,7 @@
             this.tabControl1.Controls.Add(this.tabShinobi);
             this.tabControl1.Controls.Add(this.tabMonk);
             this.tabControl1.Controls.Add(this.tabMage);
+            this.tabControl1.Controls.Add(this.tabProficiencies);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -143,6 +166,7 @@
             this.btn_SamuraiAccept.TabIndex = 11;
             this.btn_SamuraiAccept.Text = "Confirm";
             this.btn_SamuraiAccept.UseVisualStyleBackColor = true;
+            this.btn_SamuraiAccept.Click += new System.EventHandler(this.btn_SamuraiAccept_Click);
             // 
             // lb_specializedWeapons
             // 
@@ -486,6 +510,12 @@
             // 
             // tabMonk
             // 
+            this.tabMonk.Controls.Add(this.btn_RemoveSpellP);
+            this.tabMonk.Controls.Add(this.btn_AddSpellP);
+            this.tabMonk.Controls.Add(this.lb_PriestInfoText);
+            this.tabMonk.Controls.Add(this.btn_confirmPriest);
+            this.tabMonk.Controls.Add(this.listBox3);
+            this.tabMonk.Controls.Add(this.listBox4);
             this.tabMonk.Location = new System.Drawing.Point(4, 22);
             this.tabMonk.Name = "tabMonk";
             this.tabMonk.Size = new System.Drawing.Size(571, 273);
@@ -493,14 +523,198 @@
             this.tabMonk.Text = "Sohei";
             this.tabMonk.UseVisualStyleBackColor = true;
             // 
+            // btn_RemoveSpellP
+            // 
+            this.btn_RemoveSpellP.Location = new System.Drawing.Point(241, 114);
+            this.btn_RemoveSpellP.Name = "btn_RemoveSpellP";
+            this.btn_RemoveSpellP.Size = new System.Drawing.Size(75, 23);
+            this.btn_RemoveSpellP.TabIndex = 8;
+            this.btn_RemoveSpellP.Text = "Remove";
+            this.btn_RemoveSpellP.UseVisualStyleBackColor = true;
+            this.btn_RemoveSpellP.Click += new System.EventHandler(this.btn_RemoveSpellP_Click);
+            // 
+            // btn_AddSpellP
+            // 
+            this.btn_AddSpellP.Location = new System.Drawing.Point(241, 70);
+            this.btn_AddSpellP.Name = "btn_AddSpellP";
+            this.btn_AddSpellP.Size = new System.Drawing.Size(75, 23);
+            this.btn_AddSpellP.TabIndex = 7;
+            this.btn_AddSpellP.Text = "Add";
+            this.btn_AddSpellP.UseVisualStyleBackColor = true;
+            this.btn_AddSpellP.Click += new System.EventHandler(this.btn_AddSpellP_Click);
+            // 
+            // lb_PriestInfoText
+            // 
+            this.lb_PriestInfoText.AutoSize = true;
+            this.lb_PriestInfoText.Location = new System.Drawing.Point(67, 16);
+            this.lb_PriestInfoText.Name = "lb_PriestInfoText";
+            this.lb_PriestInfoText.Size = new System.Drawing.Size(35, 13);
+            this.lb_PriestInfoText.TabIndex = 6;
+            this.lb_PriestInfoText.Text = "label3";
+            // 
+            // btn_confirmPriest
+            // 
+            this.btn_confirmPriest.Location = new System.Drawing.Point(241, 197);
+            this.btn_confirmPriest.Name = "btn_confirmPriest";
+            this.btn_confirmPriest.Size = new System.Drawing.Size(75, 23);
+            this.btn_confirmPriest.TabIndex = 5;
+            this.btn_confirmPriest.Text = "Confirm";
+            this.btn_confirmPriest.UseVisualStyleBackColor = true;
+            this.btn_confirmPriest.Click += new System.EventHandler(this.btn_confirmPriest_Click);
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(381, 56);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(120, 95);
+            this.listBox3.TabIndex = 4;
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(70, 56);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(120, 95);
+            this.listBox4.TabIndex = 3;
+            // 
             // tabMage
             // 
+            this.tabMage.Controls.Add(this.label1);
+            this.tabMage.Controls.Add(this.btn_RemoveSpellM);
+            this.tabMage.Controls.Add(this.btn_AddSpellM);
+            this.tabMage.Controls.Add(this.btn_ConfirmMage);
+            this.tabMage.Controls.Add(this.lb_SpellBook);
+            this.tabMage.Controls.Add(this.lb_AvailableSpells);
             this.tabMage.Location = new System.Drawing.Point(4, 22);
             this.tabMage.Name = "tabMage";
             this.tabMage.Size = new System.Drawing.Size(571, 273);
             this.tabMage.TabIndex = 3;
             this.tabMage.Text = "Onmyoji";
             this.tabMage.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(46, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "lb_MageInfoText";
+            // 
+            // btn_RemoveSpellM
+            // 
+            this.btn_RemoveSpellM.Location = new System.Drawing.Point(219, 122);
+            this.btn_RemoveSpellM.Name = "btn_RemoveSpellM";
+            this.btn_RemoveSpellM.Size = new System.Drawing.Size(75, 23);
+            this.btn_RemoveSpellM.TabIndex = 4;
+            this.btn_RemoveSpellM.Text = "Remove";
+            this.btn_RemoveSpellM.UseVisualStyleBackColor = true;
+            this.btn_RemoveSpellM.Click += new System.EventHandler(this.btn_RemoveSpellM_Click);
+            // 
+            // btn_AddSpellM
+            // 
+            this.btn_AddSpellM.Location = new System.Drawing.Point(219, 78);
+            this.btn_AddSpellM.Name = "btn_AddSpellM";
+            this.btn_AddSpellM.Size = new System.Drawing.Size(75, 23);
+            this.btn_AddSpellM.TabIndex = 3;
+            this.btn_AddSpellM.Text = "Add";
+            this.btn_AddSpellM.UseVisualStyleBackColor = true;
+            this.btn_AddSpellM.Click += new System.EventHandler(this.btn_AddSpellM_Click);
+            // 
+            // btn_ConfirmMage
+            // 
+            this.btn_ConfirmMage.Location = new System.Drawing.Point(236, 207);
+            this.btn_ConfirmMage.Name = "btn_ConfirmMage";
+            this.btn_ConfirmMage.Size = new System.Drawing.Size(75, 23);
+            this.btn_ConfirmMage.TabIndex = 2;
+            this.btn_ConfirmMage.Text = "Confirm";
+            this.btn_ConfirmMage.UseVisualStyleBackColor = true;
+            this.btn_ConfirmMage.Click += new System.EventHandler(this.btn_ConfirmMage_Click);
+            // 
+            // lb_SpellBook
+            // 
+            this.lb_SpellBook.FormattingEnabled = true;
+            this.lb_SpellBook.Location = new System.Drawing.Point(360, 69);
+            this.lb_SpellBook.Name = "lb_SpellBook";
+            this.lb_SpellBook.Size = new System.Drawing.Size(120, 95);
+            this.lb_SpellBook.TabIndex = 1;
+            // 
+            // lb_AvailableSpells
+            // 
+            this.lb_AvailableSpells.FormattingEnabled = true;
+            this.lb_AvailableSpells.Location = new System.Drawing.Point(49, 69);
+            this.lb_AvailableSpells.Name = "lb_AvailableSpells";
+            this.lb_AvailableSpells.Size = new System.Drawing.Size(120, 95);
+            this.lb_AvailableSpells.TabIndex = 0;
+            // 
+            // tabProficiencies
+            // 
+            this.tabProficiencies.Controls.Add(this.lb_NonWeapProfsText);
+            this.tabProficiencies.Controls.Add(this.button1);
+            this.tabProficiencies.Controls.Add(this.btn_AddNonWeaponProf);
+            this.tabProficiencies.Controls.Add(this.button3);
+            this.tabProficiencies.Controls.Add(this.lb_LearnedProficienies);
+            this.tabProficiencies.Controls.Add(this.lb_AvailableNonWeaponList);
+            this.tabProficiencies.Location = new System.Drawing.Point(4, 22);
+            this.tabProficiencies.Name = "tabProficiencies";
+            this.tabProficiencies.Size = new System.Drawing.Size(571, 273);
+            this.tabProficiencies.TabIndex = 4;
+            this.tabProficiencies.Text = "Proficiencies";
+            this.tabProficiencies.UseVisualStyleBackColor = true;
+            // 
+            // lb_NonWeapProfsText
+            // 
+            this.lb_NonWeapProfsText.AutoSize = true;
+            this.lb_NonWeapProfsText.Location = new System.Drawing.Point(96, 22);
+            this.lb_NonWeapProfsText.Name = "lb_NonWeapProfsText";
+            this.lb_NonWeapProfsText.Size = new System.Drawing.Size(87, 13);
+            this.lb_NonWeapProfsText.TabIndex = 8;
+            this.lb_NonWeapProfsText.Text = "lb_MageInfoText";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(239, 104);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btn_AddNonWeaponProf
+            // 
+            this.btn_AddNonWeaponProf.Location = new System.Drawing.Point(239, 60);
+            this.btn_AddNonWeaponProf.Name = "btn_AddNonWeaponProf";
+            this.btn_AddNonWeaponProf.Size = new System.Drawing.Size(75, 23);
+            this.btn_AddNonWeaponProf.TabIndex = 6;
+            this.btn_AddNonWeaponProf.Text = "Add";
+            this.btn_AddNonWeaponProf.UseVisualStyleBackColor = true;
+            this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(239, 218);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Confirm";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // lb_LearnedProficienies
+            // 
+            this.lb_LearnedProficienies.FormattingEnabled = true;
+            this.lb_LearnedProficienies.Location = new System.Drawing.Point(369, 60);
+            this.lb_LearnedProficienies.Name = "lb_LearnedProficienies";
+            this.lb_LearnedProficienies.Size = new System.Drawing.Size(120, 95);
+            this.lb_LearnedProficienies.TabIndex = 2;
+            // 
+            // lb_AvailableNonWeaponList
+            // 
+            this.lb_AvailableNonWeaponList.FormattingEnabled = true;
+            this.lb_AvailableNonWeaponList.Location = new System.Drawing.Point(73, 60);
+            this.lb_AvailableNonWeaponList.Name = "lb_AvailableNonWeaponList";
+            this.lb_AvailableNonWeaponList.Size = new System.Drawing.Size(120, 95);
+            this.lb_AvailableNonWeaponList.TabIndex = 1;
             // 
             // Specialization
             // 
@@ -523,6 +737,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.ud_OL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_PP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ud_HS)).EndInit();
+            this.tabMonk.ResumeLayout(false);
+            this.tabMonk.PerformLayout();
+            this.tabMage.ResumeLayout(false);
+            this.tabMage.PerformLayout();
+            this.tabProficiencies.ResumeLayout(false);
+            this.tabProficiencies.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -568,5 +788,24 @@
         private System.Windows.Forms.ListBox lb_AvailableList;
         private System.Windows.Forms.Label lb_AvailablePointsValue;
         private System.Windows.Forms.Label lb_AvailablePoints;
+        private System.Windows.Forms.Button btn_confirmPriest;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_RemoveSpellM;
+        private System.Windows.Forms.Button btn_AddSpellM;
+        private System.Windows.Forms.Button btn_ConfirmMage;
+        private System.Windows.Forms.ListBox lb_SpellBook;
+        private System.Windows.Forms.ListBox lb_AvailableSpells;
+        private System.Windows.Forms.Button btn_RemoveSpellP;
+        private System.Windows.Forms.Button btn_AddSpellP;
+        private System.Windows.Forms.Label lb_PriestInfoText;
+        private System.Windows.Forms.TabPage tabProficiencies;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_AddNonWeaponProf;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox lb_LearnedProficienies;
+        private System.Windows.Forms.ListBox lb_AvailableNonWeaponList;
+        private System.Windows.Forms.Label lb_NonWeapProfsText;
     }
 }

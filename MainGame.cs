@@ -33,7 +33,7 @@ namespace Project_Yahiko
         {
             _player = new Player();
             CharacterSheet cs = new CharacterSheet();
-            cs.GetPlayer(_player);
+            cs.GetPlayer(ref _player);
             cs.Show();
         }
     }

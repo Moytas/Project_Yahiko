@@ -15,9 +15,8 @@ namespace Project_Yahiko
             Priest
         };
 
-        public SpellBook(Type _typeOfSpellbook,ref Player _p)
+        public SpellBook(Type _typeOfSpellbook)
         {
-            player = _p;
             switch(_typeOfSpellbook)
             {
                 case Type.Mage:

@@ -300,6 +300,7 @@
             this.tb_FirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_FirstName.Enabled = false;
             this.tb_FirstName.Location = new System.Drawing.Point(69, 10);
             this.tb_FirstName.Name = "tb_FirstName";
             this.tb_FirstName.Size = new System.Drawing.Size(92, 20);
@@ -555,6 +556,7 @@
             this.tb_LastName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_LastName.Enabled = false;
             this.tb_LastName.Location = new System.Drawing.Point(69, 46);
             this.tb_LastName.Name = "tb_LastName";
             this.tb_LastName.Size = new System.Drawing.Size(92, 20);
@@ -626,7 +628,6 @@
             // 
             // btn_RollStats
             // 
-            this.btn_RollStats.Enabled = false;
             this.btn_RollStats.Location = new System.Drawing.Point(6, 13);
             this.btn_RollStats.Name = "btn_RollStats";
             this.btn_RollStats.Size = new System.Drawing.Size(75, 23);

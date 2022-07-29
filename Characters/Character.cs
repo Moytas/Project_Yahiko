@@ -16,6 +16,9 @@ namespace Project_Yahiko
         public SavThrows SavingThrows;
         public int HP_Max, HP_Current;
 
+        public int MovementRate = 0;
+        public int Money_Copper, Money_Silver, Money_Gold;
+
         public int AlignmentLaw, AlignmentGood;
     }
 }
