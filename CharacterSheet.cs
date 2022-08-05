@@ -51,12 +51,11 @@ namespace Project_Yahiko
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             CharacterSheet.ActiveForm.Text = String.Format("{0}'s Sheet",tb_FirstName.Text);
-
         }
 
         public void GetPlayer(ref Player player)
         {
-            _player = player;
+            _player =  player;
             SetUpWeapon(_player);
         }
 
@@ -66,12 +65,14 @@ namespace Project_Yahiko
             {
                 if (tb_FirstName.Enabled)
                 {
+                    _player.FirstName = tb_FirstName.Text;
                     tb_FirstName.Enabled = false;
                     tb_LastName.Enabled = true;
                     tb_LastName.Focus();
                 }
                 else
                 {
+                    _player.Lastname = tb_LastName.Text;
                     btn_RandomName.Enabled = false;
                     btn_RandomName.Visible = false;
                     tb_LastName.Enabled = false;
@@ -85,7 +86,7 @@ namespace Project_Yahiko
         {
             tb_WeaponName.Text = p.EquipedWeapon.Name;
             tb_WeaponSpeedValue.Text = p.EquipedWeapon.Speed.ToString();
-            tb_WeaponTypeValue.Text = p.EquipedWeapon.Type;
+            tb_WeaponTypeValue.Text = "B";
             tb_DmgSValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Small, p.EquipedWeapon.TypeOfDie_Small);
             tb_DmgLValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Large, p.EquipedWeapon.TypeOfDie_Large);
         }
@@ -274,52 +275,50 @@ namespace Project_Yahiko
                     cb_Race.Enabled = false;
                     cb_Class.Enabled = true;
                     cb_Class.Visible = true;
-                    BindStatsToPlayer(ref _player);
-                    SetAvailableClasses(ref _player);
+                    BindStatsToPlayer();
+                    SetAvailableClasses();
                     SetMovementRates();
                     break;
                 case 7: // Class
-                    cb_Class.Enabled = false;
-                    string _class = cb_Class.Text;
-                    int index = 0;
-                    if(_class.Contains("Bushi"))
-                    {
-                        index = 1;
-                    }
-                    else if (_class.Contains("Shinobi"))
-                    {
-                        index = 2;
-                    }
-                    else if (_class.Contains("Sohei"))
-                    {
-                        index = 3;
-                    }
-                    else if (_class.Contains("Onmyoji"))
-                    {
-                        index = 4;
-                    }
 
-                    if (index != 0)
+                    if (cb_Class.Text.Contains("Bushi"))
                     {
-                        _player.PlayerClass = index;
+                        _player.CharacterClass = 1;
                     }
-                    else
+                    else if (cb_Class.Text.Contains("Shinobi"))
                     {
+                        _player.CharacterClass = 2;
+                    }
+                    else if (cb_Class.Text.Contains("Sohei"))
+                    {
+                        _player.CharacterClass = 3;
+                    }
+                    else if (cb_Class.Text.Contains("Onmyoji"))
+                    {
+                        _player.CharacterClass = 4;
+                    }
+                    
+                    if (_player.CharacterClass == 0)
+                    {
+                        lb_InfoText.Text = "No available classes... Roll again";
+                        Thread.Sleep(3000);
                         RestartChar();
                     }
-                    _player.XPToNext = DM.GetXPToNext(_player.PlayerClass, 1);
+
+                    _player.XPToNext = DM.GetXPToNext(_player.CharacterClass, 1);
                     lb_XPToNextValue.Text = _player.XPToNext.ToString();
-                    if(_player.PlayerClass == 1)
+                    if(_player.CharacterClass == 1)
                     {
                         _player.CharacterStats.ChangeHPWarrior(_player.CharacterStats.Current_Con);
                     }
                     SetHP();
-                   
+                    SetNumOfProficiencies();
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
-                    btn_confirm.Location = new Point(cb_Alignment.Location.X + 150, cb_Alignment.Location.Y);
+                    btn_confirm.Location = new Point(cb_Alignment.Location.X + 50, cb_Alignment.Location.Y);
                     cb_Alignment.Enabled = true;
                     cb_Alignment.Visible = true;
+                    cb_Class.Enabled = false;
                     break;
                 case 8: // Alignment
                     cb_Alignment.Enabled = false;
@@ -338,16 +337,41 @@ namespace Project_Yahiko
                     btn_confirm.Location = new Point(620, 378);
                     break;
                 case 10:
-                    Specialization spec = new Specialization(ref _player);
+                    Specialization spec = new Specialization(_player);
                     spec.Show();
                     btn_confirm.Enabled = true;
-                    btn_confirm.Visible = true;
+                    btn_confirm.Visible = false;
+                    btn_Restart.Enabled = false;
+                    btn_Restart.Visible = false;
                     break;
                 case 11:
                     
                     break;
             }
             _index++;
+        }
+
+        void SetNumOfProficiencies()
+        {
+            switch(_player.CharacterClass)
+            {
+                case 1:
+                    _player.NumNonWeaponProf = 3 + _player.CharacterStats.NumLanguages;
+                    _player.NumWeaponProf = 4;
+                    break;
+                case 2:
+                    _player.NumNonWeaponProf = 3 + _player.CharacterStats.NumLanguages;
+                    _player.NumWeaponProf = 2;
+                    break;
+                case 3:
+                    _player.NumNonWeaponProf = 4 + _player.CharacterStats.NumLanguages;
+                    _player.NumWeaponProf = 2;
+                    break;
+                case 4:
+                    _player.NumNonWeaponProf = 4 + _player.CharacterStats.NumLanguages;
+                    _player.NumWeaponProf = 1;
+                    break;
+            }
         }
 
         private void SetMovementRates()
@@ -370,34 +394,34 @@ namespace Project_Yahiko
             lb_MoveBValue.Text = _player.MovementRate.ToString();
         }
 
-        private void BindStatsToPlayer(ref Player p)
+        private void BindStatsToPlayer()
         {
-            p.CharacterStats.Initial_Str = int.Parse(lb_StrValue.Text);
-            p.CharacterStats.Current_Str = p.CharacterStats.Initial_Str;
-            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Str, "STR", 0); //PROSOXH EDW
+            _player.CharacterStats.Initial_Str = int.Parse(lb_StrValue.Text);
+            _player.CharacterStats.Current_Str = _player.CharacterStats.Initial_Str;
+            _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Str, "STR", 0); //PROSOXH EDW
 
-            p.CharacterStats.Initial_Dex = int.Parse(lb_DexValue.Text);
-            p.CharacterStats.Current_Dex = p.CharacterStats.Initial_Dex;
-            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Dex, "DEX");
-            
-            p.CharacterStats.Initial_Con = int.Parse(lb_ConValue.Text);
-            p.CharacterStats.Current_Con = p.CharacterStats.Initial_Con;
-            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Con, "CON");
-            
-            p.CharacterStats.Initial_Int = int.Parse(lb_IntValue.Text);
-            p.CharacterStats.Current_Int = p.CharacterStats.Initial_Int;
-            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Int, "INT");
+            _player.CharacterStats.Initial_Dex = int.Parse(lb_DexValue.Text);
+            _player.CharacterStats.Current_Dex = _player.CharacterStats.Initial_Dex;
+            _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Dex, "DEX");
 
-            p.CharacterStats.Initial_Wis = int.Parse(lb_WisValue.Text);
-            p.CharacterStats.Current_Wis = p.CharacterStats.Initial_Wis;
-            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Wis, "WIS");
+            _player.CharacterStats.Initial_Con = int.Parse(lb_ConValue.Text);
+            _player.CharacterStats.Current_Con = _player.CharacterStats.Initial_Con;
+            _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Con, "CON");
 
-            p.CharacterStats.Initial_Cha = int.Parse(lb_ChaValue.Text);
-            p.CharacterStats.Current_Cha = p.CharacterStats.Initial_Cha;
-            p.CharacterStats.SetAbilities(p.CharacterStats.Current_Cha, "CHA");
+            _player.CharacterStats.Initial_Int = int.Parse(lb_IntValue.Text);
+            _player.CharacterStats.Current_Int = _player.CharacterStats.Initial_Int;
+            _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Int, "INT");
+
+            _player.CharacterStats.Initial_Wis = int.Parse(lb_WisValue.Text);
+            _player.CharacterStats.Current_Wis = _player.CharacterStats.Initial_Wis;
+            _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Wis, "WIS");
+
+            _player.CharacterStats.Initial_Cha = int.Parse(lb_ChaValue.Text);
+            _player.CharacterStats.Current_Cha = _player.CharacterStats.Initial_Cha;
+            _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Cha, "CHA");
         }
 
-        private void SetAvailableClasses(ref Player player)
+        private void SetAvailableClasses()
         {
             List<string> available = new List<string>();
             switch (_player.CharacterRace)
@@ -414,7 +438,7 @@ namespace Project_Yahiko
                     available.Add("Sohei");
                     break;
             }
-
+           
             if (_player.CharacterStats.Initial_Dex < 9)
             {
                 if (available.Contains("Shinobi"))
@@ -441,12 +465,9 @@ namespace Project_Yahiko
 
             if (_player.CharacterStats.Initial_Str < 9)
             {
-                for(int i = 0; i < available.Count; i++)
+                if (available.Contains("Bushi"))
                 {
-                    if (available[i] == "Bushi")
-                    {
-                        available.RemoveAt(i);
-                    }
+                    available.Remove("Bushi");
                 }
             }
 
@@ -456,7 +477,8 @@ namespace Project_Yahiko
             }
             else
             {
-                for(int i = 0; i < available.Count;i++)
+                cb_Class.Items.Clear();
+                for (int i = 0; i < available.Count;i++)
                 {
                     cb_Class.Items.Add(available[i]);
                 }
@@ -513,7 +535,7 @@ namespace Project_Yahiko
 
         private void SetHP()
         {
-            switch(_player.PlayerClass)
+            switch(_player.CharacterClass)
             {
                 case 1://warrior
                     _player.HP_Max = 10;
@@ -572,6 +594,15 @@ namespace Project_Yahiko
             lb_StrValue.Text = "";
             lb_RollResult.Location = new Point(15, 13);
             lb_RollResult.BringToFront();
+            btn_confirm.Text = "Confirm";
+            btn_confirm.Enabled = false;
+            btn_confirm.Visible = false;
+
+            cb_Alignment.SelectedItem = "";
+            cb_Class.SelectedItem = "";
+            cb_Gender.SelectedItem = "";
+            cb_Race.SelectedItem = "";
+            btn_confirm.Location = new Point(cb_Race.Location.X + cb_Race.Text.Length + 10, cb_Race.Location.Y);
         }
     }
 }

@@ -1733,7 +1733,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tb_FirstName;
         private System.Windows.Forms.ComboBox cb_Race;
-        private System.Windows.Forms.ComboBox cb_Class;
         private System.Windows.Forms.ComboBox cb_Gender;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_RollStats;
@@ -1837,5 +1836,6 @@
         private System.Windows.Forms.Label lb_BaseHonor;
         private System.Windows.Forms.Label lb_HonorValue;
         private System.Windows.Forms.Label lb_Honor;
+        private System.Windows.Forms.ComboBox cb_Class;
     }
 }

@@ -12,20 +12,21 @@ namespace Project_Yahiko
 {
     public partial class Specialization : Form
     {
-        Player player;
+        Player player = new Player();
         int pool = 60;
         int weaponProf = 4;
         string introText_NonWeaponProfs;
         string introText_Samurai, introText_Shinobi, introText_Onmyoji, introText_Sohei;
+        bool showingWeaponProf = false;
 
         int initial_pp, initial_ol, initial_frt, initial_ms, initial_hs, initial_dn, initial_cw, initial_rl;
         DMOptions DM = new DMOptions();
 
-        public Specialization(ref Player _p)
+        public Specialization(Player _p)
         {
             InitializeComponent();
             player = _p;
-            switch(player.PlayerClass)
+            switch (_p.CharacterClass)
             {
                 case 1: // warrior
                     this.Text = "Bushi specialization";
@@ -34,9 +35,8 @@ namespace Project_Yahiko
                     tabControl1.TabPages.Remove(tabMonk);
                     tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabProficiencies);
-                    //weaponProf = _p.WeaponProf; UNCOMENT THIS
-                    lb_AvailablePointsValue.Text = weaponProf.ToString();
                     PopulateOptionsWeapon();
+                    ShowWarriorInfo();
                     break;
                 case 2: // thief
                     this.Text = "Shinobi skills";
@@ -46,6 +46,7 @@ namespace Project_Yahiko
                     tabControl1.TabPages.Remove(tabSamurai);
                     tabControl1.TabPages.Remove(tabProficiencies);
                     AdjustThiefSkills();
+                    ShowInfoThiefSkills();
                     break;
                 case 3: // priest
                     this.Text = "Sohei spells";
@@ -54,39 +55,65 @@ namespace Project_Yahiko
                     tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabSamurai);
                     tabControl1.TabPages.Remove(tabProficiencies);
-                    PopulateSpells_Priest();
+                    InitialConfig_Priest();
                     break;
                 case 4: // mage
                     this.Text = "Onmyoji spells";
-                    tabControl1.SelectedTab = tabShinobi;
+                    tabControl1.SelectedTab = tabMage;
                     tabControl1.TabPages.Remove(tabProficiencies);
-                    tabControl1.TabPages.Remove(tabMage);
+                    tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabMonk);
                     tabControl1.TabPages.Remove(tabSamurai);
+                    InitialConfig_Mage();
                     break;
             }
         }
 
-        void PopulateSpells_Priest()
+        #region Texts
+        private void ShowInfoThiefSkills()
+        { }
+        private void ShowPriestInfo()
         {
-
+            lb_PriestInfoText.Text = "";
+            lb_PriestInfoText.Text = "Priests in Nippon ..... Walk the path blah blah... Choose spells blah blah /n";
+            lb_PriestInfoText.Text += String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_PriestSpellBook.Items.Count);
         }
 
-        void ShowProficienciesTab()
+        private void ShowWarriorInfo()
+        {
+            lb_SamuraiIntroText.Text = "The formidable bushi is a true master of weapons...\n Remaining Weapon Proficiencies: " + player.NumWeaponProf;
+        }
+
+        private void ShowMageInfo()
+        {
+            lb_MageInfoText.Text = "";
+            lb_MageInfoText.Text = "The onmyoji is a master of elements, using hand seal techniques while speaking words of power creates magic /n";
+            lb_MageInfoText.Text += String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_MageSpellBook.Items.Count);
+        }
+
+
+
+        void ShowText_NonWeaponProficiencies(int numLeft)
+        {
+            lb_NonWeapProfsText.Text = string.Format("Remaining Non Weapon Proficiencies: {0}", numLeft);
+        }
+        #endregion
+        void ShowProficienciesTab(Player player)
         {
             tabControl1.TabPages.Add(tabProficiencies);
             tabControl1.SelectedTab = tabProficiencies;
-            foreach(TabPage t in tabControl1.TabPages)
+            foreach (TabPage t in tabControl1.TabPages)
             {
-                if(t != tabProficiencies)
+                if (t != tabProficiencies)
                 {
                     tabControl1.TabPages.Remove(t);
                 }
             }
 
-            switch(player.PlayerClass)
+            switch (player.CharacterClass)
             {
                 case 1:
+                    lb_NonWeapProfsText.Text = "The bushi can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NonWeaponProf;
                     foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
                     {
                         if (prof.ProfType == NonWeapProficiency.Type.General || prof.ProfType == NonWeapProficiency.Type.Warrior)
@@ -96,6 +123,7 @@ namespace Project_Yahiko
                     }
                     break;
                 case 2:
+                    lb_NonWeapProfsText.Text = "The shinobi can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NonWeaponProf;
                     foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
                     {
                         if (prof.ProfType == NonWeapProficiency.Type.General || prof.ProfType == NonWeapProficiency.Type.Thief)
@@ -105,6 +133,7 @@ namespace Project_Yahiko
                     }
                     break;
                 case 3:
+                    lb_NonWeapProfsText.Text = "The sohei can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NonWeaponProf;
                     foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
                     {
                         if (prof.ProfType == NonWeapProficiency.Type.General || prof.ProfType == NonWeapProficiency.Type.Priest)
@@ -114,6 +143,7 @@ namespace Project_Yahiko
                     }
                     break;
                 case 4:
+                    lb_NonWeapProfsText.Text = "The onmyoji can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NonWeaponProf;
                     foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
                     {
                         if (prof.ProfType == NonWeapProficiency.Type.General || prof.ProfType == NonWeapProficiency.Type.Mage)
@@ -128,23 +158,7 @@ namespace Project_Yahiko
 
         void ShowWeaponProf(int _class)
         {
-            lb_SpecializationList.Visible = false;
-            lb_SpecializationList.Enabled = false;
-            lb_specializedWeapons.Enabled = false;
-            lb_specializedWeapons.Visible = false;
-
-            if (btn_LearnProfSpec.Enabled || btn_ForgetProfSpec.Enabled)
-            {
-                btn_LearnProfSpec.Enabled = false;
-                btn_ForgetProfSpec.Enabled = false;
-            }
-
-            if(btn_LearnProfSpec.Visible || btn_ForgetProfSpec.Visible)
-            {
-                btn_LearnProfSpec.Visible = false;
-                btn_ForgetProfSpec.Visible = false;
-            }
-            lb_AvailableList.Items.Clear();
+            Console.WriteLine("Player class = " + _class);
             switch (_class)
             {
                 case 2:
@@ -154,54 +168,90 @@ namespace Project_Yahiko
                     }
                     break;
                 case 3:
-                    foreach(Weapon w in DM.WeaponsList)
+                    if (showingWeaponProf)
                     {
-                        if(w.Type == "B" || w.Type.Contains("B"))
+                        this.Text = "A Sohei's Arsenal";
+                        tabControl1.TabPages[0].Text = "Sohei";
+                        lb_SamuraiIntroText.Text = "A Sohei has a variety of weapons that can be chosen...";
+                        foreach (Weapon w in DM.WeaponsList)
                         {
-                            lb_AvailableList.Items.Add(w.Name);
+                            if (w.WeaponType.Contains(Weapon.DamageType.Bludgeoning) && w.WeaponType.Count == 1)
+                            {
+                                lb_AvailableList.Items.Add(w.Name);
+                            }
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("oops");
                     }
                     break;
                 case 4:
-                    foreach (Weapon w in DM.WeaponsList)
+                    if (showingWeaponProf)
                     {
-                        lb_AvailableList.Items.Add(w.Name);
+                        this.Text = "An Onmyoji's Arsenal";
+                        lb_MageInfoText.Text = "After you cast your last spell, my dearest onmyoji, you will need to protect yourself.. Choose how...";
+                        lb_MageInfoText.Text += string.Format("Remaining Weapon Proficiencies: {0}",player.NumNonWeaponProf.ToString());
+                        foreach (Weapon w in DM.WeaponsList)
+                        {
+                            if (w.WeaponType.Contains(Weapon.DamageType.Bludgeoning) && w.WeaponType.Count == 1)
+                            {
+                                lb_AvailableList.Items.Add(w.Name);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("oops");
                     }
                     break;
             }
-            tabControl1.Controls.Add(tabSamurai);
-            foreach(TabPage tab in tabControl1.Controls)
+            tabControl1.Controls.Add(tabProficiencies);
+            foreach (TabPage tab in tabControl1.Controls)
             {
-                if(tab != tabSamurai)
+                if (tab != tabProficiencies)
                 {
                     tabControl1.TabPages.Remove(tab);
                 }
             }
-            tabControl1.SelectedTab = tabSamurai;
+            tabControl1.SelectedTab = tabProficiencies;
 
         }
+
+        void ShowNonWeapProf(int _class)
+        {
+
+        }
+
         private void btn_LearnAvProf_Clicked(object sender, EventArgs e)
         {
-            if (lb_AvailableList.Text.Contains("Daikyu") || lb_AvailableList.Text.Contains("Hankyu") || lb_AvailableList.Text.Contains("Bow"))
+            if (tabSamurai.Text == "Bushi")
             {
-
-                if (weaponProf > 0 && weaponProf - 2 >= 0)
+                if (lb_AvailableList.Text.Contains("Daikyu") || lb_AvailableList.Text.Contains("Hankyu") || lb_AvailableList.Text.Contains("Bow"))
                 {
-                    weaponProf -= 2;
-                    lb_AvailablePointsValue.Text = weaponProf.ToString();
-                    lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
-                    lb_AvailableList.Items.Remove(lb_AvailableList.Text);
+
+                    if (weaponProf > 0 && weaponProf - 2 >= 0)
+                    {
+                        weaponProf -= 2;
+                        //lb_AvailablePointsValue.Text = weaponProf.ToString();
+                        lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+                        lb_AvailableList.Items.Remove(lb_AvailableList.Text);
+                    }
+                }
+                else
+                {
+                    if (weaponProf > 0 && weaponProf - 1 >= 0)
+                    {
+                        weaponProf -= 1;
+                        //lb_AvailablePointsValue.Text = weaponProf.ToString();
+                        lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+                        lb_AvailableList.Items.Remove(lb_AvailableList.Text);
+                    }
                 }
             }
             else
             {
-                if (weaponProf > 0 && weaponProf - 1 >= 0)
-                {
-                    weaponProf -= 1;
-                    lb_AvailablePointsValue.Text = weaponProf.ToString();
-                    lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
-                    lb_AvailableList.Items.Remove(lb_AvailableList.Text);
-                }
+                Console.WriteLine("ok");
             }
         }
         
@@ -209,28 +259,6 @@ namespace Project_Yahiko
         {
 
         }
-
-        private void btn_RemoveSpellM_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_AddSpellM_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_AddSpellP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_RemoveSpellP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -252,15 +280,11 @@ namespace Project_Yahiko
             ShowText_NonWeaponProficiencies(player.NumNonWeaponProf);
         }
 
-        void ShowText_NonWeaponProficiencies(int numLeft)
-        {
-            lb_NonWeapProfsText.Text = string.Format(introText_NonWeaponProfs + " /nRemaining points: {0}", numLeft);
-        }
 
         #region Warrior
         private void btn_SamuraiAccept_Click(object sender, EventArgs e)
         {
-            ShowProficienciesTab();
+            ShowProficienciesTab(player);
         }
         void PopulateOptionsWeapon()
         {
@@ -289,7 +313,7 @@ namespace Project_Yahiko
                 if (weaponProf > 0 && weaponProf - 3 >= 0)
                 {
                     weaponProf -= 3;
-                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                    //lb_AvailablePointsValue.Text = weaponProf.ToString();
                     lb_SpecializationList.Items.Add(lb_ProficientList.Text);
                     lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 }
@@ -299,7 +323,7 @@ namespace Project_Yahiko
                 if (weaponProf > 0 && weaponProf - 2 >= 0)
                 {
                     weaponProf -= 2;
-                    lb_AvailablePointsValue.Text = weaponProf.ToString();
+                   // lb_AvailablePointsValue.Text = weaponProf.ToString();
                     lb_SpecializationList.Items.Add(lb_ProficientList.Text);
                     lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 }
@@ -311,14 +335,14 @@ namespace Project_Yahiko
             if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
             {
                 weaponProf += 3;
-                lb_AvailablePointsValue.Text = weaponProf.ToString();
+                //lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 lb_AvailableList.Items.Add(lb_ProficientList.Text);
             }
             else
             {
                 weaponProf += 2;
-                lb_AvailablePointsValue.Text = weaponProf.ToString();
+               // lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 lb_AvailableList.Items.Add(lb_ProficientList.Text);
             }
@@ -329,14 +353,14 @@ namespace Project_Yahiko
             if (lb_SpecializationList.Text.Contains("Daikyu") || lb_SpecializationList.Text.Contains("Hankyu") || lb_SpecializationList.Text.Contains("Bow"))
             {
                 weaponProf += 3;
-                lb_AvailablePointsValue.Text = weaponProf.ToString();
+               // lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_SpecializationList.Items.Remove(lb_SpecializationList.Text);
                 lb_ProficientList.Items.Add(lb_SpecializationList.Text);
             }
             else
             {
                 weaponProf += 2;
-                lb_AvailablePointsValue.Text = weaponProf.ToString();
+                //lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_SpecializationList.Items.Remove(lb_SpecializationList.Text);
                 lb_ProficientList.Items.Add(lb_SpecializationList.Text);
             }
@@ -526,9 +550,10 @@ namespace Project_Yahiko
 
         private void btn_accept_Click(object sender, EventArgs e)
         {
-            //ShowProficienciesTab();
-            ShowWeaponProf(player.PlayerClass);
+            showingWeaponProf = true;
+            ShowWeaponProf(player.CharacterClass);
         }
+
         private void ud_PP_ValueChanged(object sender, EventArgs e)
         {
             if (pool > 0)
@@ -683,19 +708,196 @@ namespace Project_Yahiko
             }
 
         }
+
+       
         #endregion
 
         #region Priest
+        void InitialConfig_Priest()
+        {
+            ShowPriestInfo();
+
+            foreach (Spell s in DM.AvailableSpells_Priest)
+            {
+                lb_AvailablePriestSpells.Items.Add(s.Name);
+            }
+        }
+        private void btn_AddSpellP_Click(object sender, EventArgs e)
+        {
+            if (player.CharacterStats.NumMaxSpellsPerLevel > lb_PriestSpellBook.Items.Count)
+            {
+                try
+                {
+                    lb_PriestSpellBook.Items.Add(lb_AvailablePriestSpells.SelectedItem);
+                    lb_AvailablePriestSpells.Items.Remove(lb_AvailablePriestSpells.Text);
+                    ShowPriestInfo();
+                }
+                catch
+                {
+                    lb_PriestInfoText.Text = "No spell selected";
+                }
+            }
+
+        }
+
+        private void btn_ConfirmProf_Click(object sender, EventArgs e)
+        {
+            if(showingWeaponProf)
+            {
+                showingWeaponProf = false;
+                ShowNonWeapProf(player.CharacterClass);
+            }
+            else
+            {
+                //continue game
+            }
+        }
+
+        private void btn_RemoveSpellP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lb_AvailablePriestSpells.Items.Add(lb_PriestSpellBook.SelectedItem);
+                lb_PriestSpellBook.Items.Remove(lb_PriestSpellBook.SelectedItem);
+                ShowPriestInfo();
+            }
+            catch
+            {
+                lb_PriestInfoText.Text = "No spell selected";
+            }
+        }
         private void btn_confirmPriest_Click(object sender, EventArgs e)
         {
-            ShowWeaponProf(player.PlayerClass);
+            showingWeaponProf = true;
+            ShowWeaponProf(player.CharacterClass);
         }
+
+        private void lb_AvailablePriestSpells_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("player first name = " + player.FirstName);
+            foreach (Spell s in DM.AvailableSpells_Priest)
+            {
+                if (s.Name == lb_AvailablePriestSpells.Text)
+                {
+                    lb_SelectedSpellDescription.Text = "";
+                    lb_SelectedSpellDescription.Text = String.Format("Spell Description: {0}", s.Description);
+                    break;
+                }
+            }
+
+            if (player.CharacterStats.NumMaxSpellsPerLevel == lb_PriestSpellBook.Items.Count)
+            {
+                btn_confirmPriest.Enabled = true;
+                btn_AddSpellP.Enabled = false;
+            }
+            else
+            {
+                btn_confirmPriest.Enabled = false;
+                btn_AddSpellP.Enabled = true;
+            }
+        }
+
+        private void lb_PriestSpellBook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Spell s in DM.AvailableSpells_Priest)
+            {
+                if (s.Name == lb_PriestSpellBook.Text)
+                {
+                    lb_SelectedSpellDescSpellbook.Text = "";
+                    lb_SelectedSpellDescSpellbook.Text = String.Format("Spell Description: {0}", s.Description);
+                    break;
+                }
+            }
+        }
+
         #endregion
 
         #region Mage
+        void InitialConfig_Mage()
+        {
+            lb_MageInfoText.Text = "Select spells.. blah blah" + "\n Remaining slots: " + player.CharacterStats.NumMaxSpellsPerLevel;
+            for(int i = 0; i < DM.AvailableSpells_Mage.Count; i++)
+            {
+                lb_AvailableSpells.Items.Add(DM.AvailableSpells_Mage[i].Name);
+            }
+        }
         private void btn_ConfirmMage_Click(object sender, EventArgs e)
         {
-            ShowWeaponProf(player.PlayerClass);
+            showingWeaponProf = true;
+            ShowWeaponProf(player.CharacterClass);
+        }
+        private void btn_RemoveSpellM_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lb_AvailableSpells.Items.Add(lb_MageSpellBook.SelectedItem);
+                lb_MageSpellBook.Items.Remove(lb_MageSpellBook.SelectedItem);
+                ShowMageInfo();
+            }
+            catch
+            {
+                lb_MageInfoText.Text = "No spell selected";
+            }
+        }
+
+        private void btn_AddSpellM_Click(object sender, EventArgs e)
+        {
+            if (player.CharacterStats.NumMaxSpellsPerLevel > lb_MageSpellBook.Items.Count)
+            {
+                try
+                {
+                    lb_MageSpellBook.Items.Add(lb_AvailableSpells.SelectedItem);
+                    lb_AvailableSpells.Items.Remove(lb_AvailableSpells.Text);
+                    ShowMageInfo();
+                }
+                catch
+                {
+                    lb_MageInfoText.Text = "No spell selected";
+                }
+            }
+        }
+
+        private void lb_AvailableSpells_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lb_MageSpellBook.Items.Count >= player.CharacterStats.NumMaxSpellsPerLevel)
+            {
+                btn_ConfirmMage.Enabled = true;
+                btn_AddSpellM.Enabled = false;
+            }
+            else
+            {
+                foreach (Spell s in DM.AvailableSpells_Mage)
+                {
+                    if (s.Name == lb_AvailableSpells.Text)
+                    {
+                        lb_MageSelectedAvailableSpell.Text = "";
+                        lb_MageSelectedAvailableSpell.Text = String.Format("Spell Description: {0}", s.Description);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void lb_MageSpellBook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("player first name = " + player.FirstName);
+            if (lb_MageSpellBook.Items.Count >= player.CharacterStats.NumMaxSpellsPerLevel)
+            {
+                btn_ConfirmMage.Enabled = true;
+                btn_AddSpellM.Enabled = false;
+            }
+            else
+            {
+                foreach (Spell s in DM.AvailableSpells_Mage)
+                {
+                    if (s.Name == lb_MageSpellBook.Text)
+                    {
+                        lb_MageSelectedSpellBookSpell.Text = "";
+                        lb_MageSelectedSpellBookSpell.Text = String.Format("Spell Description: {0}", s.Description);
+                        break;
+                    }
+                }
+            }
         }
         #endregion
     }

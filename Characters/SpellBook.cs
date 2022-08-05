@@ -8,7 +8,8 @@ namespace Project_Yahiko
 {
     public class SpellBook
     {
-        private Player player;
+        public List<Spell> SpellsInBook = new List<Spell>();
+
         public enum Type
         {
             Mage,
@@ -28,7 +29,7 @@ namespace Project_Yahiko
 
         public void AddSpellToBook(Spell _spell)
         {
-            
+            SpellsInBook.Add(_spell);
         }
 
 

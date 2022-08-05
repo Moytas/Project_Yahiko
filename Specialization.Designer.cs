@@ -30,8 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSamurai = new System.Windows.Forms.TabPage();
-            this.lb_AvailablePointsValue = new System.Windows.Forms.Label();
-            this.lb_AvailablePoints = new System.Windows.Forms.Label();
             this.btn_SamuraiAccept = new System.Windows.Forms.Button();
             this.lb_specializedWeapons = new System.Windows.Forms.Label();
             this.lb_proficientWeapons = new System.Windows.Forms.Label();
@@ -66,24 +64,30 @@
             this.lb_PP = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabMonk = new System.Windows.Forms.TabPage();
+            this.lb_SelectedSpellDescSpellbook = new System.Windows.Forms.Label();
+            this.lb_SelectedSpellDescription = new System.Windows.Forms.Label();
             this.btn_RemoveSpellP = new System.Windows.Forms.Button();
             this.btn_AddSpellP = new System.Windows.Forms.Button();
             this.lb_PriestInfoText = new System.Windows.Forms.Label();
             this.btn_confirmPriest = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.lb_PriestSpellBook = new System.Windows.Forms.ListBox();
+            this.lb_AvailablePriestSpells = new System.Windows.Forms.ListBox();
             this.tabMage = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lb_MageSelectedSpellBookSpell = new System.Windows.Forms.Label();
+            this.lb_MageSelectedAvailableSpell = new System.Windows.Forms.Label();
+            this.lb_MageInfoText = new System.Windows.Forms.Label();
             this.btn_RemoveSpellM = new System.Windows.Forms.Button();
             this.btn_AddSpellM = new System.Windows.Forms.Button();
             this.btn_ConfirmMage = new System.Windows.Forms.Button();
-            this.lb_SpellBook = new System.Windows.Forms.ListBox();
+            this.lb_MageSpellBook = new System.Windows.Forms.ListBox();
             this.lb_AvailableSpells = new System.Windows.Forms.ListBox();
             this.tabProficiencies = new System.Windows.Forms.TabPage();
+            this.lb_SelectedProfDescription_R = new System.Windows.Forms.Label();
+            this.lb_SelectedProfDescription_L = new System.Windows.Forms.Label();
             this.lb_NonWeapProfsText = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_AddNonWeaponProf = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_ConfirmProf = new System.Windows.Forms.Button();
             this.lb_LearnedProficienies = new System.Windows.Forms.ListBox();
             this.lb_AvailableNonWeaponList = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
@@ -110,6 +114,7 @@
             this.tabControl1.Controls.Add(this.tabMage);
             this.tabControl1.Controls.Add(this.tabProficiencies);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ItemSize = new System.Drawing.Size(50, 20);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -118,8 +123,6 @@
             // 
             // tabSamurai
             // 
-            this.tabSamurai.Controls.Add(this.lb_AvailablePointsValue);
-            this.tabSamurai.Controls.Add(this.lb_AvailablePoints);
             this.tabSamurai.Controls.Add(this.btn_SamuraiAccept);
             this.tabSamurai.Controls.Add(this.lb_specializedWeapons);
             this.tabSamurai.Controls.Add(this.lb_proficientWeapons);
@@ -132,31 +135,13 @@
             this.tabSamurai.Controls.Add(this.btn_LearnAvProf);
             this.tabSamurai.Controls.Add(this.lb_AvailableList);
             this.tabSamurai.Controls.Add(this.lb_SamuraiIntroText);
-            this.tabSamurai.Location = new System.Drawing.Point(4, 22);
+            this.tabSamurai.Location = new System.Drawing.Point(4, 24);
             this.tabSamurai.Name = "tabSamurai";
             this.tabSamurai.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSamurai.Size = new System.Drawing.Size(571, 273);
+            this.tabSamurai.Size = new System.Drawing.Size(571, 271);
             this.tabSamurai.TabIndex = 0;
-            this.tabSamurai.Text = "Samurai";
+            this.tabSamurai.Text = "Bushi";
             this.tabSamurai.UseVisualStyleBackColor = true;
-            // 
-            // lb_AvailablePointsValue
-            // 
-            this.lb_AvailablePointsValue.AutoSize = true;
-            this.lb_AvailablePointsValue.Location = new System.Drawing.Point(114, 57);
-            this.lb_AvailablePointsValue.Name = "lb_AvailablePointsValue";
-            this.lb_AvailablePointsValue.Size = new System.Drawing.Size(13, 13);
-            this.lb_AvailablePointsValue.TabIndex = 13;
-            this.lb_AvailablePointsValue.Text = "4";
-            // 
-            // lb_AvailablePoints
-            // 
-            this.lb_AvailablePoints.AutoSize = true;
-            this.lb_AvailablePoints.Location = new System.Drawing.Point(24, 57);
-            this.lb_AvailablePoints.Name = "lb_AvailablePoints";
-            this.lb_AvailablePoints.Size = new System.Drawing.Size(84, 13);
-            this.lb_AvailablePoints.TabIndex = 12;
-            this.lb_AvailablePoints.Text = "Available points:";
             // 
             // btn_SamuraiAccept
             // 
@@ -291,10 +276,10 @@
             this.tabShinobi.Controls.Add(this.lb_OL);
             this.tabShinobi.Controls.Add(this.lb_PP);
             this.tabShinobi.Controls.Add(this.label2);
-            this.tabShinobi.Location = new System.Drawing.Point(4, 22);
+            this.tabShinobi.Location = new System.Drawing.Point(4, 24);
             this.tabShinobi.Name = "tabShinobi";
             this.tabShinobi.Padding = new System.Windows.Forms.Padding(3);
-            this.tabShinobi.Size = new System.Drawing.Size(571, 273);
+            this.tabShinobi.Size = new System.Drawing.Size(571, 271);
             this.tabShinobi.TabIndex = 1;
             this.tabShinobi.Text = "Shinobi";
             this.tabShinobi.UseVisualStyleBackColor = true;
@@ -510,18 +495,38 @@
             // 
             // tabMonk
             // 
+            this.tabMonk.Controls.Add(this.lb_SelectedSpellDescSpellbook);
+            this.tabMonk.Controls.Add(this.lb_SelectedSpellDescription);
             this.tabMonk.Controls.Add(this.btn_RemoveSpellP);
             this.tabMonk.Controls.Add(this.btn_AddSpellP);
             this.tabMonk.Controls.Add(this.lb_PriestInfoText);
             this.tabMonk.Controls.Add(this.btn_confirmPriest);
-            this.tabMonk.Controls.Add(this.listBox3);
-            this.tabMonk.Controls.Add(this.listBox4);
-            this.tabMonk.Location = new System.Drawing.Point(4, 22);
+            this.tabMonk.Controls.Add(this.lb_PriestSpellBook);
+            this.tabMonk.Controls.Add(this.lb_AvailablePriestSpells);
+            this.tabMonk.Location = new System.Drawing.Point(4, 24);
             this.tabMonk.Name = "tabMonk";
-            this.tabMonk.Size = new System.Drawing.Size(571, 273);
+            this.tabMonk.Size = new System.Drawing.Size(571, 271);
             this.tabMonk.TabIndex = 2;
             this.tabMonk.Text = "Sohei";
             this.tabMonk.UseVisualStyleBackColor = true;
+            // 
+            // lb_SelectedSpellDescSpellbook
+            // 
+            this.lb_SelectedSpellDescSpellbook.AutoSize = true;
+            this.lb_SelectedSpellDescSpellbook.Location = new System.Drawing.Point(400, 174);
+            this.lb_SelectedSpellDescSpellbook.Name = "lb_SelectedSpellDescSpellbook";
+            this.lb_SelectedSpellDescSpellbook.Size = new System.Drawing.Size(89, 13);
+            this.lb_SelectedSpellDescSpellbook.TabIndex = 10;
+            this.lb_SelectedSpellDescSpellbook.Text = "Spell Description:";
+            // 
+            // lb_SelectedSpellDescription
+            // 
+            this.lb_SelectedSpellDescription.AutoSize = true;
+            this.lb_SelectedSpellDescription.Location = new System.Drawing.Point(67, 174);
+            this.lb_SelectedSpellDescription.Name = "lb_SelectedSpellDescription";
+            this.lb_SelectedSpellDescription.Size = new System.Drawing.Size(89, 13);
+            this.lb_SelectedSpellDescription.TabIndex = 9;
+            this.lb_SelectedSpellDescription.Text = "Spell Description:";
             // 
             // btn_RemoveSpellP
             // 
@@ -554,6 +559,7 @@
             // 
             // btn_confirmPriest
             // 
+            this.btn_confirmPriest.Enabled = false;
             this.btn_confirmPriest.Location = new System.Drawing.Point(241, 197);
             this.btn_confirmPriest.Name = "btn_confirmPriest";
             this.btn_confirmPriest.Size = new System.Drawing.Size(75, 23);
@@ -562,45 +568,67 @@
             this.btn_confirmPriest.UseVisualStyleBackColor = true;
             this.btn_confirmPriest.Click += new System.EventHandler(this.btn_confirmPriest_Click);
             // 
-            // listBox3
+            // lb_PriestSpellBook
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(381, 56);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 95);
-            this.listBox3.TabIndex = 4;
+            this.lb_PriestSpellBook.FormattingEnabled = true;
+            this.lb_PriestSpellBook.Location = new System.Drawing.Point(381, 56);
+            this.lb_PriestSpellBook.Name = "lb_PriestSpellBook";
+            this.lb_PriestSpellBook.Size = new System.Drawing.Size(120, 95);
+            this.lb_PriestSpellBook.TabIndex = 4;
+            this.lb_PriestSpellBook.SelectedIndexChanged += new System.EventHandler(this.lb_PriestSpellBook_SelectedIndexChanged);
             // 
-            // listBox4
+            // lb_AvailablePriestSpells
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(70, 56);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 95);
-            this.listBox4.TabIndex = 3;
+            this.lb_AvailablePriestSpells.FormattingEnabled = true;
+            this.lb_AvailablePriestSpells.Location = new System.Drawing.Point(70, 56);
+            this.lb_AvailablePriestSpells.Name = "lb_AvailablePriestSpells";
+            this.lb_AvailablePriestSpells.Size = new System.Drawing.Size(120, 95);
+            this.lb_AvailablePriestSpells.TabIndex = 3;
+            this.lb_AvailablePriestSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailablePriestSpells_SelectedIndexChanged);
             // 
             // tabMage
             // 
-            this.tabMage.Controls.Add(this.label1);
+            this.tabMage.Controls.Add(this.lb_MageSelectedSpellBookSpell);
+            this.tabMage.Controls.Add(this.lb_MageSelectedAvailableSpell);
+            this.tabMage.Controls.Add(this.lb_MageInfoText);
             this.tabMage.Controls.Add(this.btn_RemoveSpellM);
             this.tabMage.Controls.Add(this.btn_AddSpellM);
             this.tabMage.Controls.Add(this.btn_ConfirmMage);
-            this.tabMage.Controls.Add(this.lb_SpellBook);
+            this.tabMage.Controls.Add(this.lb_MageSpellBook);
             this.tabMage.Controls.Add(this.lb_AvailableSpells);
-            this.tabMage.Location = new System.Drawing.Point(4, 22);
+            this.tabMage.Location = new System.Drawing.Point(4, 24);
             this.tabMage.Name = "tabMage";
-            this.tabMage.Size = new System.Drawing.Size(571, 273);
+            this.tabMage.Size = new System.Drawing.Size(571, 271);
             this.tabMage.TabIndex = 3;
             this.tabMage.Text = "Onmyoji";
             this.tabMage.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lb_MageSelectedSpellBookSpell
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "lb_MageInfoText";
+            this.lb_MageSelectedSpellBookSpell.AutoSize = true;
+            this.lb_MageSelectedSpellBookSpell.Location = new System.Drawing.Point(381, 181);
+            this.lb_MageSelectedSpellBookSpell.Name = "lb_MageSelectedSpellBookSpell";
+            this.lb_MageSelectedSpellBookSpell.Size = new System.Drawing.Size(89, 13);
+            this.lb_MageSelectedSpellBookSpell.TabIndex = 12;
+            this.lb_MageSelectedSpellBookSpell.Text = "Spell Description:";
+            // 
+            // lb_MageSelectedAvailableSpell
+            // 
+            this.lb_MageSelectedAvailableSpell.AutoSize = true;
+            this.lb_MageSelectedAvailableSpell.Location = new System.Drawing.Point(48, 181);
+            this.lb_MageSelectedAvailableSpell.Name = "lb_MageSelectedAvailableSpell";
+            this.lb_MageSelectedAvailableSpell.Size = new System.Drawing.Size(89, 13);
+            this.lb_MageSelectedAvailableSpell.TabIndex = 11;
+            this.lb_MageSelectedAvailableSpell.Text = "Spell Description:";
+            // 
+            // lb_MageInfoText
+            // 
+            this.lb_MageInfoText.AutoSize = true;
+            this.lb_MageInfoText.Location = new System.Drawing.Point(46, 17);
+            this.lb_MageInfoText.Name = "lb_MageInfoText";
+            this.lb_MageInfoText.Size = new System.Drawing.Size(87, 13);
+            this.lb_MageInfoText.TabIndex = 5;
+            this.lb_MageInfoText.Text = "lb_MageInfoText";
             // 
             // btn_RemoveSpellM
             // 
@@ -624,6 +652,7 @@
             // 
             // btn_ConfirmMage
             // 
+            this.btn_ConfirmMage.Enabled = false;
             this.btn_ConfirmMage.Location = new System.Drawing.Point(236, 207);
             this.btn_ConfirmMage.Name = "btn_ConfirmMage";
             this.btn_ConfirmMage.Size = new System.Drawing.Size(75, 23);
@@ -632,13 +661,14 @@
             this.btn_ConfirmMage.UseVisualStyleBackColor = true;
             this.btn_ConfirmMage.Click += new System.EventHandler(this.btn_ConfirmMage_Click);
             // 
-            // lb_SpellBook
+            // lb_MageSpellBook
             // 
-            this.lb_SpellBook.FormattingEnabled = true;
-            this.lb_SpellBook.Location = new System.Drawing.Point(360, 69);
-            this.lb_SpellBook.Name = "lb_SpellBook";
-            this.lb_SpellBook.Size = new System.Drawing.Size(120, 95);
-            this.lb_SpellBook.TabIndex = 1;
+            this.lb_MageSpellBook.FormattingEnabled = true;
+            this.lb_MageSpellBook.Location = new System.Drawing.Point(360, 69);
+            this.lb_MageSpellBook.Name = "lb_MageSpellBook";
+            this.lb_MageSpellBook.Size = new System.Drawing.Size(120, 95);
+            this.lb_MageSpellBook.TabIndex = 1;
+            this.lb_MageSpellBook.SelectedIndexChanged += new System.EventHandler(this.lb_MageSpellBook_SelectedIndexChanged);
             // 
             // lb_AvailableSpells
             // 
@@ -647,30 +677,51 @@
             this.lb_AvailableSpells.Name = "lb_AvailableSpells";
             this.lb_AvailableSpells.Size = new System.Drawing.Size(120, 95);
             this.lb_AvailableSpells.TabIndex = 0;
+            this.lb_AvailableSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableSpells_SelectedIndexChanged);
             // 
             // tabProficiencies
             // 
+            this.tabProficiencies.Controls.Add(this.lb_SelectedProfDescription_R);
+            this.tabProficiencies.Controls.Add(this.lb_SelectedProfDescription_L);
             this.tabProficiencies.Controls.Add(this.lb_NonWeapProfsText);
             this.tabProficiencies.Controls.Add(this.button1);
             this.tabProficiencies.Controls.Add(this.btn_AddNonWeaponProf);
-            this.tabProficiencies.Controls.Add(this.button3);
+            this.tabProficiencies.Controls.Add(this.btn_ConfirmProf);
             this.tabProficiencies.Controls.Add(this.lb_LearnedProficienies);
             this.tabProficiencies.Controls.Add(this.lb_AvailableNonWeaponList);
-            this.tabProficiencies.Location = new System.Drawing.Point(4, 22);
+            this.tabProficiencies.Location = new System.Drawing.Point(4, 24);
             this.tabProficiencies.Name = "tabProficiencies";
-            this.tabProficiencies.Size = new System.Drawing.Size(571, 273);
+            this.tabProficiencies.Size = new System.Drawing.Size(571, 271);
             this.tabProficiencies.TabIndex = 4;
             this.tabProficiencies.Text = "Proficiencies";
             this.tabProficiencies.UseVisualStyleBackColor = true;
+            // 
+            // lb_SelectedProfDescription_R
+            // 
+            this.lb_SelectedProfDescription_R.AutoSize = true;
+            this.lb_SelectedProfDescription_R.Location = new System.Drawing.Point(377, 175);
+            this.lb_SelectedProfDescription_R.Name = "lb_SelectedProfDescription_R";
+            this.lb_SelectedProfDescription_R.Size = new System.Drawing.Size(35, 13);
+            this.lb_SelectedProfDescription_R.TabIndex = 10;
+            this.lb_SelectedProfDescription_R.Text = "label3";
+            // 
+            // lb_SelectedProfDescription_L
+            // 
+            this.lb_SelectedProfDescription_L.AutoSize = true;
+            this.lb_SelectedProfDescription_L.Location = new System.Drawing.Point(84, 175);
+            this.lb_SelectedProfDescription_L.Name = "lb_SelectedProfDescription_L";
+            this.lb_SelectedProfDescription_L.Size = new System.Drawing.Size(35, 13);
+            this.lb_SelectedProfDescription_L.TabIndex = 9;
+            this.lb_SelectedProfDescription_L.Text = "label1";
             // 
             // lb_NonWeapProfsText
             // 
             this.lb_NonWeapProfsText.AutoSize = true;
             this.lb_NonWeapProfsText.Location = new System.Drawing.Point(96, 22);
             this.lb_NonWeapProfsText.Name = "lb_NonWeapProfsText";
-            this.lb_NonWeapProfsText.Size = new System.Drawing.Size(87, 13);
+            this.lb_NonWeapProfsText.Size = new System.Drawing.Size(115, 13);
             this.lb_NonWeapProfsText.TabIndex = 8;
-            this.lb_NonWeapProfsText.Text = "lb_MageInfoText";
+            this.lb_NonWeapProfsText.Text = "lb_NonWeapProfsText";
             // 
             // button1
             // 
@@ -691,14 +742,15 @@
             this.btn_AddNonWeaponProf.UseVisualStyleBackColor = true;
             this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btn_ConfirmProf
             // 
-            this.button3.Location = new System.Drawing.Point(239, 218);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Confirm";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_ConfirmProf.Location = new System.Drawing.Point(239, 218);
+            this.btn_ConfirmProf.Name = "btn_ConfirmProf";
+            this.btn_ConfirmProf.Size = new System.Drawing.Size(75, 23);
+            this.btn_ConfirmProf.TabIndex = 5;
+            this.btn_ConfirmProf.Text = "Confirm";
+            this.btn_ConfirmProf.UseVisualStyleBackColor = true;
+            this.btn_ConfirmProf.Click += new System.EventHandler(this.btn_ConfirmProf_Click);
             // 
             // lb_LearnedProficienies
             // 
@@ -786,16 +838,14 @@
         private System.Windows.Forms.ListBox lb_ProficientList;
         private System.Windows.Forms.Button btn_LearnAvProf;
         private System.Windows.Forms.ListBox lb_AvailableList;
-        private System.Windows.Forms.Label lb_AvailablePointsValue;
-        private System.Windows.Forms.Label lb_AvailablePoints;
         private System.Windows.Forms.Button btn_confirmPriest;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lb_PriestSpellBook;
+        private System.Windows.Forms.ListBox lb_AvailablePriestSpells;
+        private System.Windows.Forms.Label lb_MageInfoText;
         private System.Windows.Forms.Button btn_RemoveSpellM;
         private System.Windows.Forms.Button btn_AddSpellM;
         private System.Windows.Forms.Button btn_ConfirmMage;
-        private System.Windows.Forms.ListBox lb_SpellBook;
+        private System.Windows.Forms.ListBox lb_MageSpellBook;
         private System.Windows.Forms.ListBox lb_AvailableSpells;
         private System.Windows.Forms.Button btn_RemoveSpellP;
         private System.Windows.Forms.Button btn_AddSpellP;
@@ -803,9 +853,15 @@
         private System.Windows.Forms.TabPage tabProficiencies;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_AddNonWeaponProf;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_ConfirmProf;
         private System.Windows.Forms.ListBox lb_LearnedProficienies;
         private System.Windows.Forms.ListBox lb_AvailableNonWeaponList;
         private System.Windows.Forms.Label lb_NonWeapProfsText;
+        private System.Windows.Forms.Label lb_SelectedSpellDescription;
+        private System.Windows.Forms.Label lb_SelectedSpellDescSpellbook;
+        private System.Windows.Forms.Label lb_MageSelectedSpellBookSpell;
+        private System.Windows.Forms.Label lb_MageSelectedAvailableSpell;
+        private System.Windows.Forms.Label lb_SelectedProfDescription_R;
+        private System.Windows.Forms.Label lb_SelectedProfDescription_L;
     }
 }

@@ -21,7 +21,7 @@ namespace Project_Yahiko
         public int HitProb, DmgAdj, WeightAllow, MaxPres, OpenDoors,OpenMagicDoors, BendBars;
         public int ReactionAdj, MissileAdj, DefenceAdj;
         public int HPAdj, SystemShock, ResurectionSurvive, PoisonSave, Regen;
-        public int NumLanguages, SpellLvlMax, ChanceToLearn, MaxSpells, IllusionImmunity;
+        public int NumLanguages, SpellLvlMax, ChanceToLearn, NumMaxSpellsPerLevel, IllusionImmunity;
         public int MagicDefAdj, ChanceOfSpellFail;
         public List<int> BonusSpell = new List<int>();
         public List<string> SpellImmunity = new List<string>();
@@ -572,174 +572,174 @@ namespace Project_Yahiko
                         case 1:
                             NumLanguages = 0;
                             SpellLvlMax = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 2:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 3:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
                             ChanceToLearn = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 4:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
                             ChanceToLearn = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 5:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
                             ChanceToLearn = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 6:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
                             ChanceToLearn = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 7:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
                             ChanceToLearn = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 8:
                             NumLanguages = 1;
                             SpellLvlMax = 0;
                             ChanceToLearn = 0;
-                            MaxSpells = 0;
+                            NumMaxSpellsPerLevel = 0;
                             IllusionImmunity = 0;
                             break;
                         case 9:
                             NumLanguages = 2;
                             SpellLvlMax = 4;
                             ChanceToLearn = 35;
-                            MaxSpells = 6;
+                            NumMaxSpellsPerLevel = 6;
                             IllusionImmunity = 0;
                             break;
                         case 10:
                             NumLanguages = 2;
                             SpellLvlMax = 5;
                             ChanceToLearn = 40;
-                            MaxSpells = 7;
+                            NumMaxSpellsPerLevel = 7;
                             IllusionImmunity = 0;
                             break;
                         case 11:
                             NumLanguages = 2;
                             SpellLvlMax = 5;
                             ChanceToLearn = 45;
-                            MaxSpells = 7;
+                            NumMaxSpellsPerLevel = 7;
                             IllusionImmunity = 0;
                             break;
                         case 12:
                             NumLanguages = 3;
                             SpellLvlMax = 6;
                             ChanceToLearn = 50;
-                            MaxSpells = 7;
+                            NumMaxSpellsPerLevel = 7;
                             IllusionImmunity = 0;
                             break;
                         case 13:
                             NumLanguages = 3;
                             SpellLvlMax = 6;
                             ChanceToLearn = 55;
-                            MaxSpells = 9;
+                            NumMaxSpellsPerLevel = 9;
                             IllusionImmunity = 0;
                             break;
                         case 14:
                             NumLanguages = 4;
                             SpellLvlMax = 7;
                             ChanceToLearn = 60;
-                            MaxSpells = 9;
+                            NumMaxSpellsPerLevel = 9;
                             IllusionImmunity = 0;
                             break;
                         case 15:
                             NumLanguages = 4;
                             SpellLvlMax = 7;
                             ChanceToLearn = 65;
-                            MaxSpells = 11;
+                            NumMaxSpellsPerLevel = 11;
                             IllusionImmunity = 0;
                             break;
                         case 16:
                             NumLanguages = 5;
                             SpellLvlMax = 8;
                             ChanceToLearn = 70;
-                            MaxSpells = 11;
+                            NumMaxSpellsPerLevel = 11;
                             IllusionImmunity = 0;
                             break;
                         case 17:
                             NumLanguages = 6;
                             SpellLvlMax = 8;
                             ChanceToLearn = 75;
-                            MaxSpells = 14;
+                            NumMaxSpellsPerLevel = 14;
                             IllusionImmunity = 0;
                             break;
                         case 18:
                             NumLanguages = 7;
                             SpellLvlMax = 9;
                             ChanceToLearn = 85;
-                            MaxSpells = 18;
+                            NumMaxSpellsPerLevel = 18;
                             IllusionImmunity = 0;
                             break;
                         case 19:
                             NumLanguages = 8;
                             SpellLvlMax = 9;
                             ChanceToLearn = 95;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 1;
                             break;
                         case 20:
                             NumLanguages = 9;
                             SpellLvlMax = 9;
                             ChanceToLearn = 96;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 2;
                             break;
                         case 21:
                             NumLanguages = 10;
                             SpellLvlMax = 9;
                             ChanceToLearn = 97;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 3;
                             break;
                         case 22:
                             NumLanguages = 11;
                             SpellLvlMax = 9;
                             ChanceToLearn = 98;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 4;
                             break;
                         case 23:
                             NumLanguages = 12;
                             SpellLvlMax = 9;
                             ChanceToLearn = 99;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 5;
                             break;
                         case 24:
                             NumLanguages = 15;
                             SpellLvlMax = 9;
                             ChanceToLearn = 100;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 6;
                             break;
                         case 25:
                             NumLanguages = 20;
                             SpellLvlMax = 9;
                             ChanceToLearn = 100;
-                            MaxSpells = 100;
+                            NumMaxSpellsPerLevel = 100;
                             IllusionImmunity = 7;
                             break;
                     }
