@@ -57,6 +57,7 @@
     <Compile Include="CharacterSheet.Designer.cs">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Characters\WeaponProficiency.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="LevelUp.cs">
       <SubType>Form</SubType>

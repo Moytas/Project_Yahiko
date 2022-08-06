@@ -62,7 +62,7 @@
             this.lb_FRT = new System.Windows.Forms.Label();
             this.lb_OL = new System.Windows.Forms.Label();
             this.lb_PP = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lb_ShinobiIntroText = new System.Windows.Forms.Label();
             this.tabMonk = new System.Windows.Forms.TabPage();
             this.lb_SelectedSpellDescSpellbook = new System.Windows.Forms.Label();
             this.lb_SelectedSpellDescription = new System.Windows.Forms.Label();
@@ -275,7 +275,7 @@
             this.tabShinobi.Controls.Add(this.lb_FRT);
             this.tabShinobi.Controls.Add(this.lb_OL);
             this.tabShinobi.Controls.Add(this.lb_PP);
-            this.tabShinobi.Controls.Add(this.label2);
+            this.tabShinobi.Controls.Add(this.lb_ShinobiIntroText);
             this.tabShinobi.Location = new System.Drawing.Point(4, 24);
             this.tabShinobi.Name = "tabShinobi";
             this.tabShinobi.Padding = new System.Windows.Forms.Padding(3);
@@ -484,14 +484,14 @@
             this.lb_PP.TabIndex = 1;
             this.lb_PP.Text = "Pick Pockets:";
             // 
-            // label2
+            // lb_ShinobiIntroText
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "A shinobi blah blah blah";
+            this.lb_ShinobiIntroText.AutoSize = true;
+            this.lb_ShinobiIntroText.Location = new System.Drawing.Point(41, 14);
+            this.lb_ShinobiIntroText.Name = "lb_ShinobiIntroText";
+            this.lb_ShinobiIntroText.Size = new System.Drawing.Size(119, 13);
+            this.lb_ShinobiIntroText.TabIndex = 0;
+            this.lb_ShinobiIntroText.Text = "A shinobi blah blah blah";
             // 
             // tabMonk
             // 
@@ -701,18 +701,18 @@
             this.lb_SelectedProfDescription_R.AutoSize = true;
             this.lb_SelectedProfDescription_R.Location = new System.Drawing.Point(377, 175);
             this.lb_SelectedProfDescription_R.Name = "lb_SelectedProfDescription_R";
-            this.lb_SelectedProfDescription_R.Size = new System.Drawing.Size(35, 13);
+            this.lb_SelectedProfDescription_R.Size = new System.Drawing.Size(63, 13);
             this.lb_SelectedProfDescription_R.TabIndex = 10;
-            this.lb_SelectedProfDescription_R.Text = "label3";
+            this.lb_SelectedProfDescription_R.Text = "Description:";
             // 
             // lb_SelectedProfDescription_L
             // 
             this.lb_SelectedProfDescription_L.AutoSize = true;
             this.lb_SelectedProfDescription_L.Location = new System.Drawing.Point(84, 175);
             this.lb_SelectedProfDescription_L.Name = "lb_SelectedProfDescription_L";
-            this.lb_SelectedProfDescription_L.Size = new System.Drawing.Size(35, 13);
+            this.lb_SelectedProfDescription_L.Size = new System.Drawing.Size(63, 13);
             this.lb_SelectedProfDescription_L.TabIndex = 9;
-            this.lb_SelectedProfDescription_L.Text = "label1";
+            this.lb_SelectedProfDescription_L.Text = "Description:";
             // 
             // lb_NonWeapProfsText
             // 
@@ -740,7 +740,7 @@
             this.btn_AddNonWeaponProf.TabIndex = 6;
             this.btn_AddNonWeaponProf.Text = "Add";
             this.btn_AddNonWeaponProf.UseVisualStyleBackColor = true;
-            this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.button2_Click);
+            this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.btn_AddNonWeaponProf_Click);
             // 
             // btn_ConfirmProf
             // 
@@ -759,6 +759,7 @@
             this.lb_LearnedProficienies.Name = "lb_LearnedProficienies";
             this.lb_LearnedProficienies.Size = new System.Drawing.Size(120, 95);
             this.lb_LearnedProficienies.TabIndex = 2;
+            this.lb_LearnedProficienies.SelectedIndexChanged += new System.EventHandler(this.lb_LearnedProficienies_SelectedIndexChanged);
             // 
             // lb_AvailableNonWeaponList
             // 
@@ -767,6 +768,7 @@
             this.lb_AvailableNonWeaponList.Name = "lb_AvailableNonWeaponList";
             this.lb_AvailableNonWeaponList.Size = new System.Drawing.Size(120, 95);
             this.lb_AvailableNonWeaponList.TabIndex = 1;
+            this.lb_AvailableNonWeaponList.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableNonWeaponList_SelectedIndexChanged);
             // 
             // Specialization
             // 
@@ -823,7 +825,7 @@
         private System.Windows.Forms.Label lb_FRT;
         private System.Windows.Forms.Label lb_OL;
         private System.Windows.Forms.Label lb_PP;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_ShinobiIntroText;
         private System.Windows.Forms.Label lb_PointsPool;
         private System.Windows.Forms.Button btn_ThiefAccept;
         private System.Windows.Forms.Button btn_ThiefReset;

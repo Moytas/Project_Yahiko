@@ -26,6 +26,11 @@ namespace Project_Yahiko
         {
             InitializeComponent();
             player = _p;
+            introText_Samurai = "The formidable bushi is a true master of weapons...\n";
+            introText_Sohei = "Priests in Nippon ..... Walk the path blah blah... Choose spells blah blah\n";
+            introText_Shinobi = "A master of shadows, a shinobi's true power is the skills they utilize\n";
+            introText_Onmyoji = "The onmyoji is a master of elements, using hand seal techniques while speaking words of power creates magic \n";
+
             switch (_p.CharacterClass)
             {
                 case 1: // warrior
@@ -35,6 +40,7 @@ namespace Project_Yahiko
                     tabControl1.TabPages.Remove(tabMonk);
                     tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabProficiencies);
+                    btn_SamuraiAccept.Enabled = false;
                     PopulateOptionsWeapon();
                     ShowWarriorInfo();
                     break;
@@ -67,38 +73,43 @@ namespace Project_Yahiko
                     InitialConfig_Mage();
                     break;
             }
-        }
+        } //CONSTRUCTOR
 
         #region Texts
         private void ShowInfoThiefSkills()
-        { }
+        {
+            lb_ShinobiIntroText.Text = introText_Shinobi;
+            lb_PointsPool.Text = "60";
+            btn_ThiefAccept.Enabled = false;
+        }
         private void ShowPriestInfo()
         {
             lb_PriestInfoText.Text = "";
-            lb_PriestInfoText.Text = "Priests in Nippon ..... Walk the path blah blah... Choose spells blah blah /n";
-            lb_PriestInfoText.Text += String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_PriestSpellBook.Items.Count);
+            lb_PriestInfoText.Text = introText_Sohei + String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_PriestSpellBook.Items.Count);
         }
 
         private void ShowWarriorInfo()
         {
-            lb_SamuraiIntroText.Text = "The formidable bushi is a true master of weapons...\n Remaining Weapon Proficiencies: " + player.NumWeaponProf;
+            lb_SamuraiIntroText.Text = introText_Samurai + "Remaining Weapon Proficiencies: " + player.NumWeaponProf;
         }
 
         private void ShowMageInfo()
         {
             lb_MageInfoText.Text = "";
-            lb_MageInfoText.Text = "The onmyoji is a master of elements, using hand seal techniques while speaking words of power creates magic /n";
-            lb_MageInfoText.Text += String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_MageSpellBook.Items.Count);
+            lb_MageInfoText.Text = introText_Onmyoji + String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_MageSpellBook.Items.Count);
         }
 
-
-
-        void ShowText_NonWeaponProficiencies(int numLeft)
+        void ShowRemainingWeaponProf()
         {
-            lb_NonWeapProfsText.Text = string.Format("Remaining Non Weapon Proficiencies: {0}", numLeft);
+            lb_NonWeapProfsText.Text = string.Format("Remaining Weapon Proficiencies: {0}", player.NumWeaponProf);
+        }
+
+        void ShowText_NonWeaponProficiencies()
+        {
+            lb_NonWeapProfsText.Text = string.Format("Remaining Non Weapon Proficiencies: {0}", player.NumNonWeaponProf);
         }
         #endregion
-        void ShowProficienciesTab(Player player)
+        void ShowProficienciesTab()
         {
             tabControl1.TabPages.Add(tabProficiencies);
             tabControl1.SelectedTab = tabProficiencies;
@@ -113,7 +124,7 @@ namespace Project_Yahiko
             switch (player.CharacterClass)
             {
                 case 1:
-                    lb_NonWeapProfsText.Text = "The bushi can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NonWeaponProf;
+                    lb_NonWeapProfsText.Text = "The bushi can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NumNonWeaponProf;
                     foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
                     {
                         if (prof.ProfType == NonWeapProficiency.Type.General || prof.ProfType == NonWeapProficiency.Type.Warrior)
@@ -162,9 +173,16 @@ namespace Project_Yahiko
             switch (_class)
             {
                 case 2:
-                    foreach (Weapon w in DM.WeaponsList)
+                    if (showingWeaponProf)
                     {
-                        lb_AvailableList.Items.Add(w.Name);
+                        this.Text = "A Shinobi's Arsenal";
+                        tabControl1.TabPages[0].Text = "Shinobi";
+                        lb_NonWeapProfsText.Text = "A Shinobi has a variety of weapons that can be chosen...";
+                        foreach (Weapon w in DM.WeaponsList)
+                        {
+                            lb_AvailableNonWeaponList.Items.Add(w.Name);
+                        }
+
                     }
                     break;
                 case 3:
@@ -223,96 +241,126 @@ namespace Project_Yahiko
 
         }
 
-        private void btn_LearnAvProf_Clicked(object sender, EventArgs e)
-        {
-            if (tabSamurai.Text == "Bushi")
-            {
-                if (lb_AvailableList.Text.Contains("Daikyu") || lb_AvailableList.Text.Contains("Hankyu") || lb_AvailableList.Text.Contains("Bow"))
-                {
-
-                    if (weaponProf > 0 && weaponProf - 2 >= 0)
-                    {
-                        weaponProf -= 2;
-                        //lb_AvailablePointsValue.Text = weaponProf.ToString();
-                        lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
-                        lb_AvailableList.Items.Remove(lb_AvailableList.Text);
-                    }
-                }
-                else
-                {
-                    if (weaponProf > 0 && weaponProf - 1 >= 0)
-                    {
-                        weaponProf -= 1;
-                        //lb_AvailablePointsValue.Text = weaponProf.ToString();
-                        lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
-                        lb_AvailableList.Items.Remove(lb_AvailableList.Text);
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("ok");
-            }
-        }
+        
         
         private void lb_AvailableList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_AddNonWeaponProf_Click(object sender, EventArgs e)
         {
-            NonWeapProficiency prof = null;
-            foreach(NonWeapProficiency p in DM.NonWeaponProficiencies)
+            if (showingWeaponProf)
             {
-                if(p.Name == lb_AvailableNonWeaponList.Text)
+               
+                foreach (Weapon w in DM.WeaponsList)
                 {
-                    prof = p;
-                    break;
+                    if (w.Name == lb_AvailableNonWeaponList.SelectedItem)
+                    {
+                        Console.WriteLine("1. player.NumWeaponProf:" + player.NumWeaponProf);
+                        Console.WriteLine("2. w.Name:" + w.Name);
+                        Console.WriteLine("3. lb_AvailableNonWeaponList.SelectedItem:" + lb_AvailableNonWeaponList.SelectedItem);
+                        if (player.NumWeaponProf  > 0)
+                        {
+                            Console.WriteLine("edw mpainw?");
+                            player.NumWeaponProf -= 1;
+                            lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
+                            lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                        }
+                        else if(player.NumWeaponProf == 0)
+                        {
+                            btn_ConfirmProf.Enabled = true;
+                            showingWeaponProf = false;
+                        }
+                        ShowRemainingWeaponProf();
+                    }
                 }
             }
-            if(player.NumNonWeaponProf - prof.RequiredSlots >= 0)
+            else
             {
-                player.NumNonWeaponProf -= prof.RequiredSlots;
-                lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.Text);
-                lb_AvailableList.Items.Remove(lb_AvailableList.Text);
+                foreach (NonWeapProficiency p in DM.NonWeaponProficiencies)
+                {
+                    if (p.Name == lb_AvailableNonWeaponList.Text)
+                    {
+                        if (player.NumNonWeaponProf - p.RequiredSlots >= 0)
+                        {
+                            player.NumNonWeaponProf -= p.RequiredSlots;
+                            lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.Text);
+                            lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                        }
+                    }
+                }
+
+                ShowText_NonWeaponProficiencies();
             }
-            ShowText_NonWeaponProficiencies(player.NumNonWeaponProf);
+        }
+        private void lb_AvailableNonWeaponList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (NonWeapProficiency p in DM.NonWeaponProficiencies)
+            {
+                if (p.Name == lb_AvailableNonWeaponList.Text)
+                {
+                    lb_SelectedProfDescription_L.Text = "Description: " + p.Description;
+                }
+            }
         }
 
-
         #region Warrior
+        private void ShowWeaponText() //Updates/shows the remaining weapon proficiencies for warrior
+        {
+            lb_SamuraiIntroText.Text = introText_Samurai + "Remaining proficiencies: " + player.NumWeaponProf;
+        }
         private void btn_SamuraiAccept_Click(object sender, EventArgs e)
         {
-            ShowProficienciesTab(player);
+            ShowProficienciesTab();
         }
         void PopulateOptionsWeapon()
         {
             // Katana / Bokken * Ninja - to * No - daichi * Tetsu - to * Tanto / Yoroi - toshi * Wakizashi *
-            List<string> Weapons = new List<string>();
-            Weapons.Add("Katana");
-            Weapons.Add("Ninja-to");
-            Weapons.Add("No-daichi");
-            Weapons.Add("Tetsu-to");
-            Weapons.Add("Tanto");
-            Weapons.Add("Yoroi-toshi");
-            Weapons.Add("Wakizashi");
-            Weapons.Add("Daikyu");
-            Weapons.Add("Hankyu");
-            lb_AvailableList.Items.Clear();
-            foreach (string s in Weapons)
+           foreach(Weapon w in DM.WeaponsList)
             {
-                lb_AvailableList.Items.Add(s);
+                lb_AvailableList.Items.Add(w.Name);
             }
         }
+        private void btn_LearnAvProf_Clicked(object sender, EventArgs e) //add from available weapon list to specialized
+        {
+            
+            if (lb_AvailableList.Text.Contains("Daikyu") || lb_AvailableList.Text.Contains("Hankyu") || lb_AvailableList.Text.Contains("Bow"))
+            {
 
+                if (player.NumWeaponProf > 0 && player.NumWeaponProf - 2 >= 0)
+                {
+                    player.NumWeaponProf -= 2;
+                    lb_SamuraiIntroText.Text = weaponProf.ToString();
+                    lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+                    lb_AvailableList.Items.Remove(lb_AvailableList.Text);
+                }
+            }
+            else
+            {
+                if (player.NumWeaponProf > 0 && player.NumWeaponProf - 1 >= 0)
+                {
+                    player.NumWeaponProf -= 1;
+                    lb_SamuraiIntroText.Text = weaponProf.ToString();
+                    lb_ProficientList.Items.Add(lb_AvailableList.SelectedItem);
+                    lb_AvailableList.Items.Remove(lb_AvailableList.Text);
+                }
+            }
+            if(player.NumWeaponProf == 0)
+            {
+                btn_SamuraiAccept.Enabled = true;
+                btn_LearnProfSpec.Enabled = false;
+                btn_LearnAvProf.Enabled = false;
+            }
+            ShowWeaponText();
+        }
         private void btn_LearnProfSpec_Click(object sender, EventArgs e)
         {
             if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
             {
-                if (weaponProf > 0 && weaponProf - 3 >= 0)
+                if (player.NumWeaponProf > 0 && player.NumWeaponProf - 3 >= 0)
                 {
-                    weaponProf -= 3;
+                    player.NumWeaponProf -= 3;
                     //lb_AvailablePointsValue.Text = weaponProf.ToString();
                     lb_SpecializationList.Items.Add(lb_ProficientList.Text);
                     lb_ProficientList.Items.Remove(lb_ProficientList.Text);
@@ -320,50 +368,87 @@ namespace Project_Yahiko
             }
             else
             {
-                if (weaponProf > 0 && weaponProf - 2 >= 0)
+                if (player.NumWeaponProf > 0 && player.NumWeaponProf - 2 >= 0)
                 {
-                    weaponProf -= 2;
+                    player.NumWeaponProf -= 2;
                    // lb_AvailablePointsValue.Text = weaponProf.ToString();
                     lb_SpecializationList.Items.Add(lb_ProficientList.Text);
                     lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 }
             }
+            if (player.NumWeaponProf == 0)
+            {
+                btn_SamuraiAccept.Enabled = true;
+                btn_LearnAvProf.Enabled = false;
+                btn_LearnProfSpec.Enabled = false;
+            }
+            ShowWeaponText();
         }
 
-        private void btn_ForgetAvProf_Click(object sender, EventArgs e)
+        private void btn_ForgetAvProf_Click(object sender, EventArgs e) // Unlearn from specialized add to available weapon
         {
             if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
             {
-                weaponProf += 3;
+                player.NumWeaponProf += 3;
                 //lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 lb_AvailableList.Items.Add(lb_ProficientList.Text);
             }
             else
             {
-                weaponProf += 2;
+                player.NumWeaponProf += 2;
                // lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_ProficientList.Items.Remove(lb_ProficientList.Text);
                 lb_AvailableList.Items.Add(lb_ProficientList.Text);
             }
 
+            if(player.NumWeaponProf > 0)
+            {
+                btn_LearnAvProf.Enabled = true;
+                btn_LearnProfSpec.Enabled = true;
+                btn_SamuraiAccept.Enabled = false;
+            }
+
+            ShowWeaponText();
         }
+
+       
+
+        private void lb_LearnedProficienies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (NonWeapProficiency p in DM.NonWeaponProficiencies)
+            {
+                if (p.Name == lb_LearnedProficienies.Text)
+                {
+                    lb_SelectedProfDescription_R.Text = "Description: " + p.Description;
+                }
+            }
+
+        }
+
         private void btn_ForgetProfSpec_Click(object sender, EventArgs e)
         {
             if (lb_SpecializationList.Text.Contains("Daikyu") || lb_SpecializationList.Text.Contains("Hankyu") || lb_SpecializationList.Text.Contains("Bow"))
             {
-                weaponProf += 3;
+                player.NumWeaponProf += 3;
                // lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_SpecializationList.Items.Remove(lb_SpecializationList.Text);
                 lb_ProficientList.Items.Add(lb_SpecializationList.Text);
             }
             else
             {
-                weaponProf += 2;
+                player.NumWeaponProf += 2;
                 //lb_AvailablePointsValue.Text = weaponProf.ToString();
                 lb_SpecializationList.Items.Remove(lb_SpecializationList.Text);
                 lb_ProficientList.Items.Add(lb_SpecializationList.Text);
             }
+            if (player.NumWeaponProf > 0)
+            {
+                btn_LearnAvProf.Enabled = true;
+                btn_LearnProfSpec.Enabled = true;
+                btn_SamuraiAccept.Enabled = false;
+            }
+            ShowWeaponText();
         }
         #endregion
 
@@ -470,36 +555,36 @@ namespace Project_Yahiko
             initial_rl = player.Skills.GetValue(ThiefSkills.Skills.RL);
 
             ud_CW.Value = initial_cw;
-            ud_CW.Maximum = initial_cw + 30;
-            ud_CW.Minimum = initial_cw;
+            ud_CW.Maximum = ud_CW.Value + 30;
+            ud_CW.Minimum = ud_CW.Value;
 
             ud_DN.Value = initial_dn;
-            ud_DN.Maximum = initial_dn + 30;
-            ud_DN.Minimum = initial_dn;
+            ud_DN.Maximum = ud_DN.Value + 30;
+            ud_DN.Minimum = ud_DN.Value;
 
             ud_FRT.Value = initial_frt;
-            ud_FRT.Maximum = initial_frt + 30;
-            ud_FRT.Minimum = initial_frt;
+            ud_FRT.Maximum = ud_FRT.Value + 30;
+            ud_FRT.Minimum = ud_FRT.Value;
 
             ud_HS.Value = initial_hs;
-            ud_HS.Maximum = initial_hs + 30;
-            ud_HS.Minimum = initial_hs;
+            ud_HS.Maximum = ud_HS.Value + 30;
+            ud_HS.Minimum = ud_HS.Value;
 
             ud_MS.Value = initial_ms;
-            ud_MS.Maximum = initial_ms + 30;
-            ud_MS.Minimum = initial_ms;
+            ud_MS.Maximum = ud_MS.Value + 30;
+            ud_MS.Minimum = ud_MS.Value;
 
             ud_OL.Value = initial_ol;
-            ud_OL.Maximum = initial_ol + 30;
-            ud_OL.Minimum = initial_ol;
+            ud_OL.Maximum = ud_OL.Value + 30;
+            ud_OL.Minimum = ud_OL.Value;
 
             ud_PP.Value = initial_pp;
-            ud_PP.Maximum = initial_pp + 30;
-            ud_PP.Minimum = initial_pp;
+            ud_PP.Maximum = ud_PP.Value + 30;
+            ud_PP.Minimum = ud_PP.Value;
 
             ud_RL.Value = initial_rl;
-            ud_RL.Maximum = initial_rl + 30;
-            ud_RL.Minimum = initial_rl;
+            ud_RL.Maximum = ud_RL.Value + 30;
+            ud_RL.Minimum = ud_RL.Value;
         }
         private void btn_reset_Clicked(object sender, EventArgs e)
         {
@@ -556,9 +641,10 @@ namespace Project_Yahiko
 
         private void ud_PP_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+            if (pool - 1 > 0)
             {
-                if (ud_PP.Value - player.Skills.GetValue(ThiefSkills.Skills.PP) > 0) //up
+                if (ud_PP.Value - player.Skills.GetValue(ThiefSkills.Skills.PP) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
@@ -571,11 +657,19 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_PP.Value);
                 }
             }
+            else
+            {
+                lb_PointsPool.Text = "0";
+                ud_PP.Maximum = ud_PP.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
         }
 
         private void ud_OL_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+           
+            if (pool - 1 > 0)
             {
                 if (ud_OL.Value - player.Skills.GetValue(ThiefSkills.Skills.OL) > 0) //up
                 {
@@ -590,11 +684,19 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_OL.Value);
                 }
             }
+            else
+            {
+                lb_PointsPool.Text = "0";
+                ud_OL.Maximum = ud_OL.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
         }
 
         private void ud_DN_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+           
+            if (pool - 1 > 0)
             {
                 if (ud_DN.Value - player.Skills.GetValue(ThiefSkills.Skills.DN) >= 0) //up
                 {
@@ -609,11 +711,18 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_DN.Value);
                 }
             }
+            else
+            {
+                ud_DN.Maximum = ud_DN.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
         }
 
         private void ud_CW_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+            
+            if (pool - 1 > 0)
             {
                 if (ud_CW.Value - player.Skills.GetValue(ThiefSkills.Skills.CW) >= 0) //up
                 {
@@ -628,12 +737,19 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.CW, (int)ud_CW.Value);
                 }
             }
+            else
+            {
+                ud_CW.Maximum = ud_CW.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
 
         }
 
         private void ud_RL_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+            
+            if (pool - 1 > 0)
             {
                 if (ud_RL.Value - player.Skills.GetValue(ThiefSkills.Skills.RL) >= 0) //up
                 {
@@ -648,11 +764,18 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_RL.Value);
                 }
             }
+            else
+            {
+                ud_RL.Maximum = ud_RL.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
         }
 
         private void ud_HS_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+            
+            if (pool - 1 > 0)
             {
                 if (ud_HS.Value - player.Skills.GetValue(ThiefSkills.Skills.HS) >= 0) //up
                 {
@@ -667,12 +790,20 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_HS.Value);
                 }
             }
+            else
+            {
+                ud_HS.Maximum = ud_HS.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
 
         }
 
         private void ud_MS_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+            
+
+            if (pool - 1 > 0)
             {
                 if (ud_MS.Value - player.Skills.GetValue(ThiefSkills.Skills.MS) >= 0) //up
                 {
@@ -687,11 +818,18 @@ namespace Project_Yahiko
                     player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_MS.Value);
                 }
             }
+            else
+            {
+                ud_MS.Maximum = ud_MS.Value;
+                btn_ThiefAccept.Enabled = true;
+            }
         }
 
         private void ud_FRT_ValueChanged(object sender, EventArgs e)
         {
-            if (pool > 0)
+            int.TryParse(lb_PointsPool.Text, out pool);
+            
+            if (pool - 1 > 0)
             {
                 if (ud_FRT.Value - player.Skills.GetValue(ThiefSkills.Skills.FRT) >= 0) //up
                 {
@@ -705,6 +843,11 @@ namespace Project_Yahiko
                     lb_PointsPool.Text = pool.ToString();
                     player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_FRT.Value);
                 }
+            }
+            else
+            {
+                ud_FRT.Maximum = ud_FRT.Value;
+                btn_ThiefAccept.Enabled = true;
             }
 
         }
@@ -753,6 +896,8 @@ namespace Project_Yahiko
             }
         }
 
+    
+
         private void btn_RemoveSpellP_Click(object sender, EventArgs e)
         {
             try
@@ -774,7 +919,6 @@ namespace Project_Yahiko
 
         private void lb_AvailablePriestSpells_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("player first name = " + player.FirstName);
             foreach (Spell s in DM.AvailableSpells_Priest)
             {
                 if (s.Name == lb_AvailablePriestSpells.Text)

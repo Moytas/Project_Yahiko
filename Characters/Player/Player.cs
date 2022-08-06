@@ -12,7 +12,7 @@ namespace Project_Yahiko
         public List<Items> Inventory = new List<Items>();
         public ThiefSkills Skills = new ThiefSkills();
         public int NumWeaponProf,NumNonWeaponProf;
-        public List<Proficiency> WeaponProf = new List<Proficiency>();
+        public List<WeaponProficiency> WeaponProf = new List<WeaponProficiency>();
         public List<NonWeapProficiency> NonWeaponProf = new List<NonWeapProficiency>();
         public Player()
         {
