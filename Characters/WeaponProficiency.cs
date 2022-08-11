@@ -8,9 +8,9 @@ namespace Project_Yahiko
 {
     public class WeaponProficiency : Proficiency
     {
-        public WeaponProficiency()
+        public WeaponProficiency(string name)
         {
-            
+            Name = name;
         }
     }
 }

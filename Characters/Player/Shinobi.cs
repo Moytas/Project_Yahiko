@@ -10,6 +10,24 @@ namespace Project_Yahiko
     public class Shinobi : Player
     {
         public int BackstabModifier = 2;
+        public ThiefSkills Skills = new ThiefSkills();
+
+        public Shinobi()
+        {
+
+        }
+
+        public Shinobi(Player p)
+        {
+            FirstName = p.FirstName;
+            Lastname = p.Lastname;
+            CharacterClass = 1;
+            XP = p.XP;
+            XPToNext = p.XPToNext;
+            CharacterStats = p.CharacterStats;
+            EquipedArmor = p.EquipedArmor;
+            EquipedWeapon = p.EquipedWeapon;
+        }
 
         private void AdjustBackstab()
         {
@@ -29,6 +47,7 @@ namespace Project_Yahiko
             {
                 BackstabModifier = 2;
             }
+            SetInitialMoney();
         }
 
         void SetInitialMoney()

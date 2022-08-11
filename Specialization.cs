@@ -13,6 +13,11 @@ namespace Project_Yahiko
     public partial class Specialization : Form
     {
         Player player = new Player();
+        Bushi Warrior = new Bushi();
+        Shinobi Thief = new Shinobi();
+        Sohei Priest = new Sohei();
+        Onmyoji Mage = new Onmyoji();
+
         int pool = 60;
         int weaponProf = 4;
         string introText_NonWeaponProfs;
@@ -26,6 +31,7 @@ namespace Project_Yahiko
         {
             InitializeComponent();
             player = _p;
+        
             introText_Samurai = "The formidable bushi is a true master of weapons...\n";
             introText_Sohei = "Priests in Nippon ..... Walk the path blah blah... Choose spells blah blah\n";
             introText_Shinobi = "A master of shadows, a shinobi's true power is the skills they utilize\n";
@@ -34,6 +40,14 @@ namespace Project_Yahiko
             switch (_p.CharacterClass)
             {
                 case 1: // warrior
+                    try
+                    {
+                        Warrior = new Bushi(player);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("not ok! ");
+                    }
                     this.Text = "Bushi specialization";
                     tabControl1.SelectedTab = tabSamurai;
                     tabControl1.TabPages.Remove(tabMage);
@@ -45,6 +59,13 @@ namespace Project_Yahiko
                     ShowWarriorInfo();
                     break;
                 case 2: // thief
+                    try
+                    {
+                        Thief = new Shinobi(player);
+                    }
+                    catch
+                    {
+                    }
                     this.Text = "Shinobi skills";
                     tabControl1.SelectedTab = tabShinobi;
                     tabControl1.TabPages.Remove(tabMage);
@@ -56,6 +77,13 @@ namespace Project_Yahiko
                     break;
                 case 3: // priest
                     this.Text = "Sohei spells";
+                    try
+                    {
+                        Priest = new Sohei(player);
+                    }
+                    catch
+                    {
+                    }
                     tabControl1.SelectedTab = tabMonk;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabShinobi);
@@ -65,6 +93,13 @@ namespace Project_Yahiko
                     break;
                 case 4: // mage
                     this.Text = "Onmyoji spells";
+                    try
+                    {
+                        Mage = new Onmyoji(player);
+                    }
+                    catch
+                    {
+                    }
                     tabControl1.SelectedTab = tabMage;
                     tabControl1.TabPages.Remove(tabProficiencies);
                     tabControl1.TabPages.Remove(tabShinobi);
@@ -85,7 +120,18 @@ namespace Project_Yahiko
         private void ShowPriestInfo()
         {
             lb_PriestInfoText.Text = "";
-            lb_PriestInfoText.Text = introText_Sohei + String.Format("Remaining spells: {0}", player.CharacterStats.NumMaxSpellsPerLevel - lb_PriestSpellBook.Items.Count);
+            if (Priest.CharacterStats.NumMaxSpellsPerLevel != 100)
+            {
+                if(Priest.CharacterStats.NumMaxSpellsPerLevel == 0)
+                {
+                    Priest.CharacterStats.NumMaxSpellsPerLevel = 1;
+                }
+                lb_PriestInfoText.Text = introText_Sohei + String.Format("Remaining spells: {0}", Priest.CharacterStats.NumMaxSpellsPerLevel - lb_PriestSpellBook.Items.Count);
+            }
+            else
+            {
+                lb_PriestInfoText.Text = introText_Sohei + String.Format("Remaining spells: {0}", lb_AvailablePriestSpells.Items.Count);
+            }
         }
 
         private void ShowWarriorInfo()
@@ -109,16 +155,32 @@ namespace Project_Yahiko
             lb_NonWeapProfsText.Text = string.Format("Remaining Non Weapon Proficiencies: {0}", player.NumNonWeaponProf);
         }
         #endregion
+
+        #region Proficiencies
         void ShowProficienciesTab()
         {
-            tabControl1.TabPages.Add(tabProficiencies);
+            if (!tabControl1.Controls.Contains(tabProficiencies))
+            {
+                tabControl1.TabPages.Add(tabProficiencies);
+            }
+
             tabControl1.SelectedTab = tabProficiencies;
+            
             foreach (TabPage t in tabControl1.TabPages)
             {
                 if (t != tabProficiencies)
                 {
                     tabControl1.TabPages.Remove(t);
                 }
+            }
+            if (lb_AvailableNonWeaponList.Items.Count > 0)
+            {
+                lb_AvailableNonWeaponList.Items.Clear();
+            }
+
+            if(lb_LearnedProficienies.Items.Count > 0)
+            {
+                lb_LearnedProficienies.Items.Clear();
             }
 
             switch (player.CharacterClass)
@@ -134,7 +196,7 @@ namespace Project_Yahiko
                     }
                     break;
                 case 2:
-                    lb_NonWeapProfsText.Text = "The shinobi can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NonWeaponProf;
+                    lb_NonWeapProfsText.Text = "The shinobi can learn the following skills..\nAvailable Non Weapon Proficiencies: " + player.NumNonWeaponProf;
                     foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
                     {
                         if (prof.ProfType == NonWeapProficiency.Type.General || prof.ProfType == NonWeapProficiency.Type.Thief)
@@ -190,14 +252,15 @@ namespace Project_Yahiko
                     {
                         this.Text = "A Sohei's Arsenal";
                         tabControl1.TabPages[0].Text = "Sohei";
-                        lb_SamuraiIntroText.Text = "A Sohei has a variety of weapons that can be chosen...";
+                        lb_NonWeapProfsText.Text = "A Sohei has a variety of weapons that can be chosen...";
                         foreach (Weapon w in DM.WeaponsList)
                         {
-                            if (w.WeaponType.Contains(Weapon.DamageType.Bludgeoning) && w.WeaponType.Count == 1)
+                            if (w.WeaponType.Contains(Weapon.DamageType.Bludgeoning) && w.WeaponType.Count >= 1)
                             {
-                                lb_AvailableList.Items.Add(w.Name);
+                                lb_AvailableNonWeaponList.Items.Add(w.Name);
                             }
                         }
+                        btn_RemoveLearnedProficiency.Enabled = false;
                     }
                     else
                     {
@@ -224,7 +287,10 @@ namespace Project_Yahiko
                     }
                     break;
             }
-            tabControl1.Controls.Add(tabProficiencies);
+            if (!tabControl1.Controls.Contains(tabProficiencies))
+            {
+                tabControl1.Controls.Add(tabProficiencies);
+            }
             foreach (TabPage tab in tabControl1.Controls)
             {
                 if (tab != tabProficiencies)
@@ -236,13 +302,11 @@ namespace Project_Yahiko
 
         }
 
-        void ShowNonWeapProf(int _class)
+        private void btn_RemoveLearnedProficiency_Click(object sender, EventArgs e)
         {
-
+            btn_AddNonWeaponProf.Enabled = true;
         }
 
-        
-        
         private void lb_AvailableList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -252,26 +316,54 @@ namespace Project_Yahiko
         {
             if (showingWeaponProf)
             {
-               
                 foreach (Weapon w in DM.WeaponsList)
                 {
                     if (w.Name == lb_AvailableNonWeaponList.SelectedItem)
                     {
-                        Console.WriteLine("1. player.NumWeaponProf:" + player.NumWeaponProf);
-                        Console.WriteLine("2. w.Name:" + w.Name);
-                        Console.WriteLine("3. lb_AvailableNonWeaponList.SelectedItem:" + lb_AvailableNonWeaponList.SelectedItem);
-                        if (player.NumWeaponProf  > 0)
+                        if(Thief.FirstName != null)
                         {
-                            Console.WriteLine("edw mpainw?");
-                            player.NumWeaponProf -= 1;
-                            lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
-                            lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                            if (Thief.NumWeaponProf > 0)
+                            {
+                                Thief.NumWeaponProf -= 1;
+                                lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
+                                lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                            }
+                            else if (player.NumWeaponProf == 0)
+                            {
+                                btn_ConfirmProf.Enabled = true;
+                                showingWeaponProf = false;
+                            }
                         }
-                        else if(player.NumWeaponProf == 0)
+                        else if (Priest.FirstName != null)
                         {
-                            btn_ConfirmProf.Enabled = true;
-                            showingWeaponProf = false;
+                            if (Priest.NumWeaponProf > 0)
+                            {
+                                Priest.NumWeaponProf -= 1;
+                                Console.WriteLine(Priest.NumNonWeaponProf);
+                                lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
+                                lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                            }
+                            else if (player.NumWeaponProf == 0)
+                            {
+                                btn_ConfirmProf.Enabled = true;
+                                showingWeaponProf = false;
+                            }
                         }
+                        else if (Mage.FirstName != null)
+                        {
+                            if (Mage.NumWeaponProf > 0)
+                            {
+                                Mage.NumWeaponProf -= 1;
+                                lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
+                                lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                            }
+                            else if (player.NumWeaponProf == 0)
+                            {
+                                btn_ConfirmProf.Enabled = true;
+                                showingWeaponProf = false;
+                            }
+                        }
+
                         ShowRemainingWeaponProf();
                     }
                 }
@@ -287,6 +379,11 @@ namespace Project_Yahiko
                             player.NumNonWeaponProf -= p.RequiredSlots;
                             lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.Text);
                             lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
+                            if(player.NumNonWeaponProf == 0)
+                            {
+                                btn_ConfirmProf.Enabled = true;
+                                btn_AddNonWeaponProf.Enabled = false;
+                            }
                         }
                     }
                 }
@@ -305,6 +402,65 @@ namespace Project_Yahiko
             }
         }
 
+        private void btn_ConfirmProf_Click(object sender, EventArgs e)
+        {
+            if (showingWeaponProf)
+            {
+                showingWeaponProf = false;
+                if (Thief.FirstName == player.FirstName)
+                {
+                    for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
+                    {
+                        Thief.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                    }
+                }
+                ShowProficienciesTab();
+                btn_ConfirmProf.Enabled = false;
+            }
+            else
+            {
+                if(Warrior.FirstName == player.FirstName)
+                {
+                    for(int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
+                    {
+                        foreach(NonWeapProficiency prof in DM.NonWeaponProficiencies)
+                        {
+                            if(prof.Name == lb_LearnedProficienies.Items[i].ToString())
+                            {
+                                Warrior.NonWeaponProf.Add(prof);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (Thief.FirstName == player.FirstName)
+                {
+                    for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
+                    {
+                        foreach (NonWeapProficiency prof in DM.NonWeaponProficiencies)
+                        {
+                            if (prof.Name == lb_LearnedProficienies.Items[i].ToString())
+                            {
+                                Thief.NonWeaponProf.Add(prof);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (Priest.FirstName == player.FirstName)
+                {
+
+                }
+                else if (Mage.FirstName == player.FirstName)
+                {
+
+                }
+
+                //continue game
+            }
+        }
+        #endregion
+
         #region Warrior
         private void ShowWeaponText() //Updates/shows the remaining weapon proficiencies for warrior
         {
@@ -312,6 +468,23 @@ namespace Project_Yahiko
         }
         private void btn_SamuraiAccept_Click(object sender, EventArgs e)
         {
+            if(lb_SpecializationList.Items.Count > 0)
+            {
+                foreach(Weapon w in DM.WeaponsList)
+                {
+                    if(w.Name == lb_SpecializationList.Items[0].ToString())
+                    {
+                        Warrior.WeaponSpecialization = new WeaponProficiency(w.Name);
+                        break;
+                    }
+                }
+            }
+
+            for(int i =0; i < lb_ProficientList.Items.Count; i++)
+            {
+                Warrior.WeaponProf.Add(new WeaponProficiency(lb_ProficientList.Items[i].ToString()));
+            }
+            showingWeaponProf = false;
             ShowProficienciesTab();
         }
         void PopulateOptionsWeapon()
@@ -459,39 +632,39 @@ namespace Project_Yahiko
             switch (player.CharacterRace)
             {
                 case 2://elf
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) - 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, player.Skills.GetValue(ThiefSkills.Skills.DN) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, Thief.Skills.GetValue(ThiefSkills.Skills.DN) + 5);
                     break;
                 case 3://dwarf
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) + 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.CW, player.Skills.GetValue(ThiefSkills.Skills.CW) - 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.RL, player.Skills.GetValue(ThiefSkills.Skills.RL) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) + 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.CW, Thief.Skills.GetValue(ThiefSkills.Skills.CW) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.RL, Thief.Skills.GetValue(ThiefSkills.Skills.RL) - 5);
                     break;
                 case 4://gnome
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, player.Skills.GetValue(ThiefSkills.Skills.DN) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.CW, player.Skills.GetValue(ThiefSkills.Skills.CW) - 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, Thief.Skills.GetValue(ThiefSkills.Skills.DN) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.CW, Thief.Skills.GetValue(ThiefSkills.Skills.CW) - 15);
                     break;
                 case 5://halfling
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, player.Skills.GetValue(ThiefSkills.Skills.DN) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.CW, player.Skills.GetValue(ThiefSkills.Skills.CW) - 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.RL, player.Skills.GetValue(ThiefSkills.Skills.RL) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, Thief.Skills.GetValue(ThiefSkills.Skills.DN) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.CW, Thief.Skills.GetValue(ThiefSkills.Skills.CW) - 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.RL, Thief.Skills.GetValue(ThiefSkills.Skills.RL) - 5);
                     break;
                 case 6://half-elf
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 5);
                     break;
 
             }
@@ -499,60 +672,60 @@ namespace Project_Yahiko
             switch (player.CharacterStats.Initial_Dex)
             {
                 case 9:
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) - 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) - 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) - 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) - 20);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) - 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) - 20);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) - 10);
                     break;
                 case 10:
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) - 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) - 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) - 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) - 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) - 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) - 5);
                     break;
                 case 11:
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) - 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) - 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) - 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) - 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) - 5);
                     break;
                 case 12:
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) - 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) - 5);
                     break;
                 case 16:
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 5);
                     break;
                 case 17:
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 5);
                     break;
                 case 18:
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) + 5);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) + 5);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 10);
                     break;
                 case 19:
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, player.Skills.GetValue(ThiefSkills.Skills.PP) + 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, player.Skills.GetValue(ThiefSkills.Skills.OL) + 20);
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, player.Skills.GetValue(ThiefSkills.Skills.FRT) + 10);
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, player.Skills.GetValue(ThiefSkills.Skills.MS) + 15);
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, player.Skills.GetValue(ThiefSkills.Skills.HS) + 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, Thief.Skills.GetValue(ThiefSkills.Skills.PP) + 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, Thief.Skills.GetValue(ThiefSkills.Skills.OL) + 20);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, Thief.Skills.GetValue(ThiefSkills.Skills.FRT) + 10);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, Thief.Skills.GetValue(ThiefSkills.Skills.MS) + 15);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, Thief.Skills.GetValue(ThiefSkills.Skills.HS) + 15);
                     break;
             }
-            initial_cw = player.Skills.GetValue(ThiefSkills.Skills.CW);
-            initial_dn = player.Skills.GetValue(ThiefSkills.Skills.DN);
-            initial_frt = player.Skills.GetValue(ThiefSkills.Skills.FRT);
-            initial_hs = player.Skills.GetValue(ThiefSkills.Skills.HS);
-            initial_ms = player.Skills.GetValue(ThiefSkills.Skills.MS);
-            initial_ol = player.Skills.GetValue(ThiefSkills.Skills.OL);
-            initial_pp = player.Skills.GetValue(ThiefSkills.Skills.PP);
-            initial_rl = player.Skills.GetValue(ThiefSkills.Skills.RL);
+            initial_cw = Thief.Skills.GetValue(ThiefSkills.Skills.CW);
+            initial_dn = Thief.Skills.GetValue(ThiefSkills.Skills.DN);
+            initial_frt = Thief.Skills.GetValue(ThiefSkills.Skills.FRT);
+            initial_hs = Thief.Skills.GetValue(ThiefSkills.Skills.HS);
+            initial_ms = Thief.Skills.GetValue(ThiefSkills.Skills.MS);
+            initial_ol = Thief.Skills.GetValue(ThiefSkills.Skills.OL);
+            initial_pp = Thief.Skills.GetValue(ThiefSkills.Skills.PP);
+            initial_rl = Thief.Skills.GetValue(ThiefSkills.Skills.RL);
 
             ud_CW.Value = initial_cw;
             ud_CW.Maximum = ud_CW.Value + 30;
@@ -623,14 +796,14 @@ namespace Project_Yahiko
             pool = 60;
             lb_PointsPool.Text = pool.ToString();
 
-            player.Skills.SetValues(ThiefSkills.Skills.OL, initial_ol);
-            player.Skills.SetValues(ThiefSkills.Skills.HS, initial_hs);
-            player.Skills.SetValues(ThiefSkills.Skills.CW, initial_cw);
-            player.Skills.SetValues(ThiefSkills.Skills.MS, initial_ms);
-            player.Skills.SetValues(ThiefSkills.Skills.PP, initial_pp);
-            player.Skills.SetValues(ThiefSkills.Skills.RL, initial_rl);
-            player.Skills.SetValues(ThiefSkills.Skills.FRT, initial_frt);
-            player.Skills.SetValues(ThiefSkills.Skills.DN, initial_dn);
+            Thief.Skills.SetValues(ThiefSkills.Skills.OL, initial_ol);
+            Thief.Skills.SetValues(ThiefSkills.Skills.HS, initial_hs);
+            Thief.Skills.SetValues(ThiefSkills.Skills.CW, initial_cw);
+            Thief.Skills.SetValues(ThiefSkills.Skills.MS, initial_ms);
+            Thief.Skills.SetValues(ThiefSkills.Skills.PP, initial_pp);
+            Thief.Skills.SetValues(ThiefSkills.Skills.RL, initial_rl);
+            Thief.Skills.SetValues(ThiefSkills.Skills.FRT, initial_frt);
+            Thief.Skills.SetValues(ThiefSkills.Skills.DN, initial_dn);
         }
 
         private void btn_accept_Click(object sender, EventArgs e)
@@ -644,17 +817,17 @@ namespace Project_Yahiko
             int.TryParse(lb_PointsPool.Text, out pool);
             if (pool - 1 > 0)
             {
-                if (ud_PP.Value - player.Skills.GetValue(ThiefSkills.Skills.PP) >= 0) //up
+                if (ud_PP.Value - Thief.Skills.GetValue(ThiefSkills.Skills.PP) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_PP.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_PP.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_PP.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_PP.Value);
                 }
             }
             else
@@ -671,17 +844,17 @@ namespace Project_Yahiko
            
             if (pool - 1 > 0)
             {
-                if (ud_OL.Value - player.Skills.GetValue(ThiefSkills.Skills.OL) > 0) //up
+                if (ud_OL.Value - Thief.Skills.GetValue(ThiefSkills.Skills.OL) > 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.OL, (int)ud_OL.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.OL, (int)ud_OL.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_OL.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.PP, (int)ud_OL.Value);
                 }
             }
             else
@@ -698,17 +871,17 @@ namespace Project_Yahiko
            
             if (pool - 1 > 0)
             {
-                if (ud_DN.Value - player.Skills.GetValue(ThiefSkills.Skills.DN) >= 0) //up
+                if (ud_DN.Value - Thief.Skills.GetValue(ThiefSkills.Skills.DN) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_DN.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_DN.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_DN.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_DN.Value);
                 }
             }
             else
@@ -724,17 +897,17 @@ namespace Project_Yahiko
             
             if (pool - 1 > 0)
             {
-                if (ud_CW.Value - player.Skills.GetValue(ThiefSkills.Skills.CW) >= 0) //up
+                if (ud_CW.Value - Thief.Skills.GetValue(ThiefSkills.Skills.CW) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.CW, (int)ud_CW.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.CW, (int)ud_CW.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.CW, (int)ud_CW.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.CW, (int)ud_CW.Value);
                 }
             }
             else
@@ -751,17 +924,17 @@ namespace Project_Yahiko
             
             if (pool - 1 > 0)
             {
-                if (ud_RL.Value - player.Skills.GetValue(ThiefSkills.Skills.RL) >= 0) //up
+                if (ud_RL.Value - Thief.Skills.GetValue(ThiefSkills.Skills.RL) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.RL, (int)ud_RL.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.RL, (int)ud_RL.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_RL.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_RL.Value);
                 }
             }
             else
@@ -777,17 +950,17 @@ namespace Project_Yahiko
             
             if (pool - 1 > 0)
             {
-                if (ud_HS.Value - player.Skills.GetValue(ThiefSkills.Skills.HS) >= 0) //up
+                if (ud_HS.Value - Thief.Skills.GetValue(ThiefSkills.Skills.HS) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.HS, (int)ud_HS.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.HS, (int)ud_HS.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_HS.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_HS.Value);
                 }
             }
             else
@@ -805,17 +978,17 @@ namespace Project_Yahiko
 
             if (pool - 1 > 0)
             {
-                if (ud_MS.Value - player.Skills.GetValue(ThiefSkills.Skills.MS) >= 0) //up
+                if (ud_MS.Value - Thief.Skills.GetValue(ThiefSkills.Skills.MS) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.MS, (int)ud_MS.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.MS, (int)ud_MS.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_MS.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_MS.Value);
                 }
             }
             else
@@ -831,17 +1004,17 @@ namespace Project_Yahiko
             
             if (pool - 1 > 0)
             {
-                if (ud_FRT.Value - player.Skills.GetValue(ThiefSkills.Skills.FRT) >= 0) //up
+                if (ud_FRT.Value - Thief.Skills.GetValue(ThiefSkills.Skills.FRT) >= 0) //up
                 {
                     pool--;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.FRT, (int)ud_FRT.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.FRT, (int)ud_FRT.Value);
                 }
                 else
                 {
                     pool++;
                     lb_PointsPool.Text = pool.ToString();
-                    player.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_FRT.Value);
+                    Thief.Skills.SetValues(ThiefSkills.Skills.DN, (int)ud_FRT.Value);
                 }
             }
             else
@@ -859,7 +1032,7 @@ namespace Project_Yahiko
         void InitialConfig_Priest()
         {
             ShowPriestInfo();
-
+            btn_RemoveSpellP.Enabled = false;
             foreach (Spell s in DM.AvailableSpells_Priest)
             {
                 lb_AvailablePriestSpells.Items.Add(s.Name);
@@ -867,8 +1040,12 @@ namespace Project_Yahiko
         }
         private void btn_AddSpellP_Click(object sender, EventArgs e)
         {
-            if (player.CharacterStats.NumMaxSpellsPerLevel > lb_PriestSpellBook.Items.Count)
+            if (Priest.CharacterStats.NumMaxSpellsPerLevel > lb_PriestSpellBook.Items.Count && lb_AvailablePriestSpells.Items.Count > 0)
             {
+                if(lb_PriestSpellBook.Items.Count > 0)
+                {
+                    btn_RemoveSpellP.Enabled = true;
+                }
                 try
                 {
                     lb_PriestSpellBook.Items.Add(lb_AvailablePriestSpells.SelectedItem);
@@ -880,23 +1057,19 @@ namespace Project_Yahiko
                     lb_PriestInfoText.Text = "No spell selected";
                 }
             }
+            else 
+            {
+                if (Priest.CharacterStats.NumMaxSpellsPerLevel == lb_PriestSpellBook.Items.Count || lb_AvailablePriestSpells.Items.Count == 0)
+                {
+                    btn_AddSpellP.Enabled = false;
+                    btn_RemoveSpellP.Enabled = true;
+                    btn_confirmPriest.Enabled = true;
+                }
+            }
 
         }
 
-        private void btn_ConfirmProf_Click(object sender, EventArgs e)
-        {
-            if(showingWeaponProf)
-            {
-                showingWeaponProf = false;
-                ShowNonWeapProf(player.CharacterClass);
-            }
-            else
-            {
-                //continue game
-            }
-        }
-
-    
+       
 
         private void btn_RemoveSpellP_Click(object sender, EventArgs e)
         {
@@ -913,8 +1086,9 @@ namespace Project_Yahiko
         }
         private void btn_confirmPriest_Click(object sender, EventArgs e)
         {
+            btn_confirmPriest.Enabled = true;
             showingWeaponProf = true;
-            ShowWeaponProf(player.CharacterClass);
+            ShowWeaponProf(Priest.CharacterClass);
         }
 
         private void lb_AvailablePriestSpells_SelectedIndexChanged(object sender, EventArgs e)

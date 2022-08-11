@@ -9,6 +9,24 @@ namespace Project_Yahiko
 {
     public class Bushi : Player
     {
+        public WeaponProficiency WeaponSpecialization;
+
+        public Bushi()
+        { }
+
+        public Bushi(Player p)
+        {
+            FirstName = p.FirstName;
+            Lastname = p.Lastname;
+            CharacterClass = 1;
+            XP = p.XP;
+            XPToNext = p.XPToNext;
+            CharacterStats = p.CharacterStats;
+            EquipedArmor = p.EquipedArmor;
+            EquipedWeapon = p.EquipedWeapon;
+            Console.WriteLine("char race = " + CharacterRace + " vs p.char race= " + p.CharacterRace);
+        }
+
         void SetInitialMoney()
         {
             Random rand = new Random();

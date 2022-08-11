@@ -23,6 +23,18 @@ namespace Project_Yahiko
             nill
         };
 
+        public Sohei(Player p)
+        {
+            FirstName = p.FirstName;
+            Lastname = p.Lastname;
+            CharacterClass = 3;
+            XP = p.XP;
+            XPToNext = p.XPToNext;
+            CharacterStats = p.CharacterStats;
+            EquipedArmor = p.EquipedArmor;
+            EquipedWeapon = p.EquipedWeapon;
+        }
+
         void SetInitialMoney()
         {
             Random rand = new Random();

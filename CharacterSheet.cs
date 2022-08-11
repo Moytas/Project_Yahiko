@@ -288,6 +288,13 @@ namespace Project_Yahiko
                     else if (cb_Class.Text.Contains("Shinobi"))
                     {
                         _player.CharacterClass = 2;
+                        for(int i = 0; i < cb_Alignment.Items.Count;i++)
+                        {
+                            if (cb_Alignment.Items[i].ToString().Contains("Lawful"))
+                            {
+                                cb_Alignment.Items.RemoveAt(i);
+                            }
+                        }
                     }
                     else if (cb_Class.Text.Contains("Sohei"))
                     {

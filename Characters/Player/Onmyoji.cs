@@ -14,6 +14,21 @@ namespace Project_Yahiko
         int[] maxPerSpellLevel;
         public List<Spell> MemorizedSpells;
 
+        public Onmyoji()
+        { }
+
+        public Onmyoji(Player p)
+        {
+            FirstName = p.FirstName;
+            Lastname = p.Lastname;
+            CharacterClass = 4;
+            XP = p.XP;
+            XPToNext = p.XPToNext;
+            CharacterStats = p.CharacterStats;
+            EquipedArmor = p.EquipedArmor;
+            EquipedWeapon = p.EquipedWeapon;
+        }
+
         public Onmyoji(string firstName,string lastName,Stats _stats)
         {
             MySpellBook = new SpellBook(SpellBook.Type.Mage);

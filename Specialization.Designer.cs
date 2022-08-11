@@ -85,7 +85,7 @@
             this.lb_SelectedProfDescription_R = new System.Windows.Forms.Label();
             this.lb_SelectedProfDescription_L = new System.Windows.Forms.Label();
             this.lb_NonWeapProfsText = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_RemoveLearnedProficiency = new System.Windows.Forms.Button();
             this.btn_AddNonWeaponProf = new System.Windows.Forms.Button();
             this.btn_ConfirmProf = new System.Windows.Forms.Button();
             this.lb_LearnedProficienies = new System.Windows.Forms.ListBox();
@@ -684,7 +684,7 @@
             this.tabProficiencies.Controls.Add(this.lb_SelectedProfDescription_R);
             this.tabProficiencies.Controls.Add(this.lb_SelectedProfDescription_L);
             this.tabProficiencies.Controls.Add(this.lb_NonWeapProfsText);
-            this.tabProficiencies.Controls.Add(this.button1);
+            this.tabProficiencies.Controls.Add(this.btn_RemoveLearnedProficiency);
             this.tabProficiencies.Controls.Add(this.btn_AddNonWeaponProf);
             this.tabProficiencies.Controls.Add(this.btn_ConfirmProf);
             this.tabProficiencies.Controls.Add(this.lb_LearnedProficienies);
@@ -723,14 +723,15 @@
             this.lb_NonWeapProfsText.TabIndex = 8;
             this.lb_NonWeapProfsText.Text = "lb_NonWeapProfsText";
             // 
-            // button1
+            // btn_RemoveLearnedProficiency
             // 
-            this.button1.Location = new System.Drawing.Point(239, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_RemoveLearnedProficiency.Location = new System.Drawing.Point(239, 104);
+            this.btn_RemoveLearnedProficiency.Name = "btn_RemoveLearnedProficiency";
+            this.btn_RemoveLearnedProficiency.Size = new System.Drawing.Size(75, 23);
+            this.btn_RemoveLearnedProficiency.TabIndex = 7;
+            this.btn_RemoveLearnedProficiency.Text = "Remove";
+            this.btn_RemoveLearnedProficiency.UseVisualStyleBackColor = true;
+            this.btn_RemoveLearnedProficiency.Click += new System.EventHandler(this.btn_RemoveLearnedProficiency_Click);
             // 
             // btn_AddNonWeaponProf
             // 
@@ -853,7 +854,7 @@
         private System.Windows.Forms.Button btn_AddSpellP;
         private System.Windows.Forms.Label lb_PriestInfoText;
         private System.Windows.Forms.TabPage tabProficiencies;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_RemoveLearnedProficiency;
         private System.Windows.Forms.Button btn_AddNonWeaponProf;
         private System.Windows.Forms.Button btn_ConfirmProf;
         private System.Windows.Forms.ListBox lb_LearnedProficienies;
