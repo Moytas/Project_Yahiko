@@ -10,31 +10,11 @@ using System.Windows.Forms;
 
 namespace Project_Yahiko
 {
-    public partial class Form_Initial : Form
+    public partial class MainGame : Form
     {
-        public static DMOptions GM;
-        public Player _player;
-        public Form_Initial()
+        public MainGame()
         {
             InitializeComponent();
-            OnInit();
-        }
-
-        //create objects
-        private void OnInit()
-        {
-            GM = new DMOptions();
-            GM.PopulateClanNames();
-           
-        }
-
-
-        private void lb_Start_Click(object sender, EventArgs e)
-        {
-            _player = new Player();
-            CharacterSheet cs = new CharacterSheet();
-            cs.GetPlayer(ref _player);
-            cs.Show();
         }
     }
 }

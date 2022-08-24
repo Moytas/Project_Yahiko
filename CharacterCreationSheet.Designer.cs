@@ -1,6 +1,6 @@
 ﻿namespace Project_Yahiko
 {
-    partial class CharacterSheet
+    partial class CharacterCreationSheet
     {
         /// <summary>
         /// Required designer variable.

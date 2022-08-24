@@ -1,7 +1,6 @@
-﻿
-namespace Project_Yahiko
+﻿namespace Project_Yahiko
 {
-    partial class Form_Initial
+    partial class MainGame
     {
         /// <summary>
         /// Required designer variable.
@@ -29,106 +28,130 @@ namespace Project_Yahiko
         /// </summary>
         private void InitializeComponent()
         {
-            this.Title = new System.Windows.Forms.Label();
-            this.lb_Start = new System.Windows.Forms.Label();
-            this.lb_Options = new System.Windows.Forms.Label();
-            this.lb_Quit = new System.Windows.Forms.Label();
-            this.lb_Arrow = new System.Windows.Forms.Label();
+            this.btn_CharSheet = new System.Windows.Forms.Button();
+            this.btn_Inventory = new System.Windows.Forms.Button();
+            this.btn_Spells = new System.Windows.Forms.Button();
+            this.Panel_Story = new System.Windows.Forms.Panel();
+            this.Panel_PlayerChoise = new System.Windows.Forms.Panel();
+            this.Panel_CharButtons = new System.Windows.Forms.Panel();
+            this.tb_DMText = new System.Windows.Forms.TextBox();
+            this.Panel_Story.SuspendLayout();
+            this.Panel_CharButtons.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Title
+            // btn_CharSheet
             // 
-            this.Title.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_CharSheet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Title.AutoSize = true;
-            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 80F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.Title.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Title.Location = new System.Drawing.Point(117, 61);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(459, 120);
-            this.Title.TabIndex = 0;
-            this.Title.Text = "YAHIKO";
-            this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_CharSheet.Location = new System.Drawing.Point(18, 16);
+            this.btn_CharSheet.Name = "btn_CharSheet";
+            this.btn_CharSheet.Size = new System.Drawing.Size(98, 33);
+            this.btn_CharSheet.TabIndex = 0;
+            this.btn_CharSheet.Text = "Character Sheet";
+            this.btn_CharSheet.UseVisualStyleBackColor = true;
             // 
-            // lb_Start
+            // btn_Inventory
             // 
-            this.lb_Start.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_Inventory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Start.AutoSize = true;
-            this.lb_Start.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lb_Start.Location = new System.Drawing.Point(317, 199);
-            this.lb_Start.Name = "lb_Start";
-            this.lb_Start.Size = new System.Drawing.Size(29, 13);
-            this.lb_Start.TabIndex = 1;
-            this.lb_Start.Text = "Start";
-            this.lb_Start.Click += new System.EventHandler(this.lb_Start_Click);
+            this.btn_Inventory.Location = new System.Drawing.Point(158, 16);
+            this.btn_Inventory.Name = "btn_Inventory";
+            this.btn_Inventory.Size = new System.Drawing.Size(75, 23);
+            this.btn_Inventory.TabIndex = 1;
+            this.btn_Inventory.Text = "Inventory";
+            this.btn_Inventory.UseVisualStyleBackColor = true;
             // 
-            // lb_Options
+            // btn_Spells
             // 
-            this.lb_Options.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_Spells.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Options.AutoSize = true;
-            this.lb_Options.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lb_Options.Location = new System.Drawing.Point(317, 234);
-            this.lb_Options.Name = "lb_Options";
-            this.lb_Options.Size = new System.Drawing.Size(43, 13);
-            this.lb_Options.TabIndex = 2;
-            this.lb_Options.Text = "Options";
+            this.btn_Spells.Location = new System.Drawing.Point(158, 80);
+            this.btn_Spells.Name = "btn_Spells";
+            this.btn_Spells.Size = new System.Drawing.Size(75, 23);
+            this.btn_Spells.TabIndex = 2;
+            this.btn_Spells.Text = "Spells";
+            this.btn_Spells.UseVisualStyleBackColor = true;
             // 
-            // lb_Quit
+            // Panel_Story
             // 
-            this.lb_Quit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Panel_Story.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Quit.AutoSize = true;
-            this.lb_Quit.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lb_Quit.Location = new System.Drawing.Point(320, 282);
-            this.lb_Quit.Name = "lb_Quit";
-            this.lb_Quit.Size = new System.Drawing.Size(26, 13);
-            this.lb_Quit.TabIndex = 3;
-            this.lb_Quit.Text = "Quit";
+            this.Panel_Story.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Panel_Story.Controls.Add(this.tb_DMText);
+            this.Panel_Story.Location = new System.Drawing.Point(299, 12);
+            this.Panel_Story.Name = "Panel_Story";
+            this.Panel_Story.Size = new System.Drawing.Size(489, 363);
+            this.Panel_Story.TabIndex = 3;
             // 
-            // lb_Arrow
+            // Panel_PlayerChoise
             // 
-            this.lb_Arrow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Panel_PlayerChoise.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Arrow.AutoSize = true;
-            this.lb_Arrow.ForeColor = System.Drawing.Color.Gold;
-            this.lb_Arrow.Location = new System.Drawing.Point(270, 199);
-            this.lb_Arrow.Name = "lb_Arrow";
-            this.lb_Arrow.Size = new System.Drawing.Size(16, 13);
-            this.lb_Arrow.TabIndex = 4;
-            this.lb_Arrow.Text = "->";
+            this.Panel_PlayerChoise.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Panel_PlayerChoise.Location = new System.Drawing.Point(12, 235);
+            this.Panel_PlayerChoise.Name = "Panel_PlayerChoise";
+            this.Panel_PlayerChoise.Size = new System.Drawing.Size(255, 140);
+            this.Panel_PlayerChoise.TabIndex = 4;
             // 
-            // Form_Initial
+            // Panel_CharButtons
+            // 
+            this.Panel_CharButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_CharButtons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Panel_CharButtons.Controls.Add(this.btn_CharSheet);
+            this.Panel_CharButtons.Controls.Add(this.btn_Inventory);
+            this.Panel_CharButtons.Controls.Add(this.btn_Spells);
+            this.Panel_CharButtons.Location = new System.Drawing.Point(12, 12);
+            this.Panel_CharButtons.Name = "Panel_CharButtons";
+            this.Panel_CharButtons.Size = new System.Drawing.Size(255, 192);
+            this.Panel_CharButtons.TabIndex = 5;
+            // 
+            // tb_DMText
+            // 
+            this.tb_DMText.BackColor = System.Drawing.Color.Silver;
+            this.tb_DMText.Enabled = false;
+            this.tb_DMText.ForeColor = System.Drawing.Color.Maroon;
+            this.tb_DMText.Location = new System.Drawing.Point(30, 23);
+            this.tb_DMText.Multiline = true;
+            this.tb_DMText.Name = "tb_DMText";
+            this.tb_DMText.Size = new System.Drawing.Size(445, 322);
+            this.tb_DMText.TabIndex = 0;
+            this.tb_DMText.TabStop = false;
+            this.tb_DMText.Text = "Welcome to Yahiko... blah blah blah\r\n";
+            this.tb_DMText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ClientSize = new System.Drawing.Size(685, 356);
-            this.Controls.Add(this.lb_Arrow);
-            this.Controls.Add(this.lb_Quit);
-            this.Controls.Add(this.lb_Options);
-            this.Controls.Add(this.lb_Start);
-            this.Controls.Add(this.Title);
-            this.Name = "Form_Initial";
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(800, 399);
+            this.Controls.Add(this.Panel_CharButtons);
+            this.Controls.Add(this.Panel_PlayerChoise);
+            this.Controls.Add(this.Panel_Story);
+            this.Name = "MainGame";
             this.Text = "Yahiko";
+            this.Panel_Story.ResumeLayout(false);
+            this.Panel_Story.PerformLayout();
+            this.Panel_CharButtons.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label Title;
-        private System.Windows.Forms.Label lb_Start;
-        private System.Windows.Forms.Label lb_Options;
-        private System.Windows.Forms.Label lb_Quit;
-        private System.Windows.Forms.Label lb_Arrow;
+        private System.Windows.Forms.Button btn_CharSheet;
+        private System.Windows.Forms.Button btn_Inventory;
+        private System.Windows.Forms.Button btn_Spells;
+        private System.Windows.Forms.Panel Panel_Story;
+        private System.Windows.Forms.TextBox tb_DMText;
+        private System.Windows.Forms.Panel Panel_PlayerChoise;
+        private System.Windows.Forms.Panel Panel_CharButtons;
     }
 }
-

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Project_Yahiko
 {
-    public partial class CharacterSheet : Form
+    public partial class CharacterCreationSheet : Form
     {
         public Player _player;
         
@@ -24,7 +24,7 @@ namespace Project_Yahiko
         
         private DMOptions DM;
         
-        public CharacterSheet()
+        public CharacterCreationSheet()
         {
             DM = new DMOptions();
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace Project_Yahiko
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            CharacterSheet.ActiveForm.Text = String.Format("{0}'s Sheet",tb_FirstName.Text);
+            CharacterCreationSheet.ActiveForm.Text = String.Format("{0}'s Sheet",tb_FirstName.Text);
         }
 
         public void GetPlayer(ref Player player)

@@ -277,7 +277,7 @@ namespace Project_Yahiko
                         {
                             if (w.WeaponType.Contains(Weapon.DamageType.Bludgeoning) && w.WeaponType.Count == 1)
                             {
-                                lb_AvailableList.Items.Add(w.Name);
+                                lb_AvailableNonWeaponList.Items.Add(w.Name);
                             }
                         }
                     }
@@ -414,6 +414,27 @@ namespace Project_Yahiko
                         Thief.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
                     }
                 }
+                else if (Warrior.FirstName == player.FirstName)
+                {
+                    for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
+                    {
+                        Warrior.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                    }
+                }
+                else if (Mage.FirstName == player.FirstName)
+                {
+                    for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
+                    {
+                        Mage.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                    }
+                }
+                else if (Priest.FirstName == player.FirstName)
+                {
+                    for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
+                    {
+                        Priest.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                    }
+                }
                 ShowProficienciesTab();
                 btn_ConfirmProf.Enabled = false;
             }
@@ -457,6 +478,7 @@ namespace Project_Yahiko
                 }
 
                 //continue game
+                Console.WriteLine("Continue game?");
             }
         }
         #endregion

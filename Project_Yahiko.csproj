@@ -51,11 +51,11 @@
     <Compile Include="Characters\Enemy\Undead.cs" />
     <Compile Include="Characters\Player\Bushi.cs" />
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="CharacterSheet.cs">
+    <Compile Include="CharacterCreationSheet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharacterSheet.Designer.cs">
-      <DependentUpon>CharacterSheet.cs</DependentUpon>
+    <Compile Include="CharacterCreationSheet.Designer.cs">
+      <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\WeaponProficiency.cs" />
     <Compile Include="Dice.cs" />
@@ -65,11 +65,11 @@
     <Compile Include="LevelUp.Designer.cs">
       <DependentUpon>LevelUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainGame.cs">
+    <Compile Include="GameIntro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainGame.Designer.cs">
-      <DependentUpon>MainGame.cs</DependentUpon>
+    <Compile Include="GameIntro.Designer.cs">
+      <DependentUpon>GameIntro.cs</DependentUpon>
     </Compile>
     <Compile Include="DMOptions.cs" />
     <Compile Include="Inventory.cs">
@@ -84,6 +84,12 @@
     <Compile Include="Characters\Player\Shinobi.cs" />
     <Compile Include="Characters\Player\Sohei.cs" />
     <Compile Include="Characters\Proficiency.cs" />
+    <Compile Include="MainGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainGame.Designer.cs">
+      <DependentUpon>MainGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="NonWeapProficiency.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,14 +114,17 @@
     <Compile Include="Characters\ThiefSkills.cs" />
     <Compile Include="Characters\Weapon.cs" />
     <Compile Include="SpellComponent.cs" />
-    <EmbeddedResource Include="CharacterSheet.resx">
-      <DependentUpon>CharacterSheet.cs</DependentUpon>
+    <EmbeddedResource Include="CharacterCreationSheet.resx">
+      <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainGame.resx">
-      <DependentUpon>MainGame.cs</DependentUpon>
+    <EmbeddedResource Include="GameIntro.resx">
+      <DependentUpon>GameIntro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainGame.resx">
+      <DependentUpon>MainGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
