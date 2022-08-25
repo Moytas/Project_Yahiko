@@ -12,9 +12,16 @@ namespace Project_Yahiko
 {
     public partial class MainGame : Form
     {
+        int charClass;
+
         public MainGame()
         {
             InitializeComponent();
+        }
+
+        private void btn_CharSheet_Click(object sender, EventArgs e)
+        {
+            CharacterSheet CS = new CharacterSheet(charClass);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Project_Yahiko
         public Bushi(Player p)
         {
             FirstName = p.FirstName;
-            Lastname = p.Lastname;
+            LastName = p.LastName;
             CharacterClass = 1;
             XP = p.XP;
             XPToNext = p.XPToNext;

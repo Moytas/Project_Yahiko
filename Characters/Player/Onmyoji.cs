@@ -20,7 +20,7 @@ namespace Project_Yahiko
         public Onmyoji(Player p)
         {
             FirstName = p.FirstName;
-            Lastname = p.Lastname;
+            LastName = p.LastName;
             CharacterClass = 4;
             XP = p.XP;
             XPToNext = p.XPToNext;

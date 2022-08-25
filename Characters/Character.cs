@@ -8,7 +8,7 @@ namespace Project_Yahiko
 {
     public class Character
     {
-        public string FirstName, Lastname;
+        public string Name;
         public int Level;
         public bool Gender;
         public int CharacterRace;

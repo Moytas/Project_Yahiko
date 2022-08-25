@@ -31,7 +31,7 @@ namespace Project_Yahiko
             EnableStatRoll();
         }
 
-        private void InitialConfig()
+        private void NameEnable() // stupid name
         {
             tb_FirstName.Enabled = true;
             tb_LastName.Enabled = false;
@@ -72,7 +72,7 @@ namespace Project_Yahiko
                 }
                 else
                 {
-                    _player.Lastname = tb_LastName.Text;
+                    _player.LastName = tb_LastName.Text;
                     btn_RandomName.Enabled = false;
                     btn_RandomName.Visible = false;
                     tb_LastName.Enabled = false;
@@ -93,6 +93,7 @@ namespace Project_Yahiko
 
         private void EnableStatRoll()
         {
+            SetupRandomButton();
             btn_RollStats.Enabled = true;
             btn_RollStats.Visible = true;
         }
@@ -336,14 +337,50 @@ namespace Project_Yahiko
                     btn_confirm.Location = new Point(cb_Gender.Location.X + 100, cb_Gender.Location.Y);
                     break;
                 case 9:// Gender
-                    InitialConfig();
+                    ud_Height.Visible = true;
+                    ud_Height.Enabled = true;
+                    ud_Age.Visible = true;
+                    ud_Age.Enabled = true;
+                    switch (_player.CharacterRace)// 0 = Human 1 = Elf 2 = Dwarf 3 = Gnome 4 = Halfling 5 = Half Elf
+                    {
+                        case 0:
+                            ud_Height.Minimum = 5;
+                            ud_Height.Maximum = 7;
+                            ud_Height.Value = ud_Height.Minimum;
+                            break;
+                        case 1:
+                            ud_Height.Minimum = 4;
+                            ud_Height.Maximum = 6;
+                            ud_Height.Value = ud_Height.Minimum;
+                            break;
+                        case 2:
+                            ud_Height.Minimum = 3;
+                            ud_Height.Maximum = 5;
+                            ud_Height.Value = ud_Height.Minimum;
+                            break;
+                        case 3:
+                            ud_Height.Minimum = 2;
+                            ud_Height.Maximum = 4;
+                            ud_Height.Value = ud_Height.Minimum;
+                            break;
+                        case 4:
+                            ud_Height.Minimum = 2;
+                            ud_Height.Maximum = 4;
+                            ud_Height.Value = ud_Height.Minimum;
+                            break;
+                        case 5:
+                            ud_Height.Minimum = 4;
+                            ud_Height.Maximum = 6;
+                            ud_Height.Value = ud_Height.Minimum;
+                            break;
+                    }
+                    
                     cb_Gender.Enabled = false;
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
-                    btn_confirm.Text = "Continue";
-                    btn_confirm.Location = new Point(620, 378);
+                    
                     break;
-                case 10:
+                case 11:
                     Specialization spec = new Specialization(_player);
                     spec.Show();
                     btn_confirm.Enabled = true;
@@ -351,8 +388,10 @@ namespace Project_Yahiko
                     btn_Restart.Enabled = false;
                     btn_Restart.Visible = false;
                     break;
-                case 11:
-                    
+                case 10://Height & Age
+                    NameEnable(); 
+                    btn_confirm.Text = "Continue";
+                    btn_confirm.Location = new Point(620, 378);
                     break;
             }
             _index++;
@@ -426,6 +465,15 @@ namespace Project_Yahiko
             _player.CharacterStats.Initial_Cha = int.Parse(lb_ChaValue.Text);
             _player.CharacterStats.Current_Cha = _player.CharacterStats.Initial_Cha;
             _player.CharacterStats.SetAbilities(_player.CharacterStats.Current_Cha, "CHA");
+
+            SetupAbilities();
+            gb_Abilities.Visible = true;
+
+        }
+
+        void SetupAbilities() // FILL THEM IN
+        {
+
         }
 
         private void SetAvailableClasses()
@@ -610,6 +658,17 @@ namespace Project_Yahiko
             cb_Gender.SelectedItem = "";
             cb_Race.SelectedItem = "";
             btn_confirm.Location = new Point(cb_Race.Location.X + cb_Race.Text.Length + 10, cb_Race.Location.Y);
+        }
+
+       void SetupRandomButton()
+        {
+            btn_RollStats.Location = new Point(6, 13);
+            btn_RollStats.BringToFront();
+            btn_RollStats.Enabled = true;
+            btn_RollStats.Visible = true;
+            lb_RollResult.Text = "";
+            lb_RollResult.Location = new Point(15, 13);
+            lb_RollResult.BringToFront();
         }
     }
 }

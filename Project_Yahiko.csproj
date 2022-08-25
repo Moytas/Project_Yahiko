@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\CharacterSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Characters\CharacterSheet.Designer.cs">
+      <DependentUpon>CharacterSheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Characters\Items\Armor.cs" />
     <Compile Include="Characters\Enemy\Monster.cs" />
     <Compile Include="Characters\Enemy\Undead.cs" />
@@ -102,10 +108,10 @@
     <Compile Include="Shop.Designer.cs">
       <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Specialization.cs">
+    <Compile Include="Characters\Specialization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Specialization.Designer.cs">
+    <Compile Include="Characters\Specialization.Designer.cs">
       <DependentUpon>Specialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\Spell.cs" />
@@ -116,6 +122,9 @@
     <Compile Include="Characters\Items\SpellComponent.cs" />
     <EmbeddedResource Include="CharacterCreationSheet.resx">
       <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Characters\CharacterSheet.resx">
+      <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameIntro.resx">
       <DependentUpon>GameIntro.cs</DependentUpon>
@@ -138,7 +147,7 @@
     <EmbeddedResource Include="Shop.resx">
       <DependentUpon>Shop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Specialization.resx">
+    <EmbeddedResource Include="Characters\Specialization.resx">
       <DependentUpon>Specialization.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

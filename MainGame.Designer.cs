@@ -50,6 +50,7 @@
             this.btn_CharSheet.TabIndex = 0;
             this.btn_CharSheet.Text = "Character Sheet";
             this.btn_CharSheet.UseVisualStyleBackColor = true;
+            this.btn_CharSheet.Click += new System.EventHandler(this.btn_CharSheet_Click);
             // 
             // btn_Inventory
             // 

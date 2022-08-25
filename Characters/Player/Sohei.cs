@@ -26,7 +26,7 @@ namespace Project_Yahiko
         public Sohei(Player p)
         {
             FirstName = p.FirstName;
-            Lastname = p.Lastname;
+            LastName = p.LastName;
             CharacterClass = 3;
             XP = p.XP;
             XPToNext = p.XPToNext;
