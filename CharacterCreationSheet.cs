@@ -346,32 +346,53 @@ namespace Project_Yahiko
                         case 0:
                             ud_Height.Minimum = 5;
                             ud_Height.Maximum = 7;
+                            ud_Age.Minimum = 18;
+                            ud_Age.Maximum = 23;
+                            ud_Age.Value = ud_Age.Minimum;
                             ud_Height.Value = ud_Height.Minimum;
                             break;
                         case 1:
                             ud_Height.Minimum = 4;
                             ud_Height.Maximum = 6;
+                            ud_Age.Minimum = 110;
+                            ud_Age.Maximum = 220;
+                            ud_Age.Value = ud_Age.Minimum;
                             ud_Height.Value = ud_Height.Minimum;
                             break;
                         case 2:
                             ud_Height.Minimum = 3;
                             ud_Height.Maximum = 5;
+                            ud_Age.Minimum = 110;
+                            ud_Age.Maximum = 150;
+                            ud_Age.Value = ud_Age.Minimum;
                             ud_Height.Value = ud_Height.Minimum;
                             break;
                         case 3:
                             ud_Height.Minimum = 2;
                             ud_Height.Maximum = 4;
                             ud_Height.Value = ud_Height.Minimum;
+
+                            ud_Age.Minimum = 80;
+                            ud_Age.Maximum = 90;
+                            ud_Age.Value = ud_Age.Minimum;
                             break;
                         case 4:
                             ud_Height.Minimum = 2;
                             ud_Height.Maximum = 4;
                             ud_Height.Value = ud_Height.Minimum;
+                            
+                            ud_Age.Minimum = 20;
+                            ud_Age.Maximum = 30;
+                            ud_Age.Value = ud_Age.Minimum;
                             break;
                         case 5:
                             ud_Height.Minimum = 4;
                             ud_Height.Maximum = 6;
                             ud_Height.Value = ud_Height.Minimum;
+
+                            ud_Age.Minimum = 18;
+                            ud_Age.Maximum = 30;
+                            ud_Age.Value = ud_Age.Minimum;
                             break;
                     }
                     
@@ -641,13 +662,13 @@ namespace Project_Yahiko
             lb_ConValue.Visible = false;
             lb_Dex.Visible = false;
             lb_DexValue.Visible = false;
-            btn_RollStats.Location = new Point(6, 13);
+            btn_RollStats.Location = new Point(124, 116);
             btn_RollStats.BringToFront();
             btn_RollStats.Enabled = true;
             btn_RollStats.Visible = true;
             lb_RollResult.Text = "";
             lb_StrValue.Text = "";
-            lb_RollResult.Location = new Point(15, 13);
+            lb_RollResult.Location = new Point(127, 116);
             lb_RollResult.BringToFront();
             btn_confirm.Text = "Confirm";
             btn_confirm.Enabled = false;
@@ -662,13 +683,27 @@ namespace Project_Yahiko
 
        void SetupRandomButton()
         {
-            btn_RollStats.Location = new Point(6, 13);
+            btn_RollStats.Location = new Point(124, 116);
             btn_RollStats.BringToFront();
             btn_RollStats.Enabled = true;
             btn_RollStats.Visible = true;
             lb_RollResult.Text = "";
-            lb_RollResult.Location = new Point(15, 13);
+            lb_RollResult.Location = new Point(127, 116);
             lb_RollResult.BringToFront();
+        }
+
+        private void ud_Age_ValueChanged(object sender, EventArgs e)
+        {
+            btn_confirm.Enabled = true;
+            btn_confirm.Visible = true;
+            btn_confirm.BringToFront();
+        }
+
+        private void ud_Height_ValueChanged(object sender, EventArgs e)
+        {
+            btn_confirm.Enabled = true;
+            btn_confirm.Visible = true;
+            btn_confirm.BringToFront();
         }
     }
 }

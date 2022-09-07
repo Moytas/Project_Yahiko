@@ -1091,7 +1091,55 @@ namespace Project_Yahiko
 
         }
 
-       
+        private void lb_FRT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_ShinobiIntroText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_RL_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_HS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_PointsPool_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_PP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_CW_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_DN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_MS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_OL_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btn_RemoveSpellP_Click(object sender, EventArgs e)
         {

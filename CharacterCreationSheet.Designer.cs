@@ -343,7 +343,7 @@
             this.tb_FirstName.Enabled = false;
             this.tb_FirstName.Location = new System.Drawing.Point(69, 10);
             this.tb_FirstName.Name = "tb_FirstName";
-            this.tb_FirstName.Size = new System.Drawing.Size(97, 20);
+            this.tb_FirstName.Size = new System.Drawing.Size(101, 20);
             this.tb_FirstName.TabIndex = 11;
             this.tb_FirstName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.tb_FirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
@@ -357,7 +357,7 @@
             this.cb_Race.FormattingEnabled = true;
             this.cb_Race.Location = new System.Drawing.Point(228, 9);
             this.cb_Race.Name = "cb_Race";
-            this.cb_Race.Size = new System.Drawing.Size(121, 21);
+            this.cb_Race.Size = new System.Drawing.Size(125, 21);
             this.cb_Race.TabIndex = 12;
             this.cb_Race.Visible = false;
             this.cb_Race.SelectedIndexChanged += new System.EventHandler(this.cb_Race_SelectedIndexChanged);
@@ -371,7 +371,7 @@
             this.cb_Class.FormattingEnabled = true;
             this.cb_Class.Location = new System.Drawing.Point(393, 10);
             this.cb_Class.Name = "cb_Class";
-            this.cb_Class.Size = new System.Drawing.Size(120, 21);
+            this.cb_Class.Size = new System.Drawing.Size(124, 21);
             this.cb_Class.TabIndex = 13;
             this.cb_Class.Visible = false;
             this.cb_Class.SelectedIndexChanged += new System.EventHandler(this.cb_Class_SelectedIndexChanged);
@@ -388,7 +388,7 @@
             "Onna"});
             this.cb_Gender.Location = new System.Drawing.Point(218, 43);
             this.cb_Gender.Name = "cb_Gender";
-            this.cb_Gender.Size = new System.Drawing.Size(85, 21);
+            this.cb_Gender.Size = new System.Drawing.Size(89, 21);
             this.cb_Gender.TabIndex = 14;
             this.cb_Gender.Visible = false;
             this.cb_Gender.SelectedIndexChanged += new System.EventHandler(this.cb_Gender_SelectedIndexChanged);
@@ -428,7 +428,7 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(786, 103);
+            this.groupBox1.Size = new System.Drawing.Size(790, 103);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             // 
@@ -488,6 +488,7 @@
             this.ud_Height.Size = new System.Drawing.Size(68, 20);
             this.ud_Height.TabIndex = 38;
             this.ud_Height.Visible = false;
+            this.ud_Height.ValueChanged += new System.EventHandler(this.ud_Height_ValueChanged);
             // 
             // lb_Height
             // 
@@ -509,6 +510,7 @@
             this.ud_Age.Size = new System.Drawing.Size(68, 20);
             this.ud_Age.TabIndex = 36;
             this.ud_Age.Visible = false;
+            this.ud_Age.ValueChanged += new System.EventHandler(this.ud_Age_ValueChanged);
             // 
             // lb_Age
             // 
@@ -541,7 +543,7 @@
             "Chaotic Evil"});
             this.cb_Alignment.Location = new System.Drawing.Point(576, 10);
             this.cb_Alignment.Name = "cb_Alignment";
-            this.cb_Alignment.Size = new System.Drawing.Size(88, 21);
+            this.cb_Alignment.Size = new System.Drawing.Size(92, 21);
             this.cb_Alignment.TabIndex = 34;
             this.cb_Alignment.Visible = false;
             this.cb_Alignment.SelectedIndexChanged += new System.EventHandler(this.cb_Alignment_SelectedIndexChanged);
@@ -599,7 +601,7 @@
             this.tb_LastName.Enabled = false;
             this.tb_LastName.Location = new System.Drawing.Point(69, 46);
             this.tb_LastName.Name = "tb_LastName";
-            this.tb_LastName.Size = new System.Drawing.Size(97, 20);
+            this.tb_LastName.Size = new System.Drawing.Size(101, 20);
             this.tb_LastName.TabIndex = 30;
             this.tb_LastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -797,7 +799,7 @@
             this.groupBox2.Controls.Add(this.lb_DexValue);
             this.groupBox2.Location = new System.Drawing.Point(12, 116);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(106, 194);
+            this.groupBox2.Size = new System.Drawing.Size(110, 194);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Stats";
@@ -868,7 +870,7 @@
             this.gb_Abilities.Controls.Add(this.label12);
             this.gb_Abilities.Location = new System.Drawing.Point(124, 116);
             this.gb_Abilities.Name = "gb_Abilities";
-            this.gb_Abilities.Size = new System.Drawing.Size(463, 194);
+            this.gb_Abilities.Size = new System.Drawing.Size(467, 194);
             this.gb_Abilities.TabIndex = 34;
             this.gb_Abilities.TabStop = false;
             this.gb_Abilities.Text = "Abilities";
@@ -1509,7 +1511,7 @@
             this.groupBox4.Controls.Add(this.ST_VSPoison);
             this.groupBox4.Location = new System.Drawing.Point(680, 180);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(111, 153);
+            this.groupBox4.Size = new System.Drawing.Size(122, 153);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Saving Throws";
@@ -1526,7 +1528,7 @@
             // lb_STSpellValue
             // 
             this.lb_STSpellValue.AutoSize = true;
-            this.lb_STSpellValue.Location = new System.Drawing.Point(77, 133);
+            this.lb_STSpellValue.Location = new System.Drawing.Point(103, 134);
             this.lb_STSpellValue.Name = "lb_STSpellValue";
             this.lb_STSpellValue.Size = new System.Drawing.Size(19, 13);
             this.lb_STSpellValue.TabIndex = 46;
@@ -1544,7 +1546,7 @@
             // lb_STBreathValue
             // 
             this.lb_STBreathValue.AutoSize = true;
-            this.lb_STBreathValue.Location = new System.Drawing.Point(78, 104);
+            this.lb_STBreathValue.Location = new System.Drawing.Point(103, 106);
             this.lb_STBreathValue.Name = "lb_STBreathValue";
             this.lb_STBreathValue.Size = new System.Drawing.Size(19, 13);
             this.lb_STBreathValue.TabIndex = 44;
@@ -1562,7 +1564,7 @@
             // lb_STPetrifyValue
             // 
             this.lb_STPetrifyValue.AutoSize = true;
-            this.lb_STPetrifyValue.Location = new System.Drawing.Point(77, 82);
+            this.lb_STPetrifyValue.Location = new System.Drawing.Point(103, 84);
             this.lb_STPetrifyValue.Name = "lb_STPetrifyValue";
             this.lb_STPetrifyValue.Size = new System.Drawing.Size(19, 13);
             this.lb_STPetrifyValue.TabIndex = 42;
@@ -1571,7 +1573,7 @@
             // lb_STRodModifier
             // 
             this.lb_STRodModifier.AutoSize = true;
-            this.lb_STRodModifier.Location = new System.Drawing.Point(13, 55);
+            this.lb_STRodModifier.Location = new System.Drawing.Point(10, 55);
             this.lb_STRodModifier.Name = "lb_STRodModifier";
             this.lb_STRodModifier.Size = new System.Drawing.Size(19, 13);
             this.lb_STRodModifier.TabIndex = 41;
@@ -1580,7 +1582,7 @@
             // lb_STRodValue
             // 
             this.lb_STRodValue.AutoSize = true;
-            this.lb_STRodValue.Location = new System.Drawing.Point(77, 53);
+            this.lb_STRodValue.Location = new System.Drawing.Point(103, 55);
             this.lb_STRodValue.Name = "lb_STRodValue";
             this.lb_STRodValue.Size = new System.Drawing.Size(19, 13);
             this.lb_STRodValue.TabIndex = 40;
@@ -1598,7 +1600,7 @@
             // lb_STPPValue
             // 
             this.lb_STPPValue.AutoSize = true;
-            this.lb_STPPValue.Location = new System.Drawing.Point(78, 24);
+            this.lb_STPPValue.Location = new System.Drawing.Point(103, 24);
             this.lb_STPPValue.Name = "lb_STPPValue";
             this.lb_STPPValue.Size = new System.Drawing.Size(19, 13);
             this.lb_STPPValue.TabIndex = 38;
@@ -1615,7 +1617,7 @@
             this.textBox3.Location = new System.Drawing.Point(36, 134);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(36, 19);
+            this.textBox3.Size = new System.Drawing.Size(53, 19);
             this.textBox3.TabIndex = 37;
             this.textBox3.Text = "Spell";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1631,7 +1633,7 @@
             this.ST_VSBreath.Location = new System.Drawing.Point(36, 101);
             this.ST_VSBreath.Multiline = true;
             this.ST_VSBreath.Name = "ST_VSBreath";
-            this.ST_VSBreath.Size = new System.Drawing.Size(36, 35);
+            this.ST_VSBreath.Size = new System.Drawing.Size(53, 35);
             this.ST_VSBreath.TabIndex = 36;
             this.ST_VSBreath.Text = "Breath Weapon";
             this.ST_VSBreath.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1647,7 +1649,7 @@
             this.ST_VSPetrify.Location = new System.Drawing.Point(36, 75);
             this.ST_VSPetrify.Multiline = true;
             this.ST_VSPetrify.Name = "ST_VSPetrify";
-            this.ST_VSPetrify.Size = new System.Drawing.Size(36, 28);
+            this.ST_VSPetrify.Size = new System.Drawing.Size(53, 28);
             this.ST_VSPetrify.TabIndex = 35;
             this.ST_VSPetrify.Text = "Petrify / Polymorph";
             this.ST_VSPetrify.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1663,7 +1665,7 @@
             this.ST_VSRod.Location = new System.Drawing.Point(36, 41);
             this.ST_VSRod.Multiline = true;
             this.ST_VSRod.Name = "ST_VSRod";
-            this.ST_VSRod.Size = new System.Drawing.Size(36, 33);
+            this.ST_VSRod.Size = new System.Drawing.Size(53, 33);
             this.ST_VSRod.TabIndex = 34;
             this.ST_VSRod.Text = "Rod,Staff Or Wand";
             this.ST_VSRod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1679,7 +1681,7 @@
             this.ST_VSPoison.Location = new System.Drawing.Point(36, 16);
             this.ST_VSPoison.Multiline = true;
             this.ST_VSPoison.Name = "ST_VSPoison";
-            this.ST_VSPoison.Size = new System.Drawing.Size(36, 29);
+            this.ST_VSPoison.Size = new System.Drawing.Size(53, 29);
             this.ST_VSPoison.TabIndex = 33;
             this.ST_VSPoison.Text = "Paralyze /\r\nPoison";
             this.ST_VSPoison.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1701,7 +1703,7 @@
             this.groupBox5.Controls.Add(this.lb_MoveBaseR);
             this.groupBox5.Location = new System.Drawing.Point(588, 221);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(93, 109);
+            this.groupBox5.Size = new System.Drawing.Size(97, 109);
             this.groupBox5.TabIndex = 35;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Movement";
@@ -1835,7 +1837,7 @@
             this.groupBox6.Controls.Add(this.lb_Suprised);
             this.groupBox6.Location = new System.Drawing.Point(14, 316);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(149, 94);
+            this.groupBox6.Size = new System.Drawing.Size(153, 94);
             this.groupBox6.TabIndex = 36;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Armor";
@@ -1916,7 +1918,7 @@
             this.tb_ACTotal.Location = new System.Drawing.Point(9, 19);
             this.tb_ACTotal.Multiline = true;
             this.tb_ACTotal.Name = "tb_ACTotal";
-            this.tb_ACTotal.Size = new System.Drawing.Size(28, 30);
+            this.tb_ACTotal.Size = new System.Drawing.Size(32, 30);
             this.tb_ACTotal.TabIndex = 33;
             this.tb_ACTotal.Text = "AC\r\n10\r\n  ";
             this.tb_ACTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1942,7 +1944,7 @@
             this.groupBox7.Controls.Add(this.lb_HPValue);
             this.groupBox7.Location = new System.Drawing.Point(704, 339);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(86, 37);
+            this.groupBox7.Size = new System.Drawing.Size(90, 37);
             this.groupBox7.TabIndex = 37;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Hit Points";
@@ -1964,7 +1966,7 @@
             this.groupBox8.Controls.Add(this.lb_WoundsValue);
             this.groupBox8.Location = new System.Drawing.Point(704, 374);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(86, 36);
+            this.groupBox8.Size = new System.Drawing.Size(90, 36);
             this.groupBox8.TabIndex = 38;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Wounds";
@@ -2004,7 +2006,7 @@
             this.groupBox9.Controls.Add(this.textBox8);
             this.groupBox9.Location = new System.Drawing.Point(164, 328);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(534, 82);
+            this.groupBox9.Size = new System.Drawing.Size(538, 82);
             this.groupBox9.TabIndex = 35;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Weapons";
@@ -2029,7 +2031,7 @@
             this.tb_AttAdjValue.Enabled = false;
             this.tb_AttAdjValue.Location = new System.Drawing.Point(189, 43);
             this.tb_AttAdjValue.Name = "tb_AttAdjValue";
-            this.tb_AttAdjValue.Size = new System.Drawing.Size(36, 20);
+            this.tb_AttAdjValue.Size = new System.Drawing.Size(40, 20);
             this.tb_AttAdjValue.TabIndex = 35;
             // 
             // label16
@@ -2052,7 +2054,7 @@
             this.tb_WeaponName.Enabled = false;
             this.tb_WeaponName.Location = new System.Drawing.Point(6, 43);
             this.tb_WeaponName.Name = "tb_WeaponName";
-            this.tb_WeaponName.Size = new System.Drawing.Size(151, 20);
+            this.tb_WeaponName.Size = new System.Drawing.Size(155, 20);
             this.tb_WeaponName.TabIndex = 33;
             // 
             // label15
@@ -2076,7 +2078,7 @@
             this.tb_WeaponSpeedValue.Enabled = false;
             this.tb_WeaponSpeedValue.Location = new System.Drawing.Point(489, 43);
             this.tb_WeaponSpeedValue.Name = "tb_WeaponSpeedValue";
-            this.tb_WeaponSpeedValue.Size = new System.Drawing.Size(31, 20);
+            this.tb_WeaponSpeedValue.Size = new System.Drawing.Size(35, 20);
             this.tb_WeaponSpeedValue.TabIndex = 31;
             // 
             // tb_RangeValue
@@ -2087,7 +2089,7 @@
             this.tb_RangeValue.Enabled = false;
             this.tb_RangeValue.Location = new System.Drawing.Point(416, 43);
             this.tb_RangeValue.Name = "tb_RangeValue";
-            this.tb_RangeValue.Size = new System.Drawing.Size(40, 20);
+            this.tb_RangeValue.Size = new System.Drawing.Size(44, 20);
             this.tb_RangeValue.TabIndex = 30;
             // 
             // textBox11
@@ -2101,7 +2103,7 @@
             this.textBox11.Location = new System.Drawing.Point(323, 19);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(88, 18);
+            this.textBox11.Size = new System.Drawing.Size(92, 18);
             this.textBox11.TabIndex = 29;
             this.textBox11.Text = "Damage (Sm/L)";
             // 
@@ -2113,7 +2115,7 @@
             this.tb_DmgLValue.Enabled = false;
             this.tb_DmgLValue.Location = new System.Drawing.Point(373, 43);
             this.tb_DmgLValue.Name = "tb_DmgLValue";
-            this.tb_DmgLValue.Size = new System.Drawing.Size(38, 20);
+            this.tb_DmgLValue.Size = new System.Drawing.Size(42, 20);
             this.tb_DmgLValue.TabIndex = 28;
             // 
             // tb_DmgSValue
@@ -2124,7 +2126,7 @@
             this.tb_DmgSValue.Enabled = false;
             this.tb_DmgSValue.Location = new System.Drawing.Point(323, 43);
             this.tb_DmgSValue.Name = "tb_DmgSValue";
-            this.tb_DmgSValue.Size = new System.Drawing.Size(45, 20);
+            this.tb_DmgSValue.Size = new System.Drawing.Size(49, 20);
             this.tb_DmgSValue.TabIndex = 26;
             // 
             // tb_WeaponTypeValue
@@ -2135,7 +2137,7 @@
             this.tb_WeaponTypeValue.Enabled = false;
             this.tb_WeaponTypeValue.Location = new System.Drawing.Point(458, 43);
             this.tb_WeaponTypeValue.Name = "tb_WeaponTypeValue";
-            this.tb_WeaponTypeValue.Size = new System.Drawing.Size(26, 20);
+            this.tb_WeaponTypeValue.Size = new System.Drawing.Size(30, 20);
             this.tb_WeaponTypeValue.TabIndex = 21;
             // 
             // tb_ThacValue
@@ -2146,7 +2148,7 @@
             this.tb_ThacValue.Enabled = false;
             this.tb_ThacValue.Location = new System.Drawing.Point(289, 43);
             this.tb_ThacValue.Name = "tb_ThacValue";
-            this.tb_ThacValue.Size = new System.Drawing.Size(25, 20);
+            this.tb_ThacValue.Size = new System.Drawing.Size(29, 20);
             this.tb_ThacValue.TabIndex = 19;
             // 
             // textBox7
@@ -2160,7 +2162,7 @@
             this.textBox7.Location = new System.Drawing.Point(189, 8);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(44, 27);
+            this.textBox7.Size = new System.Drawing.Size(48, 27);
             this.textBox7.TabIndex = 23;
             this.textBox7.Text = "Attack\r\nAdj";
             // 
@@ -2172,7 +2174,7 @@
             this.tb_DmgAdjValue.Enabled = false;
             this.tb_DmgAdjValue.Location = new System.Drawing.Point(239, 43);
             this.tb_DmgAdjValue.Name = "tb_DmgAdjValue";
-            this.tb_DmgAdjValue.Size = new System.Drawing.Size(28, 20);
+            this.tb_DmgAdjValue.Size = new System.Drawing.Size(32, 20);
             this.tb_DmgAdjValue.TabIndex = 17;
             // 
             // label2
@@ -2195,7 +2197,7 @@
             this.tb_NumAttValue.Enabled = false;
             this.tb_NumAttValue.Location = new System.Drawing.Point(158, 43);
             this.tb_NumAttValue.Name = "tb_NumAttValue";
-            this.tb_NumAttValue.Size = new System.Drawing.Size(23, 20);
+            this.tb_NumAttValue.Size = new System.Drawing.Size(27, 20);
             this.tb_NumAttValue.TabIndex = 15;
             // 
             // lb_NumAtt
@@ -2233,7 +2235,7 @@
             this.textBox8.Location = new System.Drawing.Point(235, 7);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(48, 30);
+            this.textBox8.Size = new System.Drawing.Size(52, 30);
             this.textBox8.TabIndex = 24;
             this.textBox8.Text = "Damage\r\nAdj";
             // 
@@ -2242,7 +2244,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(804, 451);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox7);
