@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C8C310F-3C5E-4971-A175-13F9DC34E01B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Project_Yahiko</RootNamespace>
+    <AssemblyName>Project_Yahiko</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\CharacterSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Characters\CharacterSheet.Designer.cs">
+      <DependentUpon>CharacterSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\Items\Armor.cs" />
+    <Compile Include="Characters\Enemy\Monster.cs" />
+    <Compile Include="Characters\Enemy\Undead.cs" />
+    <Compile Include="Characters\Player\Bushi.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="CharacterCreationSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharacterCreationSheet.Designer.cs">
+      <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\WeaponProficiency.cs" />
+    <Compile Include="Dice.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LevelUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LevelUp.Designer.cs">
+      <DependentUpon>LevelUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameIntro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameIntro.Designer.cs">
+      <DependentUpon>GameIntro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DMOptions.cs" />
+    <Compile Include="Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\Items\Items.cs" />
+    <Compile Include="Characters\Player\Onmyoji.cs" />
+    <Compile Include="Characters\Player\Player.cs" />
+    <Compile Include="Characters\Player\Shinobi.cs" />
+    <Compile Include="Characters\Player\Sohei.cs" />
+    <Compile Include="Characters\Proficiency.cs" />
+    <Compile Include="MainGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainGame.Designer.cs">
+      <DependentUpon>MainGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\NonWeapProficiency.cs" />
+    <Compile Include="NonWeapProfPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NonWeapProfPicker.Designer.cs">
+      <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Characters\Race.cs" />
+    <Compile Include="Characters\SavThrows.cs" />
+    <Compile Include="SettingsManager.cs" />
+    <Compile Include="Shop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shop.Designer.cs">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\Specialization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Characters\Specialization.Designer.cs">
+      <DependentUpon>Specialization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\Spell.cs" />
+    <Compile Include="Characters\SpellBook.cs" />
+    <Compile Include="Characters\Stats.cs" />
+    <Compile Include="Characters\ThiefSkills.cs" />
+    <Compile Include="Characters\Items\Weapon.cs" />
+    <Compile Include="Characters\Items\SpellComponent.cs" />
+    <Compile Include="SpellPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpellPicker.Designer.cs">
+      <DependentUpon>SpellPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThiefSkillsAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThiefSkillsAssignment.Designer.cs">
+      <DependentUpon>ThiefSkillsAssignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeaponPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeaponPicker.Designer.cs">
+      <DependentUpon>WeaponPicker.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CharacterCreationSheet.resx">
+      <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Characters\CharacterSheet.resx">
+      <DependentUpon>CharacterSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameIntro.resx">
+      <DependentUpon>GameIntro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainGame.resx">
+      <DependentUpon>MainGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NonWeapProfPicker.resx">
+      <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Shop.resx">
+      <DependentUpon>Shop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Characters\Specialization.resx">
+      <DependentUpon>Specialization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpellPicker.resx">
+      <DependentUpon>SpellPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThiefSkillsAssignment.resx">
+      <DependentUpon>ThiefSkillsAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeaponPicker.resx">
+      <DependentUpon>WeaponPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>
