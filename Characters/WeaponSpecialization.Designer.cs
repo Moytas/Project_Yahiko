@@ -1,6 +1,6 @@
 ﻿namespace Project_Yahiko
 {
-    partial class Form1
+    partial class WeaponSpecialization
     {
         /// <summary>
         /// Required designer variable.

@@ -49,12 +49,12 @@ namespace Project_Yahiko
                         Console.WriteLine("not ok! ");
                     }
                     this.Text = "Bushi specialization";
-                    tabControl1.SelectedTab = tabSamurai;
+                    //tabControl1.SelectedTab = tabSamurai;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabMonk);
                     tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabProficiencies);
-                    btn_SamuraiAccept.Enabled = false;
+                    //btn_SamuraiAccept.Enabled = false;
                     PopulateOptionsWeapon();
                     ShowWarriorInfo();
                     break;
@@ -70,7 +70,7 @@ namespace Project_Yahiko
                     tabControl1.SelectedTab = tabShinobi;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabMonk);
-                    tabControl1.TabPages.Remove(tabSamurai);
+                   // tabControl1.TabPages.Remove(tabSamurai);
                     tabControl1.TabPages.Remove(tabProficiencies);
                     AdjustThiefSkills();
                     ShowInfoThiefSkills();
@@ -87,7 +87,7 @@ namespace Project_Yahiko
                     tabControl1.SelectedTab = tabMonk;
                     tabControl1.TabPages.Remove(tabMage);
                     tabControl1.TabPages.Remove(tabShinobi);
-                    tabControl1.TabPages.Remove(tabSamurai);
+                    //tabControl1.TabPages.Remove(tabSamurai);
                     tabControl1.TabPages.Remove(tabProficiencies);
                     InitialConfig_Priest();
                     break;
@@ -104,7 +104,7 @@ namespace Project_Yahiko
                     tabControl1.TabPages.Remove(tabProficiencies);
                     tabControl1.TabPages.Remove(tabShinobi);
                     tabControl1.TabPages.Remove(tabMonk);
-                    tabControl1.TabPages.Remove(tabSamurai);
+                    //tabControl1.TabPages.Remove(tabSamurai);
                     InitialConfig_Mage();
                     break;
             }
@@ -136,7 +136,7 @@ namespace Project_Yahiko
 
         private void ShowWarriorInfo()
         {
-            lb_SamuraiIntroText.Text = introText_Samurai + "Remaining Weapon Proficiencies: " + player.NumWeaponProf;
+            //lb_SamuraiIntroText.Text = introText_Samurai + "Remaining Weapon Proficiencies: " + player.NumWeaponProf;
         }
 
         private void ShowMageInfo()
@@ -486,10 +486,11 @@ namespace Project_Yahiko
         #region Warrior
         private void ShowWeaponText() //Updates/shows the remaining weapon proficiencies for warrior
         {
-            lb_SamuraiIntroText.Text = introText_Samurai + "Remaining proficiencies: " + player.NumWeaponProf;
+            //lb_SamuraiIntroText.Text = introText_Samurai + "Remaining proficiencies: " + player.NumWeaponProf;
         }
         private void btn_SamuraiAccept_Click(object sender, EventArgs e)
         {
+            /*
             if(lb_SpecializationList.Items.Count > 0)
             {
                 foreach(Weapon w in DM.WeaponsList)
@@ -506,6 +507,7 @@ namespace Project_Yahiko
             {
                 Warrior.WeaponProf.Add(new WeaponProficiency(lb_ProficientList.Items[i].ToString()));
             }
+            */
             showingWeaponProf = false;
             ShowProficienciesTab();
         }
@@ -514,12 +516,12 @@ namespace Project_Yahiko
             // Katana / Bokken * Ninja - to * No - daichi * Tetsu - to * Tanto / Yoroi - toshi * Wakizashi *
            foreach(Weapon w in DM.WeaponsList)
             {
-                lb_AvailableList.Items.Add(w.Name);
+                //lb_AvailableList.Items.Add(w.Name);
             }
         }
         private void btn_LearnAvProf_Clicked(object sender, EventArgs e) //add from available weapon list to specialized
         {
-            
+            /*
             if (lb_AvailableList.Text.Contains("Daikyu") || lb_AvailableList.Text.Contains("Hankyu") || lb_AvailableList.Text.Contains("Bow"))
             {
 
@@ -543,14 +545,16 @@ namespace Project_Yahiko
             }
             if(player.NumWeaponProf == 0)
             {
-                btn_SamuraiAccept.Enabled = true;
-                btn_LearnProfSpec.Enabled = false;
-                btn_LearnAvProf.Enabled = false;
+                //btn_SamuraiAccept.Enabled = true;
+               // btn_LearnProfSpec.Enabled = false;
+              //  btn_LearnAvProf.Enabled = false;
             }
+            */
             ShowWeaponText();
         }
         private void btn_LearnProfSpec_Click(object sender, EventArgs e)
         {
+            /*
             if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
             {
                 if (player.NumWeaponProf > 0 && player.NumWeaponProf - 3 >= 0)
@@ -577,11 +581,13 @@ namespace Project_Yahiko
                 btn_LearnAvProf.Enabled = false;
                 btn_LearnProfSpec.Enabled = false;
             }
+            */
             ShowWeaponText();
         }
 
         private void btn_ForgetAvProf_Click(object sender, EventArgs e) // Unlearn from specialized add to available weapon
         {
+            /*
             if (lb_ProficientList.Text.Contains("Daikyu") || lb_ProficientList.Text.Contains("Hankyu") || lb_ProficientList.Text.Contains("Bow"))
             {
                 player.NumWeaponProf += 3;
@@ -603,7 +609,7 @@ namespace Project_Yahiko
                 btn_LearnProfSpec.Enabled = true;
                 btn_SamuraiAccept.Enabled = false;
             }
-
+            */
             ShowWeaponText();
         }
 
@@ -623,6 +629,7 @@ namespace Project_Yahiko
 
         private void btn_ForgetProfSpec_Click(object sender, EventArgs e)
         {
+            /*
             if (lb_SpecializationList.Text.Contains("Daikyu") || lb_SpecializationList.Text.Contains("Hankyu") || lb_SpecializationList.Text.Contains("Bow"))
             {
                 player.NumWeaponProf += 3;
@@ -643,6 +650,7 @@ namespace Project_Yahiko
                 btn_LearnProfSpec.Enabled = true;
                 btn_SamuraiAccept.Enabled = false;
             }
+            */
             ShowWeaponText();
         }
         #endregion

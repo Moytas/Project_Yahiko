@@ -57,24 +57,24 @@
     <Compile Include="Characters\Enemy\Undead.cs" />
     <Compile Include="Characters\Player\Bushi.cs" />
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="CharacterCreationSheet.cs">
+    <Compile Include="Characters\CharacterCreationSheet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharacterCreationSheet.Designer.cs">
+    <Compile Include="Characters\CharacterCreationSheet.Designer.cs">
       <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\WeaponProficiency.cs" />
     <Compile Include="Dice.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Characters\WeaponSpecialization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Characters\WeaponSpecialization.Designer.cs">
+      <DependentUpon>WeaponSpecialization.cs</DependentUpon>
     </Compile>
-    <Compile Include="LevelUp.cs">
+    <Compile Include="Characters\LevelUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LevelUp.Designer.cs">
+    <Compile Include="Characters\LevelUp.Designer.cs">
       <DependentUpon>LevelUp.cs</DependentUpon>
     </Compile>
     <Compile Include="GameIntro.cs">
@@ -84,10 +84,10 @@
       <DependentUpon>GameIntro.cs</DependentUpon>
     </Compile>
     <Compile Include="DMOptions.cs" />
-    <Compile Include="Inventory.cs">
+    <Compile Include="Characters\Inventory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory.Designer.cs">
+    <Compile Include="Characters\Inventory.Designer.cs">
       <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\Items\Items.cs" />
@@ -103,10 +103,10 @@
       <DependentUpon>MainGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\NonWeapProficiency.cs" />
-    <Compile Include="NonWeapProfPicker.cs">
+    <Compile Include="Characters\NonWeapProfPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NonWeapProfPicker.Designer.cs">
+    <Compile Include="Characters\NonWeapProfPicker.Designer.cs">
       <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -132,43 +132,43 @@
     <Compile Include="Characters\ThiefSkills.cs" />
     <Compile Include="Characters\Items\Weapon.cs" />
     <Compile Include="Characters\Items\SpellComponent.cs" />
-    <Compile Include="SpellPicker.cs">
+    <Compile Include="Characters\SpellPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SpellPicker.Designer.cs">
+    <Compile Include="Characters\SpellPicker.Designer.cs">
       <DependentUpon>SpellPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThiefSkillsAssignment.cs">
+    <Compile Include="Characters\ThiefSkillsAssignment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThiefSkillsAssignment.Designer.cs">
+    <Compile Include="Characters\ThiefSkillsAssignment.Designer.cs">
       <DependentUpon>ThiefSkillsAssignment.cs</DependentUpon>
     </Compile>
-    <Compile Include="WeaponPicker.cs">
+    <Compile Include="Characters\WeaponPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WeaponPicker.Designer.cs">
+    <Compile Include="Characters\WeaponPicker.Designer.cs">
       <DependentUpon>WeaponPicker.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CharacterCreationSheet.resx">
+    <EmbeddedResource Include="Characters\CharacterCreationSheet.resx">
       <DependentUpon>CharacterCreationSheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Characters\CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Characters\WeaponSpecialization.resx">
+      <DependentUpon>WeaponSpecialization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameIntro.resx">
       <DependentUpon>GameIntro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory.resx">
+    <EmbeddedResource Include="Characters\Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainGame.resx">
       <DependentUpon>MainGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NonWeapProfPicker.resx">
+    <EmbeddedResource Include="Characters\NonWeapProfPicker.resx">
       <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -186,13 +186,13 @@
     <EmbeddedResource Include="Characters\Specialization.resx">
       <DependentUpon>Specialization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SpellPicker.resx">
+    <EmbeddedResource Include="Characters\SpellPicker.resx">
       <DependentUpon>SpellPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThiefSkillsAssignment.resx">
+    <EmbeddedResource Include="Characters\ThiefSkillsAssignment.resx">
       <DependentUpon>ThiefSkillsAssignment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WeaponPicker.resx">
+    <EmbeddedResource Include="Characters\WeaponPicker.resx">
       <DependentUpon>WeaponPicker.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

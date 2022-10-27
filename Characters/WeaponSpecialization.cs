@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Project_Yahiko
 {
-    public partial class Form1 : Form
+    public partial class WeaponSpecialization : Form
     {
-        public Form1()
+        public WeaponSpecialization()
         {
             InitializeComponent();
         }
