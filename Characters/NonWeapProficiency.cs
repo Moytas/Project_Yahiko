@@ -18,7 +18,7 @@ namespace Project_Yahiko
         };
 
         public Type ProfType;
-        public int RequiredSlots;
+        public int Cost;
         public string Ability;
         public int Modifier;
 
@@ -27,7 +27,7 @@ namespace Project_Yahiko
             Name = name;
             Description = description;
             ProfType = type;
-            RequiredSlots = reqSlot;
+            Cost = reqSlot;
             Ability = ability;
             Modifier = mod;
         }

@@ -29,48 +29,49 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Confirm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btn_ForgetSpecialized = new System.Windows.Forms.Button();
+            this.btn_LearnProficient = new System.Windows.Forms.Button();
+            this.btn_ForgetProficient = new System.Windows.Forms.Button();
+            this.lb_Specialized = new System.Windows.Forms.ListBox();
+            this.lb_Proficient = new System.Windows.Forms.ListBox();
+            this.btn_LearnAvailable = new System.Windows.Forms.Button();
+            this.lb_Available = new System.Windows.Forms.ListBox();
+            this.lbl_WeaponSpecializationInfo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_Confirm);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Controls.Add(this.listBox2);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.listBox3);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.btn_ForgetSpecialized);
+            this.panel1.Controls.Add(this.btn_LearnProficient);
+            this.panel1.Controls.Add(this.btn_ForgetProficient);
+            this.panel1.Controls.Add(this.lb_Specialized);
+            this.panel1.Controls.Add(this.lb_Proficient);
+            this.panel1.Controls.Add(this.btn_LearnAvailable);
+            this.panel1.Controls.Add(this.lb_Available);
+            this.panel1.Controls.Add(this.lbl_WeaponSpecializationInfo);
             this.panel1.Location = new System.Drawing.Point(2, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(661, 256);
             this.panel1.TabIndex = 13;
             // 
-            // button1
+            // btn_Confirm
             // 
-            this.button1.Location = new System.Drawing.Point(281, 221);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Confirm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Confirm.Location = new System.Drawing.Point(281, 221);
+            this.btn_Confirm.Name = "btn_Confirm";
+            this.btn_Confirm.Size = new System.Drawing.Size(51, 23);
+            this.btn_Confirm.TabIndex = 23;
+            this.btn_Confirm.Text = "Confirm";
+            this.btn_Confirm.UseVisualStyleBackColor = true;
+            this.btn_Confirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // label1
             // 
@@ -99,82 +100,86 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "Available";
             // 
-            // button2
+            // btn_ForgetSpecialized
             // 
-            this.button2.Location = new System.Drawing.Point(415, 153);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(51, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Forget";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_ForgetSpecialized.Location = new System.Drawing.Point(415, 153);
+            this.btn_ForgetSpecialized.Name = "btn_ForgetSpecialized";
+            this.btn_ForgetSpecialized.Size = new System.Drawing.Size(51, 23);
+            this.btn_ForgetSpecialized.TabIndex = 19;
+            this.btn_ForgetSpecialized.Text = "Forget";
+            this.btn_ForgetSpecialized.UseVisualStyleBackColor = true;
+            this.btn_ForgetSpecialized.Click += new System.EventHandler(this.btn_ForgetSpecialized_Click);
             // 
-            // button3
+            // btn_LearnProficient
             // 
-            this.button3.Location = new System.Drawing.Point(415, 115);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(51, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Learn";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_LearnProficient.Location = new System.Drawing.Point(415, 115);
+            this.btn_LearnProficient.Name = "btn_LearnProficient";
+            this.btn_LearnProficient.Size = new System.Drawing.Size(51, 23);
+            this.btn_LearnProficient.TabIndex = 18;
+            this.btn_LearnProficient.Text = "Learn";
+            this.btn_LearnProficient.UseVisualStyleBackColor = true;
+            this.btn_LearnProficient.Click += new System.EventHandler(this.btn_LearnProficient_Click);
             // 
-            // button4
+            // btn_ForgetProficient
             // 
-            this.button4.Location = new System.Drawing.Point(176, 153);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(51, 23);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Forget";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_ForgetProficient.Location = new System.Drawing.Point(176, 153);
+            this.btn_ForgetProficient.Name = "btn_ForgetProficient";
+            this.btn_ForgetProficient.Size = new System.Drawing.Size(51, 23);
+            this.btn_ForgetProficient.TabIndex = 17;
+            this.btn_ForgetProficient.Text = "Forget";
+            this.btn_ForgetProficient.UseVisualStyleBackColor = true;
+            this.btn_ForgetProficient.Click += new System.EventHandler(this.btn_ForgetProficient_Click);
             // 
-            // listBox1
+            // lb_Specialized
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(481, 99);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 16;
+            this.lb_Specialized.FormattingEnabled = true;
+            this.lb_Specialized.Location = new System.Drawing.Point(481, 99);
+            this.lb_Specialized.Name = "lb_Specialized";
+            this.lb_Specialized.Size = new System.Drawing.Size(120, 95);
+            this.lb_Specialized.TabIndex = 16;
             // 
-            // listBox2
+            // lb_Proficient
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(251, 99);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 95);
-            this.listBox2.TabIndex = 15;
+            this.lb_Proficient.FormattingEnabled = true;
+            this.lb_Proficient.Location = new System.Drawing.Point(251, 99);
+            this.lb_Proficient.Name = "lb_Proficient";
+            this.lb_Proficient.Size = new System.Drawing.Size(120, 95);
+            this.lb_Proficient.TabIndex = 15;
             // 
-            // button5
+            // btn_LearnAvailable
             // 
-            this.button5.Location = new System.Drawing.Point(176, 115);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(51, 23);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Learn";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_LearnAvailable.Location = new System.Drawing.Point(176, 115);
+            this.btn_LearnAvailable.Name = "btn_LearnAvailable";
+            this.btn_LearnAvailable.Size = new System.Drawing.Size(51, 23);
+            this.btn_LearnAvailable.TabIndex = 14;
+            this.btn_LearnAvailable.Text = "Learn";
+            this.btn_LearnAvailable.UseVisualStyleBackColor = true;
+            this.btn_LearnAvailable.Click += new System.EventHandler(this.btn_LearnAvailable_Click);
             // 
-            // listBox3
+            // lb_Available
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(29, 99);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(115, 95);
-            this.listBox3.TabIndex = 13;
+            this.lb_Available.FormattingEnabled = true;
+            this.lb_Available.Location = new System.Drawing.Point(29, 99);
+            this.lb_Available.Name = "lb_Available";
+            this.lb_Available.Size = new System.Drawing.Size(115, 95);
+            this.lb_Available.TabIndex = 13;
             // 
-            // label4
+            // lbl_WeaponSpecializationInfo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "label4";
+            this.lbl_WeaponSpecializationInfo.AutoSize = true;
+            this.lbl_WeaponSpecializationInfo.Location = new System.Drawing.Point(26, 17);
+            this.lbl_WeaponSpecializationInfo.Name = "lbl_WeaponSpecializationInfo";
+            this.lbl_WeaponSpecializationInfo.Size = new System.Drawing.Size(35, 13);
+            this.lbl_WeaponSpecializationInfo.TabIndex = 12;
+            this.lbl_WeaponSpecializationInfo.Text = "label4";
             // 
-            // Form1
+            // WeaponSpecialization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(667, 264);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "WeaponSpecialization";
             this.Text = "Weapon Specialization";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -185,17 +190,17 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Confirm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_ForgetSpecialized;
+        private System.Windows.Forms.Button btn_LearnProficient;
+        private System.Windows.Forms.Button btn_ForgetProficient;
+        private System.Windows.Forms.ListBox lb_Specialized;
+        private System.Windows.Forms.ListBox lb_Proficient;
+        private System.Windows.Forms.Button btn_LearnAvailable;
+        private System.Windows.Forms.ListBox lb_Available;
+        private System.Windows.Forms.Label lbl_WeaponSpecializationInfo;
     }
 }

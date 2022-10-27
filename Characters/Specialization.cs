@@ -374,9 +374,9 @@ namespace Project_Yahiko
                 {
                     if (p.Name == lb_AvailableNonWeaponList.Text)
                     {
-                        if (player.NumNonWeaponProf - p.RequiredSlots >= 0)
+                        if (player.NumNonWeaponProf - p.Cost >= 0)
                         {
-                            player.NumNonWeaponProf -= p.RequiredSlots;
+                            player.NumNonWeaponProf -= p.Cost;
                             lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.Text);
                             lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
                             if(player.NumNonWeaponProf == 0)
@@ -411,28 +411,28 @@ namespace Project_Yahiko
                 {
                     for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
                     {
-                        Thief.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                        //Thief.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
                     }
                 }
                 else if (Warrior.FirstName == player.FirstName)
                 {
                     for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
                     {
-                        Warrior.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                       // Warrior.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
                     }
                 }
                 else if (Mage.FirstName == player.FirstName)
                 {
                     for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
                     {
-                        Mage.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                       // Mage.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
                     }
                 }
                 else if (Priest.FirstName == player.FirstName)
                 {
                     for (int i = 0; i < lb_LearnedProficienies.Items.Count; i++)
                     {
-                        Priest.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
+                        //Priest.WeaponProf.Add(new WeaponProficiency(lb_LearnedProficienies.Items[i].ToString()));
                     }
                 }
                 ShowProficienciesTab();

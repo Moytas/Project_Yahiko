@@ -428,7 +428,7 @@ namespace Project_Yahiko
                     switch(_player.CharacterClass)
                     {
                         case 1:
-                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization();
+                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_player);
                             weaponSpecializationForm.Show();
                             break;
                         case 2:
@@ -439,14 +439,22 @@ namespace Project_Yahiko
                             break;
                         case 4:
                             break;
-
                     }
-                    //Specialization spec = new Specialization(_player);
-                    //spec.Show();
-                    //btn_confirm.Enabled = true;
-                    //btn_confirm.Visible = true;
-                    //btn_Restart.Enabled = false;
-                    //btn_Restart.Visible = false;
+                    break;
+                case 14:
+                    switch (_player.CharacterClass)
+                    {
+                        case 1:
+                            NonWeapProfPicker nonWeapForm = new NonWeapProfPicker(_player);
+                            nonWeapForm.Show();
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
                     break;
                 
             }

@@ -18,6 +18,7 @@ namespace Project_Yahiko
             CreateSpells_Priest();
             PopulateProfLists();
             PopulateWeaponList();
+            PopulateWeaponProfList();
         }
 
         public enum Clans
@@ -437,12 +438,13 @@ namespace Project_Yahiko
         #endregion
         #region Proficiencies
         public List<NonWeapProficiency> NonWeaponProficiencies = new List<NonWeapProficiency>();
+        public List<WeaponProficiency> WeaponProficiencies = new List<WeaponProficiency>();
         //public List<Proficiency> Proficiencies_Warrior = new List<Proficiency>();
         //public List<Proficiency> Proficiencies_Thief = new List<Proficiency>();
         //public List<Proficiency> Proficiencies_Mage = new List<Proficiency>();
         //public List<Proficiency> Proficiencies_Priest = new List<Proficiency>();
 
-        public void PopulateProfLists()
+        void PopulateProfLists()
         {
             NonWeaponProficiencies.Add(new NonWeapProficiency("Agriculture", "", NonWeapProficiency.Type.General, 1, "INT", 0));
             NonWeaponProficiencies.Add(new NonWeapProficiency("Animal Handling", "", NonWeapProficiency.Type.General, 1, "WIS", -1));
@@ -531,6 +533,15 @@ namespace Project_Yahiko
             NonWeaponProficiencies.Add(new NonWeapProficiency("Religion", "", NonWeapProficiency.Type.Mage, 1, "WIS", 0));
             NonWeaponProficiencies.Add(new NonWeapProficiency("Spellcraft", "", NonWeapProficiency.Type.Mage, 1, "INT", -2));
 
+        }
+
+        void PopulateWeaponProfList()
+        {
+            foreach (Weapon w in WeaponsList)
+            {
+                int cost = (w.Name == "Daikyu" || w.Name == "Hankyu") ? 2 : 1;
+                WeaponProficiencies.Add(new WeaponProficiency(w.Name, cost));
+            }
         }
         #endregion
         #region Weapons
