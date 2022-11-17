@@ -63,22 +63,7 @@ namespace Project_Yahiko
         {
             if(e.KeyCode == Keys.Enter)
             {
-                if (tb_FirstName.Enabled)
-                {
-                    _player.FirstName = tb_FirstName.Text;
-                    tb_FirstName.Enabled = false;
-                    tb_LastName.Enabled = true;
-                    tb_LastName.Focus();
-                }
-                else
-                {
-                    _player.LastName = tb_LastName.Text;
-                    btn_RandomName.Enabled = false;
-                    btn_RandomName.Visible = false;
-                    tb_LastName.Enabled = false;
-                    btn_confirm.Enabled = true;
-                    btn_confirm.Visible = true;
-                }
+               
             }
         }
 
@@ -397,22 +382,49 @@ namespace Project_Yahiko
                     }
                     
                     cb_Gender.Enabled = false;
-                    btn_confirm.Enabled = false;
-                    btn_confirm.Visible = false;
-                    
+                    //btn_confirm.Enabled = false;
+                    //btn_confirm.Visible = false;
+                    btn_confirm.Location = new Point(ud_Height.Location.X + ud_Height.Width, ud_Height.Location.Y);
                     break;
-                case 11:
-                    Specialization spec = new Specialization(_player);
-                    spec.Show();
-                    btn_confirm.Enabled = true;
-                    btn_confirm.Visible = false;
-                    btn_Restart.Enabled = false;
-                    btn_Restart.Visible = false;
-                    break;
+                
                 case 10://Height & Age
-                    NameEnable(); 
+                    NameEnable();
+                    break;
+                case 11://First Name
+                    _player.FirstName = tb_FirstName.Text;
+                    tb_FirstName.Enabled = false;
+                    tb_LastName.Enabled = true;
+                    tb_LastName.Focus();
+                    break;
+                case 12://Last name
+                    _player.LastName = tb_LastName.Text;
+                    btn_RandomName.Enabled = false;
+                    btn_RandomName.Visible = false;
+                    tb_LastName.Enabled = false;
                     btn_confirm.Text = "Continue";
                     btn_confirm.Location = new Point(620, 378);
+                    btn_confirm.Enabled = true;
+                    //btn_confirm.Visible = false;
+                    break;
+                case 13://next form
+                    btn_Restart.Enabled = false;
+                    btn_Restart.Visible = false;
+                    //DECIDE NEXT FORM
+                    switch(_player.CharacterClass)
+                    {
+                        case 1://Warrior
+                            _Bushi =  new Bushi(_player);
+                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_Bushi);
+                            weaponSpecializationForm.Show();
+                            this.Hide();
+                            break;
+                        case 2://Thief
+                            break;
+                        case 3://Priest?
+                            break;
+                        case 4://Mage?
+                            break;
+                    }
                     break;
             }
             _index++;

@@ -82,7 +82,7 @@
             this.btn_AddNonWeaponProf.TabIndex = 14;
             this.btn_AddNonWeaponProf.Text = "Add";
             this.btn_AddNonWeaponProf.UseVisualStyleBackColor = true;
-            this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.btn_AddNonWeaponProf_Click);
+  //          this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.btn_AddNonWeaponProf_Click);
             // 
             // btn_ConfirmProf
             // 

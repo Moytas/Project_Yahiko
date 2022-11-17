@@ -18,13 +18,22 @@ namespace Project_Yahiko
         {
             FirstName = p.FirstName;
             LastName = p.LastName;
+            
             CharacterClass = 1;
+            
+            CharacterRace = p.CharacterRace;
+            MovementRate = p.MovementRate;
+
+            NumWeaponProf = p.NumWeaponProf;
+            NumNonWeaponProf = p.NumNonWeaponProf;
+
             XP = p.XP;
             XPToNext = p.XPToNext;
+            
             CharacterStats = p.CharacterStats;
             EquipedArmor = p.EquipedArmor;
             EquipedWeapon = p.EquipedWeapon;
-            Console.WriteLine("char race = " + CharacterRace + " vs p.char race= " + p.CharacterRace);
+            
         }
 
         void SetInitialMoney()

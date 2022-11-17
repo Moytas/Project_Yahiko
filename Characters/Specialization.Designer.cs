@@ -179,7 +179,7 @@
             this.btn_RemoveSpellP.TabIndex = 8;
             this.btn_RemoveSpellP.Text = "Remove";
             this.btn_RemoveSpellP.UseVisualStyleBackColor = true;
-            this.btn_RemoveSpellP.Click += new System.EventHandler(this.btn_RemoveSpellP_Click);
+          //  this.btn_RemoveSpellP.Click += new System.EventHandler(this.btn_RemoveSpellP_Click);
             // 
             // btn_AddSpellP
             // 
@@ -189,7 +189,7 @@
             this.btn_AddSpellP.TabIndex = 7;
             this.btn_AddSpellP.Text = "Add";
             this.btn_AddSpellP.UseVisualStyleBackColor = true;
-            this.btn_AddSpellP.Click += new System.EventHandler(this.btn_AddSpellP_Click);
+  //          this.btn_AddSpellP.Click += new System.EventHandler(this.btn_AddSpellP_Click);
             // 
             // lb_PriestInfoText
             // 
@@ -209,7 +209,7 @@
             this.btn_confirmPriest.TabIndex = 5;
             this.btn_confirmPriest.Text = "Confirm";
             this.btn_confirmPriest.UseVisualStyleBackColor = true;
-            this.btn_confirmPriest.Click += new System.EventHandler(this.btn_confirmPriest_Click);
+       //     this.btn_confirmPriest.Click += new System.EventHandler(this.btn_confirmPriest_Click);
             // 
             // lb_PriestSpellBook
             // 
@@ -218,7 +218,7 @@
             this.lb_PriestSpellBook.Name = "lb_PriestSpellBook";
             this.lb_PriestSpellBook.Size = new System.Drawing.Size(120, 95);
             this.lb_PriestSpellBook.TabIndex = 4;
-            this.lb_PriestSpellBook.SelectedIndexChanged += new System.EventHandler(this.lb_PriestSpellBook_SelectedIndexChanged);
+    //        this.lb_PriestSpellBook.SelectedIndexChanged += new System.EventHandler(this.lb_PriestSpellBook_SelectedIndexChanged);
             // 
             // lb_AvailablePriestSpells
             // 
@@ -227,7 +227,7 @@
             this.lb_AvailablePriestSpells.Name = "lb_AvailablePriestSpells";
             this.lb_AvailablePriestSpells.Size = new System.Drawing.Size(120, 95);
             this.lb_AvailablePriestSpells.TabIndex = 3;
-            this.lb_AvailablePriestSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailablePriestSpells_SelectedIndexChanged);
+       //     this.lb_AvailablePriestSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailablePriestSpells_SelectedIndexChanged);
             // 
             // tabMage
             // 
@@ -281,7 +281,7 @@
             this.btn_RemoveSpellM.TabIndex = 4;
             this.btn_RemoveSpellM.Text = "Remove";
             this.btn_RemoveSpellM.UseVisualStyleBackColor = true;
-            this.btn_RemoveSpellM.Click += new System.EventHandler(this.btn_RemoveSpellM_Click);
+       //     this.btn_RemoveSpellM.Click += new System.EventHandler(this.btn_RemoveSpellM_Click);
             // 
             // btn_AddSpellM
             // 
@@ -291,7 +291,7 @@
             this.btn_AddSpellM.TabIndex = 3;
             this.btn_AddSpellM.Text = "Add";
             this.btn_AddSpellM.UseVisualStyleBackColor = true;
-            this.btn_AddSpellM.Click += new System.EventHandler(this.btn_AddSpellM_Click);
+      //      this.btn_AddSpellM.Click += new System.EventHandler(this.btn_AddSpellM_Click);
             // 
             // btn_ConfirmMage
             // 
@@ -302,7 +302,7 @@
             this.btn_ConfirmMage.TabIndex = 2;
             this.btn_ConfirmMage.Text = "Confirm";
             this.btn_ConfirmMage.UseVisualStyleBackColor = true;
-            this.btn_ConfirmMage.Click += new System.EventHandler(this.btn_ConfirmMage_Click);
+     //       this.btn_ConfirmMage.Click += new System.EventHandler(this.btn_ConfirmMage_Click);
             // 
             // lb_MageSpellBook
             // 
@@ -311,7 +311,7 @@
             this.lb_MageSpellBook.Name = "lb_MageSpellBook";
             this.lb_MageSpellBook.Size = new System.Drawing.Size(120, 95);
             this.lb_MageSpellBook.TabIndex = 1;
-            this.lb_MageSpellBook.SelectedIndexChanged += new System.EventHandler(this.lb_MageSpellBook_SelectedIndexChanged);
+            //this.lb_MageSpellBook.SelectedIndexChanged += new System.EventHandler(this.lb_MageSpellBook_SelectedIndexChanged);
             // 
             // lb_AvailableSpells
             // 
@@ -320,7 +320,7 @@
             this.lb_AvailableSpells.Name = "lb_AvailableSpells";
             this.lb_AvailableSpells.Size = new System.Drawing.Size(120, 95);
             this.lb_AvailableSpells.TabIndex = 0;
-            this.lb_AvailableSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableSpells_SelectedIndexChanged);
+      //      this.lb_AvailableSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableSpells_SelectedIndexChanged);
             // 
             // tabProficiencies
             // 
@@ -374,7 +374,7 @@
             this.btn_RemoveLearnedProficiency.TabIndex = 7;
             this.btn_RemoveLearnedProficiency.Text = "Remove";
             this.btn_RemoveLearnedProficiency.UseVisualStyleBackColor = true;
-            this.btn_RemoveLearnedProficiency.Click += new System.EventHandler(this.btn_RemoveLearnedProficiency_Click);
+            //this.btn_RemoveLearnedProficiency.Click += new System.EventHandler(this.btn_RemoveLearnedProficiency_Click);
             // 
             // btn_AddNonWeaponProf
             // 
@@ -384,7 +384,7 @@
             this.btn_AddNonWeaponProf.TabIndex = 6;
             this.btn_AddNonWeaponProf.Text = "Add";
             this.btn_AddNonWeaponProf.UseVisualStyleBackColor = true;
-            this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.btn_AddNonWeaponProf_Click);
+       //     this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.btn_AddNonWeaponProf_Click);
             // 
             // btn_ConfirmProf
             // 
@@ -394,7 +394,7 @@
             this.btn_ConfirmProf.TabIndex = 5;
             this.btn_ConfirmProf.Text = "Confirm";
             this.btn_ConfirmProf.UseVisualStyleBackColor = true;
-            this.btn_ConfirmProf.Click += new System.EventHandler(this.btn_ConfirmProf_Click);
+      //      this.btn_ConfirmProf.Click += new System.EventHandler(this.btn_ConfirmProf_Click);
             // 
             // lb_LearnedProficienies
             // 
@@ -403,7 +403,7 @@
             this.lb_LearnedProficienies.Name = "lb_LearnedProficienies";
             this.lb_LearnedProficienies.Size = new System.Drawing.Size(120, 95);
             this.lb_LearnedProficienies.TabIndex = 2;
-            this.lb_LearnedProficienies.SelectedIndexChanged += new System.EventHandler(this.lb_LearnedProficienies_SelectedIndexChanged);
+     //       this.lb_LearnedProficienies.SelectedIndexChanged += new System.EventHandler(this.lb_LearnedProficienies_SelectedIndexChanged);
             // 
             // lb_AvailableNonWeaponList
             // 
@@ -412,7 +412,7 @@
             this.lb_AvailableNonWeaponList.Name = "lb_AvailableNonWeaponList";
             this.lb_AvailableNonWeaponList.Size = new System.Drawing.Size(120, 95);
             this.lb_AvailableNonWeaponList.TabIndex = 1;
-            this.lb_AvailableNonWeaponList.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableNonWeaponList_SelectedIndexChanged);
+     //       this.lb_AvailableNonWeaponList.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableNonWeaponList_SelectedIndexChanged);
             // 
             // lb_ShinobiIntroText
             // 
@@ -422,7 +422,7 @@
             this.lb_ShinobiIntroText.Size = new System.Drawing.Size(119, 13);
             this.lb_ShinobiIntroText.TabIndex = 0;
             this.lb_ShinobiIntroText.Text = "A shinobi blah blah blah";
-            this.lb_ShinobiIntroText.Click += new System.EventHandler(this.lb_ShinobiIntroText_Click);
+        //    this.lb_ShinobiIntroText.Click += new System.EventHandler(this.lb_ShinobiIntroText_Click);
             // 
             // lb_PP
             // 
@@ -432,7 +432,7 @@
             this.lb_PP.Size = new System.Drawing.Size(73, 13);
             this.lb_PP.TabIndex = 1;
             this.lb_PP.Text = "Pick Pockets:";
-            this.lb_PP.Click += new System.EventHandler(this.lb_PP_Click);
+       //     this.lb_PP.Click += new System.EventHandler(this.lb_PP_Click);
             // 
             // lb_OL
             // 
@@ -442,7 +442,7 @@
             this.lb_OL.Size = new System.Drawing.Size(68, 13);
             this.lb_OL.TabIndex = 2;
             this.lb_OL.Text = "Open Locks:";
-            this.lb_OL.Click += new System.EventHandler(this.lb_OL_Click);
+      //      this.lb_OL.Click += new System.EventHandler(this.lb_OL_Click);
             // 
             // lb_FRT
             // 
@@ -452,7 +452,7 @@
             this.lb_FRT.Size = new System.Drawing.Size(105, 13);
             this.lb_FRT.TabIndex = 3;
             this.lb_FRT.Text = "Find/Remove Traps:";
-            this.lb_FRT.Click += new System.EventHandler(this.lb_FRT_Click);
+     //       this.lb_FRT.Click += new System.EventHandler(this.lb_FRT_Click);
             // 
             // lb_MS
             // 
@@ -462,7 +462,7 @@
             this.lb_MS.Size = new System.Drawing.Size(73, 13);
             this.lb_MS.TabIndex = 4;
             this.lb_MS.Text = "Move Silently:";
-            this.lb_MS.Click += new System.EventHandler(this.lb_MS_Click);
+     //       this.lb_MS.Click += new System.EventHandler(this.lb_MS_Click);
             // 
             // lb_HS
             // 
@@ -472,7 +472,7 @@
             this.lb_HS.Size = new System.Drawing.Size(91, 13);
             this.lb_HS.TabIndex = 5;
             this.lb_HS.Text = "Hide In Shadows:";
-            this.lb_HS.Click += new System.EventHandler(this.lb_HS_Click);
+     //       this.lb_HS.Click += new System.EventHandler(this.lb_HS_Click);
             // 
             // lb_DN
             // 
@@ -482,7 +482,7 @@
             this.lb_DN.Size = new System.Drawing.Size(72, 13);
             this.lb_DN.TabIndex = 6;
             this.lb_DN.Text = "Detect Noise:";
-            this.lb_DN.Click += new System.EventHandler(this.lb_DN_Click);
+     //       this.lb_DN.Click += new System.EventHandler(this.lb_DN_Click);
             // 
             // lb_CW
             // 
@@ -492,7 +492,7 @@
             this.lb_CW.Size = new System.Drawing.Size(64, 13);
             this.lb_CW.TabIndex = 7;
             this.lb_CW.Text = "Climb Walls:";
-            this.lb_CW.Click += new System.EventHandler(this.lb_CW_Click);
+     //       this.lb_CW.Click += new System.EventHandler(this.lb_CW_Click);
             // 
             // lb_RL
             // 
@@ -502,7 +502,7 @@
             this.lb_RL.Size = new System.Drawing.Size(92, 13);
             this.lb_RL.TabIndex = 8;
             this.lb_RL.Text = "Read Languages:";
-            this.lb_RL.Click += new System.EventHandler(this.lb_RL_Click);
+      //      this.lb_RL.Click += new System.EventHandler(this.lb_RL_Click);
             // 
             // ud_HS
             // 
@@ -515,7 +515,7 @@
             0,
             0,
             0});
-            this.ud_HS.ValueChanged += new System.EventHandler(this.ud_HS_ValueChanged);
+      //      this.ud_HS.ValueChanged += new System.EventHandler(this.ud_HS_ValueChanged);
             // 
             // ud_PP
             // 
@@ -528,7 +528,7 @@
             0,
             0,
             0});
-            this.ud_PP.ValueChanged += new System.EventHandler(this.ud_PP_ValueChanged);
+     //       this.ud_PP.ValueChanged += new System.EventHandler(this.ud_PP_ValueChanged);
             // 
             // ud_OL
             // 
@@ -541,7 +541,7 @@
             0,
             0,
             0});
-            this.ud_OL.ValueChanged += new System.EventHandler(this.ud_OL_ValueChanged);
+     //       this.ud_OL.ValueChanged += new System.EventHandler(this.ud_OL_ValueChanged);
             // 
             // ud_FRT
             // 
@@ -554,7 +554,7 @@
             0,
             0,
             0});
-            this.ud_FRT.ValueChanged += new System.EventHandler(this.ud_FRT_ValueChanged);
+            //this.ud_FRT.ValueChanged += new System.EventHandler(this.ud_FRT_ValueChanged);
             // 
             // ud_MS
             // 
@@ -567,7 +567,7 @@
             0,
             0,
             0});
-            this.ud_MS.ValueChanged += new System.EventHandler(this.ud_MS_ValueChanged);
+            //this.ud_MS.ValueChanged += new System.EventHandler(this.ud_MS_ValueChanged);
             // 
             // ud_DN
             // 
@@ -580,7 +580,7 @@
             0,
             0,
             0});
-            this.ud_DN.ValueChanged += new System.EventHandler(this.ud_DN_ValueChanged);
+    //        this.ud_DN.ValueChanged += new System.EventHandler(this.ud_DN_ValueChanged);
             // 
             // ud_CW
             // 
@@ -593,7 +593,7 @@
             0,
             0,
             0});
-            this.ud_CW.ValueChanged += new System.EventHandler(this.ud_CW_ValueChanged);
+   //         this.ud_CW.ValueChanged += new System.EventHandler(this.ud_CW_ValueChanged);
             // 
             // ud_RL
             // 
@@ -601,7 +601,7 @@
             this.ud_RL.Name = "ud_RL";
             this.ud_RL.Size = new System.Drawing.Size(60, 20);
             this.ud_RL.TabIndex = 16;
-            this.ud_RL.ValueChanged += new System.EventHandler(this.ud_RL_ValueChanged);
+   //         this.ud_RL.ValueChanged += new System.EventHandler(this.ud_RL_ValueChanged);
             // 
             // btn_ThiefReset
             // 
@@ -611,7 +611,7 @@
             this.btn_ThiefReset.TabIndex = 17;
             this.btn_ThiefReset.Text = "Reset";
             this.btn_ThiefReset.UseVisualStyleBackColor = true;
-            this.btn_ThiefReset.Click += new System.EventHandler(this.btn_reset_Clicked);
+    //        this.btn_ThiefReset.Click += new System.EventHandler(this.btn_reset_Clicked);
             // 
             // btn_ThiefAccept
             // 
@@ -621,7 +621,7 @@
             this.btn_ThiefAccept.TabIndex = 18;
             this.btn_ThiefAccept.Text = "Accept";
             this.btn_ThiefAccept.UseVisualStyleBackColor = true;
-            this.btn_ThiefAccept.Click += new System.EventHandler(this.btn_accept_Click);
+    //        this.btn_ThiefAccept.Click += new System.EventHandler(this.btn_accept_Click);
             // 
             // lb_PointsPool
             // 
@@ -631,7 +631,7 @@
             this.lb_PointsPool.Size = new System.Drawing.Size(19, 13);
             this.lb_PointsPool.TabIndex = 19;
             this.lb_PointsPool.Text = "60";
-            this.lb_PointsPool.Click += new System.EventHandler(this.lb_PointsPool_Click);
+        //    this.lb_PointsPool.Click += new System.EventHandler(this.lb_PointsPool_Click);
             // 
             // Specialization
             // 

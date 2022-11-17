@@ -12,6 +12,7 @@ namespace Project_Yahiko
 {
     public partial class Specialization : Form
     {
+        /*
         Player player = new Player();
         Bushi Warrior = new Bushi();
         Shinobi Thief = new Shinobi();
@@ -1288,5 +1289,6 @@ namespace Project_Yahiko
             }
         }
         #endregion
+        */
     }
 }

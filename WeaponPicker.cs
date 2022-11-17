@@ -12,6 +12,7 @@ namespace Project_Yahiko
 {
     public partial class WeaponPicker : Form
     {
+        /*
         private DMOptions DM = new DMOptions();
 
         public WeaponPicker()
@@ -73,5 +74,6 @@ namespace Project_Yahiko
                 }
             }
         }
+        */
     }
 }

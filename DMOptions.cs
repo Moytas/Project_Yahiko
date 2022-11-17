@@ -16,7 +16,7 @@ namespace Project_Yahiko
             CreateNames_Male();
             CreateSpells_Mage();
             CreateSpells_Priest();
-            PopulateProfLists();
+            PopulateNonWeaponProfLists();
             PopulateWeaponList();
         }
 
@@ -41,7 +41,7 @@ namespace Project_Yahiko
             ClanNames.Add("Clanless / Half-Elf");
         }
 
-        public enum Races
+        public enum PlayableRaces
         {
             Human,
             Elf,
@@ -436,13 +436,10 @@ namespace Project_Yahiko
         }
         #endregion
         #region Proficiencies
-        public List<NonWeapProficiency> NonWeaponProficiencies = new List<NonWeapProficiency>();
-        //public List<Proficiency> Proficiencies_Warrior = new List<Proficiency>();
-        //public List<Proficiency> Proficiencies_Thief = new List<Proficiency>();
-        //public List<Proficiency> Proficiencies_Mage = new List<Proficiency>();
-        //public List<Proficiency> Proficiencies_Priest = new List<Proficiency>();
+        List<NonWeapProficiency> NonWeaponProficiencies = new List<NonWeapProficiency>();
+        List<WeaponProficiency> WeaponProficiencies = new List<WeaponProficiency>();
 
-        public void PopulateProfLists()
+        void PopulateNonWeaponProfLists()
         {
             NonWeaponProficiencies.Add(new NonWeapProficiency("Agriculture", "", NonWeapProficiency.Type.General, 1, "INT", 0));
             NonWeaponProficiencies.Add(new NonWeapProficiency("Animal Handling", "", NonWeapProficiency.Type.General, 1, "WIS", -1));
@@ -530,6 +527,65 @@ namespace Project_Yahiko
             NonWeaponProficiencies.Add(new NonWeapProficiency("Reading/Writing", "", NonWeapProficiency.Type.Mage, 1, "INT", 1));
             NonWeaponProficiencies.Add(new NonWeapProficiency("Religion", "", NonWeapProficiency.Type.Mage, 1, "WIS", 0));
             NonWeaponProficiencies.Add(new NonWeapProficiency("Spellcraft", "", NonWeapProficiency.Type.Mage, 1, "INT", -2));
+
+        }
+        void PopulateWeaponProfLists()
+        {
+            WeaponProficiencies.Add(new WeaponProficiency("Daikyu"));
+            WeaponProficiencies.Add(new WeaponProficiency("Hankyu"));
+            WeaponProficiencies.Add(new WeaponProficiency("Pellet Bow"));
+            WeaponProficiencies.Add(new WeaponProficiency("Cho-Ko-Nu"));
+            WeaponProficiencies.Add(new WeaponProficiency("No-Daichi"));
+            WeaponProficiencies.Add(new WeaponProficiency("Tetsu-to"));
+            WeaponProficiencies.Add(new WeaponProficiency("Katana/Bokken"));
+            WeaponProficiencies.Add(new WeaponProficiency("Long Sword"));
+            WeaponProficiencies.Add(new WeaponProficiency("Ninja-to"));
+            WeaponProficiencies.Add(new WeaponProficiency("Tanto"));
+            WeaponProficiencies.Add(new WeaponProficiency("Wakizashi"));
+            WeaponProficiencies.Add(new WeaponProficiency("Chopsticks"));
+            WeaponProficiencies.Add(new WeaponProficiency("Parang"));
+            WeaponProficiencies.Add(new WeaponProficiency("Nekode"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kau sin ke"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kusarigama"));
+            WeaponProficiencies.Add(new WeaponProficiency("Manriki-gusari"));
+            WeaponProficiencies.Add(new WeaponProficiency("Three-section staff"));
+            WeaponProficiencies.Add(new WeaponProficiency("Whip"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kawanaga"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kyogetsu-shogi"));
+            WeaponProficiencies.Add(new WeaponProficiency("Battle Axe"));
+            WeaponProficiencies.Add(new WeaponProficiency("Hand/Throwing Axe"));
+            WeaponProficiencies.Add(new WeaponProficiency("Hanbo"));
+            WeaponProficiencies.Add(new WeaponProficiency("Jo"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kiseru"));
+            WeaponProficiencies.Add(new WeaponProficiency("Tonfa"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kama"));
+            WeaponProficiencies.Add(new WeaponProficiency("Kumade"));
+            WeaponProficiencies.Add(new WeaponProficiency("Lajatang"));
+            WeaponProficiencies.Add(new WeaponProficiency("Bo"));
+            WeaponProficiencies.Add(new WeaponProficiency("Tetsu-bo"));
+            WeaponProficiencies.Add(new WeaponProficiency("Gunsen"));
+            WeaponProficiencies.Add(new WeaponProficiency("Halberd"));
+            WeaponProficiencies.Add(new WeaponProficiency("Man catcher"));
+            WeaponProficiencies.Add(new WeaponProficiency("Nagimaki"));
+            WeaponProficiencies.Add(new WeaponProficiency("Naginata"));
+            WeaponProficiencies.Add(new WeaponProficiency("Sang kauw"));
+            WeaponProficiencies.Add(new WeaponProficiency("Sode garami"));
+            WeaponProficiencies.Add(new WeaponProficiency("Trident"));
+            WeaponProficiencies.Add(new WeaponProficiency("Chijiriki"));
+            WeaponProficiencies.Add(new WeaponProficiency("Shakujo yari"));
+            WeaponProficiencies.Add(new WeaponProficiency("Uchi-ne"));
+            WeaponProficiencies.Add(new WeaponProficiency("Eggshel grenades"));
+            WeaponProficiencies.Add(new WeaponProficiency("Nage teppo"));
+            WeaponProficiencies.Add(new WeaponProficiency("Shuriken, Bo"));
+            WeaponProficiencies.Add(new WeaponProficiency("Shuriken, Small"));
+            WeaponProficiencies.Add(new WeaponProficiency("Shuriken, Large"));
+            WeaponProficiencies.Add(new WeaponProficiency("Dart"));
+            WeaponProficiencies.Add(new WeaponProficiency("Tetsu-bishi"));
+            WeaponProficiencies.Add(new WeaponProficiency("Blowgun"));
+            WeaponProficiencies.Add(new WeaponProficiency("Fukimi-bari"));
+            WeaponProficiencies.Add(new WeaponProficiency("Metsubishi"));
+            WeaponProficiencies.Add(new WeaponProficiency("Needle"));
+
 
         }
         #endregion
