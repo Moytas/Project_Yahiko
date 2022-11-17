@@ -26,6 +26,7 @@ namespace Project_Yahiko
             {
                 if (w.Name == lb_AvailableWeaponList.SelectedItem)
                 {
+                    /*
                     if (Thief.FirstName != null)
                     {
                         if (Thief.NumWeaponProf > 0)
@@ -71,6 +72,7 @@ namespace Project_Yahiko
                     }
 
                     ShowRemainingWeaponProf();
+                    */
                 }
             }
         }

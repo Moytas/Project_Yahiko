@@ -33,7 +33,9 @@ namespace Project_Yahiko
             CharacterStats = p.CharacterStats;
             EquipedArmor = p.EquipedArmor;
             EquipedWeapon = p.EquipedWeapon;
-            
+            NumNonWeaponProf = p.NumNonWeaponProf;
+            NumWeaponProf = p.NumWeaponProf;
+            Console.WriteLine("char race = " + CharacterRace + " vs p.char race= " + p.CharacterRace);
         }
 
         void SetInitialMoney()

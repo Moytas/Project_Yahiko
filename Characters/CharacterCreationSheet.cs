@@ -51,6 +51,7 @@ namespace Project_Yahiko
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             CharacterCreationSheet.ActiveForm.Text = String.Format("{0}'s Sheet",tb_FirstName.Text);
+            btn_confirm.Enabled = true;
         }
 
         public void GetPlayer(ref Player player)
@@ -426,6 +427,39 @@ namespace Project_Yahiko
                             break;
                     }
                     break;
+                case 13://Next Form
+                    switch(_player.CharacterClass)
+                    {
+                        case 1:
+                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_player);
+                            weaponSpecializationForm.Show();
+                            break;
+                        case 2:
+                            ThiefSkillsAssignment thiefSkillsForm = new ThiefSkillsAssignment();
+                            thiefSkillsForm.Show();
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                    break;
+                case 14:
+                    switch (_player.CharacterClass)
+                    {
+                        case 1:
+                            NonWeapProfPicker nonWeapForm = new NonWeapProfPicker(_player);
+                            nonWeapForm.Show();
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                    break;
+                
             }
             _index++;
         }
@@ -706,16 +740,16 @@ namespace Project_Yahiko
 
         private void ud_Age_ValueChanged(object sender, EventArgs e)
         {
-            btn_confirm.Enabled = true;
-            btn_confirm.Visible = true;
-            btn_confirm.BringToFront();
+            //btn_confirm.Enabled = true;
+            //btn_confirm.Visible = true;
+            //btn_confirm.BringToFront();
         }
 
         private void ud_Height_ValueChanged(object sender, EventArgs e)
         {
-            btn_confirm.Enabled = true;
-            btn_confirm.Visible = true;
-            btn_confirm.BringToFront();
+            //btn_confirm.Enabled = true;
+            //btn_confirm.Visible = true;
+            //btn_confirm.BringToFront();
         }
     }
 }

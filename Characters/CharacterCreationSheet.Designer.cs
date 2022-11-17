@@ -487,6 +487,7 @@
             this.ud_Height.Name = "ud_Height";
             this.ud_Height.Size = new System.Drawing.Size(68, 20);
             this.ud_Height.TabIndex = 38;
+            this.ud_Height.TabStop = false;
             this.ud_Height.Visible = false;
             this.ud_Height.ValueChanged += new System.EventHandler(this.ud_Height_ValueChanged);
             // 
@@ -509,6 +510,7 @@
             this.ud_Age.Name = "ud_Age";
             this.ud_Age.Size = new System.Drawing.Size(68, 20);
             this.ud_Age.TabIndex = 36;
+            this.ud_Age.TabStop = false;
             this.ud_Age.Visible = false;
             this.ud_Age.ValueChanged += new System.EventHandler(this.ud_Age_ValueChanged);
             // 

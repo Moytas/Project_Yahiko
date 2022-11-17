@@ -18,6 +18,7 @@ namespace Project_Yahiko
             CreateSpells_Priest();
             PopulateNonWeaponProfLists();
             PopulateWeaponList();
+            PopulateWeaponProfList();
         }
 
         public enum Clans

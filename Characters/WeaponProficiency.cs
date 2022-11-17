@@ -14,6 +14,7 @@ namespace Project_Yahiko
         public WeaponProficiency(string name)
         {
             Name = name;
+            Cost = cost;
         }
 
         public WeaponProficiency(string name,int cost)
