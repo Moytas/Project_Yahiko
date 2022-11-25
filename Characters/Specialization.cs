@@ -508,7 +508,7 @@ namespace Project_Yahiko
             {
                 Warrior.WeaponProf.Add(new WeaponProficiency(lb_ProficientList.Items[i].ToString()));
             }
-            */
+            
             showingWeaponProf = false;
             ShowProficienciesTab();
         }
@@ -550,7 +550,7 @@ namespace Project_Yahiko
                // btn_LearnProfSpec.Enabled = false;
               //  btn_LearnAvProf.Enabled = false;
             }
-            */
+            
             ShowWeaponText();
         }
         private void btn_LearnProfSpec_Click(object sender, EventArgs e)
@@ -582,7 +582,7 @@ namespace Project_Yahiko
                 btn_LearnAvProf.Enabled = false;
                 btn_LearnProfSpec.Enabled = false;
             }
-            */
+            
             ShowWeaponText();
         }
 
@@ -610,7 +610,7 @@ namespace Project_Yahiko
                 btn_LearnProfSpec.Enabled = true;
                 btn_SamuraiAccept.Enabled = false;
             }
-            */
+           
             ShowWeaponText();
         }
 
@@ -651,7 +651,7 @@ namespace Project_Yahiko
                 btn_LearnProfSpec.Enabled = true;
                 btn_SamuraiAccept.Enabled = false;
             }
-            */
+            
             ShowWeaponText();
         }
         #endregion

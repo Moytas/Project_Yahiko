@@ -8,19 +8,19 @@ namespace Project_Yahiko
 {
     public class WeaponProficiency : Proficiency
     {
-        public int Cost { get; set; }
         public int Penalty { get; set; }
+        public string Description { get; set; }
 
         public WeaponProficiency(string name)
         {
             Name = name;
-            Cost = cost;
+            //Cost = cost;
         }
 
-        public WeaponProficiency(string name,int cost)
+        public WeaponProficiency(string name,string description)
         {
             Name = name;
-            Cost = cost;
+            Description = description;
         }
     }
 }

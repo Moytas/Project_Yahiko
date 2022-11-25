@@ -427,11 +427,12 @@ namespace Project_Yahiko
                             break;
                     }
                     break;
-                case 13://Next Form
+                case 14://Next Form
                     switch(_player.CharacterClass)
                     {
                         case 1:
-                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_player);
+                            _Bushi = new Bushi(_player);
+                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_Bushi);
                             weaponSpecializationForm.Show();
                             break;
                         case 2:
@@ -444,7 +445,7 @@ namespace Project_Yahiko
                             break;
                     }
                     break;
-                case 14:
+                case 15:
                     switch (_player.CharacterClass)
                     {
                         case 1:

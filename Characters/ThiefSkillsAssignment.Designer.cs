@@ -75,6 +75,7 @@
             this.btn_ThiefAccept.TabIndex = 38;
             this.btn_ThiefAccept.Text = "Accept";
             this.btn_ThiefAccept.UseVisualStyleBackColor = true;
+            this.btn_ThiefAccept.Click += new System.EventHandler(this.btn_ThiefAccept_Click);
             // 
             // btn_ThiefReset
             // 
@@ -84,6 +85,7 @@
             this.btn_ThiefReset.TabIndex = 37;
             this.btn_ThiefReset.Text = "Reset";
             this.btn_ThiefReset.UseVisualStyleBackColor = true;
+            this.btn_ThiefReset.Click += new System.EventHandler(this.btn_ThiefReset_Click);
             // 
             // ud_RL
             // 
@@ -163,6 +165,7 @@
             0,
             0,
             0});
+            this.ud_PP.ValueChanged += new System.EventHandler(this.ud_PP_ValueChanged);
             // 
             // ud_HS
             // 

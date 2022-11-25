@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_Description = new System.Windows.Forms.Label();
+            this.lbl_Remaining = new System.Windows.Forms.Label();
             this.btn_Confirm = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.btn_LearnAvailableProficient = new System.Windows.Forms.Button();
             this.lb_Available = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.lbl_Remaining = new System.Windows.Forms.Label();
-            this.lbl_Description = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,24 @@
             this.panel1.Size = new System.Drawing.Size(661, 256);
             this.panel1.TabIndex = 13;
             // 
+            // lbl_Description
+            // 
+            this.lbl_Description.AutoSize = true;
+            this.lbl_Description.Location = new System.Drawing.Point(26, 214);
+            this.lbl_Description.Name = "lbl_Description";
+            this.lbl_Description.Size = new System.Drawing.Size(63, 13);
+            this.lbl_Description.TabIndex = 25;
+            this.lbl_Description.Text = "Description:";
+            // 
+            // lbl_Remaining
+            // 
+            this.lbl_Remaining.AutoSize = true;
+            this.lbl_Remaining.Location = new System.Drawing.Point(26, 44);
+            this.lbl_Remaining.Name = "lbl_Remaining";
+            this.lbl_Remaining.Size = new System.Drawing.Size(35, 13);
+            this.lbl_Remaining.TabIndex = 24;
+            this.lbl_Remaining.Text = "label5";
+            // 
             // btn_Confirm
             // 
             this.btn_Confirm.Location = new System.Drawing.Point(579, 225);
@@ -75,6 +93,7 @@
             this.btn_Confirm.TabIndex = 23;
             this.btn_Confirm.Text = "Confirm";
             this.btn_Confirm.UseVisualStyleBackColor = true;
+            this.btn_Confirm.Click += new System.EventHandler(this.btn_Confirm_Click);
             // 
             // label1
             // 
@@ -111,6 +130,7 @@
             this.btn_ForgetSpecializedProficient.TabIndex = 19;
             this.btn_ForgetSpecializedProficient.Text = "Forget";
             this.btn_ForgetSpecializedProficient.UseVisualStyleBackColor = true;
+            this.btn_ForgetSpecializedProficient.Click += new System.EventHandler(this.btn_ForgetSpecializedProficient_Click);
             // 
             // btn_LearnProficientSpecialized
             // 
@@ -120,6 +140,7 @@
             this.btn_LearnProficientSpecialized.TabIndex = 18;
             this.btn_LearnProficientSpecialized.Text = "Learn";
             this.btn_LearnProficientSpecialized.UseVisualStyleBackColor = true;
+            this.btn_LearnProficientSpecialized.Click += new System.EventHandler(this.btn_LearnProficientSpecialized_Click);
             // 
             // btn_ForgetAvailableProficient
             // 
@@ -129,6 +150,7 @@
             this.btn_ForgetAvailableProficient.TabIndex = 17;
             this.btn_ForgetAvailableProficient.Text = "Forget";
             this.btn_ForgetAvailableProficient.UseVisualStyleBackColor = true;
+            this.btn_ForgetAvailableProficient.Click += new System.EventHandler(this.btn_ForgetAvailableProficient_Click);
             // 
             // lb_Specialized
             // 
@@ -137,6 +159,7 @@
             this.lb_Specialized.Name = "lb_Specialized";
             this.lb_Specialized.Size = new System.Drawing.Size(120, 95);
             this.lb_Specialized.TabIndex = 16;
+            this.lb_Specialized.SelectedIndexChanged += new System.EventHandler(this.lb_Specialized_SelectedIndexChanged);
             // 
             // lb_Proficient
             // 
@@ -145,6 +168,7 @@
             this.lb_Proficient.Name = "lb_Proficient";
             this.lb_Proficient.Size = new System.Drawing.Size(120, 95);
             this.lb_Proficient.TabIndex = 15;
+            this.lb_Proficient.SelectedIndexChanged += new System.EventHandler(this.lb_Proficient_SelectedIndexChanged);
             // 
             // btn_LearnAvailableProficient
             // 
@@ -154,6 +178,7 @@
             this.btn_LearnAvailableProficient.TabIndex = 14;
             this.btn_LearnAvailableProficient.Text = "Learn";
             this.btn_LearnAvailableProficient.UseVisualStyleBackColor = true;
+            this.btn_LearnAvailableProficient.Click += new System.EventHandler(this.btn_LearnAvailableProficient_Click);
             // 
             // lb_Available
             // 
@@ -172,24 +197,6 @@
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "label4";
-            // 
-            // lbl_Remaining
-            // 
-            this.lbl_Remaining.AutoSize = true;
-            this.lbl_Remaining.Location = new System.Drawing.Point(26, 44);
-            this.lbl_Remaining.Name = "lbl_Remaining";
-            this.lbl_Remaining.Size = new System.Drawing.Size(35, 13);
-            this.lbl_Remaining.TabIndex = 24;
-            this.lbl_Remaining.Text = "label5";
-            // 
-            // lbl_Description
-            // 
-            this.lbl_Description.AutoSize = true;
-            this.lbl_Description.Location = new System.Drawing.Point(26, 214);
-            this.lbl_Description.Name = "lbl_Description";
-            this.lbl_Description.Size = new System.Drawing.Size(63, 13);
-            this.lbl_Description.TabIndex = 25;
-            this.lbl_Description.Text = "Description:";
             // 
             // WeaponSpecialization
             // 
