@@ -12,70 +12,68 @@ namespace Project_Yahiko
 {
     public partial class WeaponPicker : Form
     {
-        /*
+        
         private DMOptions DM = new DMOptions();
+        private Shinobi Thief = null;
+        private Sohei Priest = null;
+        private Onmyoji Mage = null;
 
         public WeaponPicker()
         {
             InitializeComponent();
         }
-
-        private void btn_AddNonWeaponProf_Click(object sender, EventArgs e)
+        public WeaponPicker(Onmyoji _Player)
         {
-            foreach (Weapon w in DM.WeaponsList)
-            {
-                if (w.Name == lb_AvailableWeaponList.SelectedItem)
-                {
-                    /*
-                    if (Thief.FirstName != null)
-                    {
-                        if (Thief.NumWeaponProf > 0)
-                        {
-                            Thief.NumWeaponProf -= 1;
-                            lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
-                            lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
-                        }
-                        else if (player.NumWeaponProf == 0)
-                        {
-                            btn_ConfirmProf.Enabled = true;
-                            showingWeaponProf = false;
-                        }
-                    }
-                    else if (Priest.FirstName != null)
-                    {
-                        if (Priest.NumWeaponProf > 0)
-                        {
-                            Priest.NumWeaponProf -= 1;
-                            Console.WriteLine(Priest.NumNonWeaponProf);
-                            lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
-                            lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
-                        }
-                        else if (player.NumWeaponProf == 0)
-                        {
-                            btn_ConfirmProf.Enabled = true;
-                            showingWeaponProf = false;
-                        }
-                    }
-                    else if (Mage.FirstName != null)
-                    {
-                        if (Mage.NumWeaponProf > 0)
-                        {
-                            Mage.NumWeaponProf -= 1;
-                            lb_LearnedProficienies.Items.Add(lb_AvailableNonWeaponList.SelectedItem);
-                            lb_AvailableNonWeaponList.Items.Remove(lb_AvailableNonWeaponList.SelectedItem);
-                        }
-                        else if (player.NumWeaponProf == 0)
-                        {
-                            btn_ConfirmProf.Enabled = true;
-                            showingWeaponProf = false;
-                        }
-                    }
+            Mage = _Player;
+            InitializeComponent();
+        }
+        public WeaponPicker(Sohei _Player)
+        {
+            Priest = _Player;
+            InitializeComponent();
+        }
+        public WeaponPicker(Shinobi _Player)
+        {
+            Thief = _Player;
+            InitializeComponent();
+        }
 
-                    ShowRemainingWeaponProf();
-                    
-                }
+        private void SetUpAvailableList(int classIndex)
+        {
+            switch(classIndex)
+            {
+                case 1://Mage
+                    lb_AvailableWeaponList.Items.Add("Tanto");
+                    lb_AvailableWeaponList.Items.Add("Needle");
+                    lb_AvailableWeaponList.Items.Add("Bo");
+                    lb_AvailableWeaponList.Items.Add("Pellet Bow");
+                    lb_AvailableWeaponList.Items.Add("Parang");
+                    break;
+                case 2://Priest
+                    foreach(Weapon w in DM.WeaponsList)
+                    {
+                        if(w.WeaponType.Contains(Weapon.DamageType.Bludgeoning))
+                        {
+                            lb_AvailableWeaponList.Items.Add(w.Name);
+                        }
+                    }
+                    break;
+                case 3://Thief
+                    lb_AvailableWeaponList.Items.Add("Bo");
+                    lb_AvailableWeaponList.Items.Add("Hankyu");
+                    lb_AvailableWeaponList.Items.Add("Cho - Ko - Nu");
+                    lb_AvailableWeaponList.Items.Add("Ninja-to");
+                    lb_AvailableWeaponList.Items.Add("Tanto");
+                    lb_AvailableWeaponList.Items.Add("Chopsticks");
+                    lb_AvailableWeaponList.Items.Add("Parang");
+                    lb_AvailableWeaponList.Items.Add("Nekode");
+                    lb_AvailableWeaponList.Items.Add("Kau sin ke");
+                    lb_AvailableWeaponList.Items.Add("Kusarigama");
+                    break;
             }
         }
-        */
+        private void btn_AddNonWeaponProf_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

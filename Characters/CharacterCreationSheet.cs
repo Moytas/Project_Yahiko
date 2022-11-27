@@ -28,7 +28,14 @@ namespace Project_Yahiko
         {
             DM = new DMOptions();
             InitializeComponent();
-            EnableStatRoll();
+            //TestingMODE
+            Shinobi test = new Shinobi();
+            test.CharacterStats.Current_Dex = 10;
+            test.CharacterRace = 0;
+            ThiefSkillsAssignment testForm = new ThiefSkillsAssignment(test,true);
+            testForm.Show();
+
+            //EnableStatRoll();   ENABLE THIS!!!!
         }
 
         private void NameEnable() // stupid name
@@ -389,6 +396,8 @@ namespace Project_Yahiko
                     break;
                 
                 case 10://Height & Age
+                    _player.Height = (int)ud_Height.Value;
+                    _player.Age = (int)ud_Age.Value;
                     NameEnable();
                     break;
                 case 11://First Name
@@ -420,43 +429,13 @@ namespace Project_Yahiko
                             this.Hide();
                             break;
                         case 2://Thief
+                            _Shinobi = new Shinobi(_player);
+                            ThiefSkillsAssignment SkillsForm = new ThiefSkillsAssignment(_Shinobi,true);
+                            SkillsForm.Show();
                             break;
                         case 3://Priest?
                             break;
                         case 4://Mage?
-                            break;
-                    }
-                    break;
-                case 14://Next Form
-                    switch(_player.CharacterClass)
-                    {
-                        case 1:
-                            _Bushi = new Bushi(_player);
-                            WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_Bushi);
-                            weaponSpecializationForm.Show();
-                            break;
-                        case 2:
-                            ThiefSkillsAssignment thiefSkillsForm = new ThiefSkillsAssignment();
-                            thiefSkillsForm.Show();
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                    }
-                    break;
-                case 15:
-                    switch (_player.CharacterClass)
-                    {
-                        case 1:
-                            NonWeapProfPicker nonWeapForm = new NonWeapProfPicker(_player);
-                            nonWeapForm.Show();
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
                             break;
                     }
                     break;

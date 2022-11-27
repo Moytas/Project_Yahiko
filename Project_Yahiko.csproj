@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Characters\WeaponProficiency.cs" />
     <Compile Include="Dice.cs" />
+    <Compile Include="Table_Shinobi.cs" />
     <Compile Include="WeaponSpecialization.cs">
       <SubType>Form</SubType>
     </Compile>
