@@ -13,7 +13,7 @@ namespace Project_Yahiko
         public List<Items> Inventory = new List<Items>();
 
         public int Age;
-        public int Height;
+        public float Height;
         public int Honor;
 
         public int NumWeaponProf,NumNonWeaponProf;

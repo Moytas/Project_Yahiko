@@ -26,16 +26,14 @@ namespace Project_Yahiko
         
         public CharacterCreationSheet()
         {
+            //Normal Flow
             DM = new DMOptions();
+            _player = new Player();
             InitializeComponent();
             //TestingMODE
-            Shinobi test = new Shinobi();
-            test.CharacterStats.Current_Dex = 10;
-            test.CharacterRace = 0;
-            ThiefSkillsAssignment testForm = new ThiefSkillsAssignment(test,true);
-            testForm.Show();
-
-            //EnableStatRoll();   ENABLE THIS!!!!
+           
+            EnableStatRoll();
+            
         }
 
         private void NameEnable() // stupid name
@@ -84,9 +82,9 @@ namespace Project_Yahiko
             tb_DmgLValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Large, p.EquipedWeapon.TypeOfDie_Large);
         }
 
-        private void EnableStatRoll()
+        private void EnableStatRoll() //Makes Roll Button appear and shows Str stat
         {
-            SetupRandomButton();
+            SetUpRollStatsButton();
             btn_RollStats.Enabled = true;
             btn_RollStats.Visible = true;
         }
@@ -158,10 +156,10 @@ namespace Project_Yahiko
                 _index++;
             }
             
-            ChangePosition();
+            ChangeRollStatsButtonPosition();
         }
 
-        private void ChangePosition()
+        private void ChangeRollStatsButtonPosition()
         {
             if (_index < 6)
             {
@@ -396,8 +394,10 @@ namespace Project_Yahiko
                     break;
                 
                 case 10://Height & Age
-                    _player.Height = (int)ud_Height.Value;
+                    _player.Height = (float)ud_Height.Value;
                     _player.Age = (int)ud_Age.Value;
+                    ud_Age.Enabled = false;
+                    ud_Height.Enabled = false;
                     NameEnable();
                     break;
                 case 11://First Name
@@ -429,8 +429,8 @@ namespace Project_Yahiko
                             this.Hide();
                             break;
                         case 2://Thief
-                            _Shinobi = new Shinobi(_player);
-                            ThiefSkillsAssignment SkillsForm = new ThiefSkillsAssignment(_Shinobi,true);
+                           _Shinobi = new Shinobi(_player);
+                            ThiefSkillsAssignment SkillsForm = new ThiefSkillsAssignment(_Shinobi);
                             SkillsForm.Show();
                             break;
                         case 3://Priest?
@@ -707,7 +707,7 @@ namespace Project_Yahiko
             btn_confirm.Location = new Point(cb_Race.Location.X + cb_Race.Text.Length + 10, cb_Race.Location.Y);
         }
 
-       void SetupRandomButton()
+       void SetUpRollStatsButton()
         {
             btn_RollStats.Location = new Point(124, 116);
             btn_RollStats.BringToFront();

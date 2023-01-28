@@ -65,6 +65,12 @@
     </Compile>
     <Compile Include="Characters\WeaponProficiency.cs" />
     <Compile Include="Dice.cs" />
+    <Compile Include="NonWeapProfPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NonWeapProfPicker.Designer.cs">
+      <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Table_Shinobi.cs" />
     <Compile Include="WeaponSpecialization.cs">
       <SubType>Form</SubType>
@@ -104,12 +110,6 @@
       <DependentUpon>MainGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\NonWeapProficiency.cs" />
-    <Compile Include="Characters\NonWeapProfPicker.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Characters\NonWeapProfPicker.Designer.cs">
-      <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Characters\Race.cs" />
@@ -168,9 +168,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainGame.resx">
       <DependentUpon>MainGame.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Characters\NonWeapProfPicker.resx">
-      <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

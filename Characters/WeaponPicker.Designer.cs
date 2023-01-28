@@ -31,11 +31,12 @@
             this.lb_SelectedProfDescription_R = new System.Windows.Forms.Label();
             this.lb_SelectedProfDescription_L = new System.Windows.Forms.Label();
             this.lb_WeapProfsText = new System.Windows.Forms.Label();
-            this.btn_RemoveLearnedProficiency = new System.Windows.Forms.Button();
-            this.btn_AddNonWeaponProf = new System.Windows.Forms.Button();
+            this.btn_RemoveWeaponProficiency = new System.Windows.Forms.Button();
+            this.btn_AddWeaponProf = new System.Windows.Forms.Button();
             this.btn_ConfirmProf = new System.Windows.Forms.Button();
             this.lb_LearnedProficienies = new System.Windows.Forms.ListBox();
             this.lb_AvailableWeaponList = new System.Windows.Forms.ListBox();
+            this.lbl_AvailablePoints = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lb_SelectedProfDescription_R
@@ -59,30 +60,31 @@
             // lb_WeapProfsText
             // 
             this.lb_WeapProfsText.AutoSize = true;
-            this.lb_WeapProfsText.Location = new System.Drawing.Point(41, 19);
+            this.lb_WeapProfsText.Location = new System.Drawing.Point(181, 9);
             this.lb_WeapProfsText.Name = "lb_WeapProfsText";
             this.lb_WeapProfsText.Size = new System.Drawing.Size(95, 13);
             this.lb_WeapProfsText.TabIndex = 16;
             this.lb_WeapProfsText.Text = "lb_WeapProfsText";
             // 
-            // btn_RemoveLearnedProficiency
+            // btn_RemoveWeaponProficiency
             // 
-            this.btn_RemoveLearnedProficiency.Location = new System.Drawing.Point(184, 101);
-            this.btn_RemoveLearnedProficiency.Name = "btn_RemoveLearnedProficiency";
-            this.btn_RemoveLearnedProficiency.Size = new System.Drawing.Size(75, 23);
-            this.btn_RemoveLearnedProficiency.TabIndex = 15;
-            this.btn_RemoveLearnedProficiency.Text = "Remove";
-            this.btn_RemoveLearnedProficiency.UseVisualStyleBackColor = true;
+            this.btn_RemoveWeaponProficiency.Location = new System.Drawing.Point(184, 101);
+            this.btn_RemoveWeaponProficiency.Name = "btn_RemoveWeaponProficiency";
+            this.btn_RemoveWeaponProficiency.Size = new System.Drawing.Size(75, 23);
+            this.btn_RemoveWeaponProficiency.TabIndex = 15;
+            this.btn_RemoveWeaponProficiency.Text = "Remove";
+            this.btn_RemoveWeaponProficiency.UseVisualStyleBackColor = true;
+            this.btn_RemoveWeaponProficiency.Click += new System.EventHandler(this.btn_RemoveWeaponProficiency_Click);
             // 
-            // btn_AddNonWeaponProf
+            // btn_AddWeaponProf
             // 
-            this.btn_AddNonWeaponProf.Location = new System.Drawing.Point(184, 57);
-            this.btn_AddNonWeaponProf.Name = "btn_AddNonWeaponProf";
-            this.btn_AddNonWeaponProf.Size = new System.Drawing.Size(75, 23);
-            this.btn_AddNonWeaponProf.TabIndex = 14;
-            this.btn_AddNonWeaponProf.Text = "Add";
-            this.btn_AddNonWeaponProf.UseVisualStyleBackColor = true;
-  //          this.btn_AddNonWeaponProf.Click += new System.EventHandler(this.btn_AddNonWeaponProf_Click);
+            this.btn_AddWeaponProf.Location = new System.Drawing.Point(184, 57);
+            this.btn_AddWeaponProf.Name = "btn_AddWeaponProf";
+            this.btn_AddWeaponProf.Size = new System.Drawing.Size(75, 23);
+            this.btn_AddWeaponProf.TabIndex = 14;
+            this.btn_AddWeaponProf.Text = "Add";
+            this.btn_AddWeaponProf.UseVisualStyleBackColor = true;
+            this.btn_AddWeaponProf.Click += new System.EventHandler(this.btn_AddWeaponProf_Click);
             // 
             // btn_ConfirmProf
             // 
@@ -92,6 +94,7 @@
             this.btn_ConfirmProf.TabIndex = 13;
             this.btn_ConfirmProf.Text = "Confirm";
             this.btn_ConfirmProf.UseVisualStyleBackColor = true;
+            this.btn_ConfirmProf.Click += new System.EventHandler(this.btn_ConfirmProf_Click);
             // 
             // lb_LearnedProficienies
             // 
@@ -100,6 +103,7 @@
             this.lb_LearnedProficienies.Name = "lb_LearnedProficienies";
             this.lb_LearnedProficienies.Size = new System.Drawing.Size(120, 95);
             this.lb_LearnedProficienies.TabIndex = 12;
+            this.lb_LearnedProficienies.SelectedIndexChanged += new System.EventHandler(this.lb_LearnedProficienies_SelectedIndexChanged);
             // 
             // lb_AvailableWeaponList
             // 
@@ -108,17 +112,28 @@
             this.lb_AvailableWeaponList.Name = "lb_AvailableWeaponList";
             this.lb_AvailableWeaponList.Size = new System.Drawing.Size(120, 95);
             this.lb_AvailableWeaponList.TabIndex = 11;
+            this.lb_AvailableWeaponList.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableWeaponList_SelectedIndexChanged);
+            // 
+            // lbl_AvailablePoints
+            // 
+            this.lbl_AvailablePoints.AutoSize = true;
+            this.lbl_AvailablePoints.Location = new System.Drawing.Point(15, 27);
+            this.lbl_AvailablePoints.Name = "lbl_AvailablePoints";
+            this.lbl_AvailablePoints.Size = new System.Drawing.Size(35, 13);
+            this.lbl_AvailablePoints.TabIndex = 19;
+            this.lbl_AvailablePoints.Text = "label1";
             // 
             // WeaponPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 257);
+            this.Controls.Add(this.lbl_AvailablePoints);
             this.Controls.Add(this.lb_SelectedProfDescription_R);
             this.Controls.Add(this.lb_SelectedProfDescription_L);
             this.Controls.Add(this.lb_WeapProfsText);
-            this.Controls.Add(this.btn_RemoveLearnedProficiency);
-            this.Controls.Add(this.btn_AddNonWeaponProf);
+            this.Controls.Add(this.btn_RemoveWeaponProficiency);
+            this.Controls.Add(this.btn_AddWeaponProf);
             this.Controls.Add(this.btn_ConfirmProf);
             this.Controls.Add(this.lb_LearnedProficienies);
             this.Controls.Add(this.lb_AvailableWeaponList);
@@ -134,10 +149,11 @@
         private System.Windows.Forms.Label lb_SelectedProfDescription_R;
         private System.Windows.Forms.Label lb_SelectedProfDescription_L;
         private System.Windows.Forms.Label lb_WeapProfsText;
-        private System.Windows.Forms.Button btn_RemoveLearnedProficiency;
-        private System.Windows.Forms.Button btn_AddNonWeaponProf;
+        private System.Windows.Forms.Button btn_RemoveWeaponProficiency;
+        private System.Windows.Forms.Button btn_AddWeaponProf;
         private System.Windows.Forms.Button btn_ConfirmProf;
         private System.Windows.Forms.ListBox lb_LearnedProficienies;
         private System.Windows.Forms.ListBox lb_AvailableWeaponList;
+        private System.Windows.Forms.Label lbl_AvailablePoints;
     }
 }

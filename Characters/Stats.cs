@@ -27,7 +27,7 @@ namespace Project_Yahiko
         public List<string> SpellImmunity = new List<string>();
         public int NumOfHenchmen, LoyaltyBase, ReactionAdjCha;
 
-        public void SetAbilities(int stat,string statName,int extra = 0)
+        public void SetAbilities(int stat,string statName,int extraStr = 0)
         {
             OpenMagicDoors = 0;
             switch(statName)
@@ -172,7 +172,7 @@ namespace Project_Yahiko
                             BendBars = 13;
                             break;
                         case 18:
-                            switch (extra)
+                            switch (extraStr)
                             {
                                 case 0:
                                     HitProb = 1;
