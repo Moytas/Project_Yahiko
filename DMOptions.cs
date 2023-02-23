@@ -14,9 +14,9 @@ namespace Project_Yahiko
             CreateLastNames();
             CreateNames_Female();
             CreateNames_Male();
-            CreateSpells_Mage();
-            CreateSpells_Priest();
-            PopulateNonWeaponProfLists();
+            //CreateSpells_Mage(); MOVED TO SEPERATE CLASS -> TABLE_WizardSpells
+            //CreateSpells_Priest(); MOVED TO SEPERATE CLASS -> TABLE_PriestSpells
+            //PopulateNonWeaponProfLists(); MOVED TO SEPERATE CLASS -> TABLE_NonWeaponProf
             PopulateWeaponList();
             PopulateWeaponProfLists();
         }
@@ -349,75 +349,8 @@ namespace Project_Yahiko
         }
         #endregion
         #region Spells&Magic
-        public List<Spell> AvailableSpells_Mage = new List<Spell>();
-        public List<Spell> AvailableSpells_Priest = new List<Spell>();
-        void CreateSpells_Mage()
-        {
-            List<Items> spellComponents = new List<Items>();
-            
-            AvailableSpells_Mage.Add(new Spell("Affect Normal Fires", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Armor", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Audible Glamer", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Burning Hands", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Cantrip", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Change Self", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Charm Person", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Chill Touch", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Color Spray", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Comprehend Languages", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Dancing Lights", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Detect Magic", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Detect Undead", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Enlarge", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Erase", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Feather Fall", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Find Familiar", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Friends", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Gaze Reflection", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Grease", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Hold Portal", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Hypnotism", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Identify", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Jump", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Light", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Magic Missile", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Mending", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Message", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Mount", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Nystul's Magical Aura", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Phantasmal Force", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Protection From Evil", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Read Magic", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Shield", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Shocking Grasp", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Sleep", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Spider Climb", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Spook", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Taunt", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Floating Disc", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Mage.Add(new Spell("Unseen Servant", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-        }
-
-        void CreateSpells_Priest()
-        {
-            List<Items> spellComponents = new List<Items>();
-            AvailableSpells_Priest.Add(new Spell("Animal Friendship", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Bless", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Combine", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Command", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Create Water", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Cure Light Wounds", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Detect Evil", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Detect Magic", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Detect Snares & Pits", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Endure Cold/Heat", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Entagle", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Fairie Fire", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Invisibility to Undead", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Invisibility to Animals", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-            AvailableSpells_Priest.Add(new Spell("Light", 1, true, true, true, spellComponents, 1, Spell.SavingThrowEffect.None, "Blah Blah Blah"));
-        }
-
+        
+        
         public int GetNumOfSpellSlotForLevel(int playerLvl, int playerClass,int spellLvl)
         {
             int returnValue = 0;
@@ -437,99 +370,8 @@ namespace Project_Yahiko
         }
         #endregion
         #region Proficiencies
-        public List<NonWeapProficiency> NonWeaponProficiencies = new List<NonWeapProficiency>();
         public List<WeaponProficiency> WeaponProficiencies = new List<WeaponProficiency>();
 
-        void PopulateNonWeaponProfLists()
-        {
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Agriculture", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Animal Handling", "", NonWeapProficiency.Type.General, 1, "WIS", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Artistic Ability", "", NonWeapProficiency.Type.General, 1, "WIS", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Animal Training", "", NonWeapProficiency.Type.General, 1, "WIS", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Blacksmithing", "", NonWeapProficiency.Type.General, 1, "STR", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Brewing", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Carpentry", "", NonWeapProficiency.Type.General, 1, "STR", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Cobbling", "", NonWeapProficiency.Type.General, 1, "DEX", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Cooking", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Dancing", "", NonWeapProficiency.Type.General, 1, "DEX", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Direction Sense", "", NonWeapProficiency.Type.General, 1, "WIS", 1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Etiquette", "", NonWeapProficiency.Type.General, 1, "CHA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Fire Building", "", NonWeapProficiency.Type.General, 1, "WIS", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Fishing", "", NonWeapProficiency.Type.General, 1, "WIS", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Herardry", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Languages, Modern", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Leatherworking", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Minning", "", NonWeapProficiency.Type.General, 2, "WIS", -3));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Pottery", "", NonWeapProficiency.Type.General, 1, "DEX", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Leatherworking", "", NonWeapProficiency.Type.General, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Riding, Airborne", "", NonWeapProficiency.Type.General, 2, "WIS", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Riding, Land-based", "", NonWeapProficiency.Type.General, 1, "WIS", 3));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Riding, Land-based", "", NonWeapProficiency.Type.General, 1, "WIS", 3));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Rope Use", "", NonWeapProficiency.Type.General, 1, "DEX", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Seamanship", "", NonWeapProficiency.Type.General, 1, "DEX", 1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Seamstress/Tailor", "", NonWeapProficiency.Type.General, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Singing", "", NonWeapProficiency.Type.General, 1, "CHA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Stonemasonry", "", NonWeapProficiency.Type.General, 1, "STR", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Swimming", "", NonWeapProficiency.Type.General, 1, "STR", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Weather Sense", "", NonWeapProficiency.Type.General, 1, "WIS", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Weaving", "", NonWeapProficiency.Type.General, 1, "INT", -1));
-
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Ancient History", "", NonWeapProficiency.Type.Priest, 1, "INT", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Astrology", "", NonWeapProficiency.Type.Priest, 2, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Engineering", "", NonWeapProficiency.Type.Priest, 2, "INT", -3));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Healing", "", NonWeapProficiency.Type.Priest, 2, "WIS", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Herbalism", "", NonWeapProficiency.Type.Priest, 2, "INT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Languages, Ancient", "", NonWeapProficiency.Type.Priest, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Local History", "", NonWeapProficiency.Type.Priest, 1, "CHA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Musical Instrument", "", NonWeapProficiency.Type.Priest, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Navigation", "", NonWeapProficiency.Type.Priest, 1, "INT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Reading/Writing", "", NonWeapProficiency.Type.Priest, 1, "INT", +1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Religion", "", NonWeapProficiency.Type.Priest, 1, "WIS", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Spellcraft", "", NonWeapProficiency.Type.Priest, 1, "INT", -2));
-
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Ancient History", "", NonWeapProficiency.Type.Thief, 1, "INT", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Appraising", "", NonWeapProficiency.Type.Thief, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Blind-fighting", "", NonWeapProficiency.Type.Thief, 2, "NA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Disguise", "", NonWeapProficiency.Type.Thief, 1, "CHA", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Forgery", "", NonWeapProficiency.Type.Thief, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Gaming", "", NonWeapProficiency.Type.Thief, 1, "CHA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Gem Cutting", "", NonWeapProficiency.Type.Thief, 2, "DEXT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Juggling", "", NonWeapProficiency.Type.Thief, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Jumping", "", NonWeapProficiency.Type.Thief, 1, "STR", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Local History", "", NonWeapProficiency.Type.Thief, 1, "CHA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Musical Instrument", "", NonWeapProficiency.Type.Thief, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Reading Lips", "", NonWeapProficiency.Type.Thief, 2, "INT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Set Snares", "", NonWeapProficiency.Type.Thief, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Tightrope Walking", "", NonWeapProficiency.Type.Thief, 1, "DEX", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Tumbling", "", NonWeapProficiency.Type.Thief, 1, "DEX", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Ventriloquism", "", NonWeapProficiency.Type.Thief, 1, "INT", -2));
-
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Animal Lore", "", NonWeapProficiency.Type.Warrior, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Armorer", "", NonWeapProficiency.Type.Warrior, 2, "INT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Blind-fighting", "", NonWeapProficiency.Type.Warrior, 2, "NA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Bowyer/Fletcher", "", NonWeapProficiency.Type.Warrior, 1, "DEX", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Endurance", "", NonWeapProficiency.Type.Warrior, 2, "CON", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Hunting", "", NonWeapProficiency.Type.Warrior, 1, "WIS", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Mountaineering", "", NonWeapProficiency.Type.Warrior, 1, "NA", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Navigation", "", NonWeapProficiency.Type.Warrior, 1, "INT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Running", "", NonWeapProficiency.Type.Warrior, 1, "CON", -6));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Set Snares", "", NonWeapProficiency.Type.Warrior, 1, "INT", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Survival", "", NonWeapProficiency.Type.Warrior, 2, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Tracking", "", NonWeapProficiency.Type.Warrior, 2, "WIS", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Weaponsmithing", "", NonWeapProficiency.Type.Warrior, 3, "INT", -3));
-
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Ancient History", "", NonWeapProficiency.Type.Mage, 1, "INT", -1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Astrology", "", NonWeapProficiency.Type.Mage, 2, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Engineering", "", NonWeapProficiency.Type.Mage, 2, "INT", -3));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Gem Cutting", "", NonWeapProficiency.Type.Mage, 2, "DEX", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Herbalism", "", NonWeapProficiency.Type.Mage, 2, "INT", -2));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Languages, Ancient", "", NonWeapProficiency.Type.Mage, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Navigation", "", NonWeapProficiency.Type.Mage, 1, "INT", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Reading/Writing", "", NonWeapProficiency.Type.Mage, 1, "INT", 1));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Religion", "", NonWeapProficiency.Type.Mage, 1, "WIS", 0));
-            NonWeaponProficiencies.Add(new NonWeapProficiency("Spellcraft", "", NonWeapProficiency.Type.Mage, 1, "INT", -2));
-
-        }
         void PopulateWeaponProfLists()
         {
             WeaponProficiencies.Add(new WeaponProficiency("Daikyu", "This is the largest type of bow found in an Oriental setting. In some ways, it is similar to the western long bow.It is 7 feet long and bent at the ends for greater power. Unlike most bows, the grip is closer to the bottom, not centered.This allows the bow to be fired from horseback and kneeling positions."));

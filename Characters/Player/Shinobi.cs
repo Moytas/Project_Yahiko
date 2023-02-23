@@ -21,15 +21,16 @@ namespace Project_Yahiko
         {
             FirstName = p.FirstName;
             LastName = p.LastName;
-            CharacterClass = 1;
+            CharacterClass = 2;
             CharacterRace = p.CharacterRace;
-            XP = p.XP;
+            XP = 0;
             XPToNext = p.XPToNext;
             CharacterStats = p.CharacterStats;
-            EquipedArmor = p.EquipedArmor;
-            EquipedWeapon = p.EquipedWeapon;
-            NumNonWeaponProf = p.NumNonWeaponProf;
-            NumWeaponProf = p.NumWeaponProf;
+            EquipedArmor = new Armor();
+            EquipedWeapon = new Weapon();
+            NumNonWeaponProf = 3;
+            NumNonWeaponProf += CharacterStats.NumLanguages;
+            NumWeaponProf = 1;
             MovementRate = p.MovementRate;
             Skills = new ThiefSkills();
             

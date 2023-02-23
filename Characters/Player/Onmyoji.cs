@@ -22,11 +22,14 @@ namespace Project_Yahiko
             FirstName = p.FirstName;
             LastName = p.LastName;
             CharacterClass = 4;
-            XP = p.XP;
+            XP = 0;
             XPToNext = p.XPToNext;
             CharacterStats = p.CharacterStats;
-            EquipedArmor = p.EquipedArmor;
-            EquipedWeapon = p.EquipedWeapon;
+            NumNonWeaponProf = 4;
+            NumNonWeaponProf += p.CharacterStats.NumLanguages; 
+            NumWeaponProf = 1;
+            EquipedArmor = new Armor();
+            EquipedWeapon = new Weapon();
         }
 
         public Onmyoji(string firstName,string lastName,Stats _stats)

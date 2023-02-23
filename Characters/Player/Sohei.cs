@@ -28,11 +28,14 @@ namespace Project_Yahiko
             FirstName = p.FirstName;
             LastName = p.LastName;
             CharacterClass = 3;
-            XP = p.XP;
+            XP = 0;
             XPToNext = p.XPToNext;
             CharacterStats = p.CharacterStats;
-            EquipedArmor = p.EquipedArmor;
-            EquipedWeapon = p.EquipedWeapon;
+            EquipedArmor = new Armor();
+            EquipedWeapon = new Weapon();
+            NumNonWeaponProf = 4;
+            NumNonWeaponProf += CharacterStats.NumLanguages;
+            NumWeaponProf = 2;
         }
 
         void SetInitialMoney()

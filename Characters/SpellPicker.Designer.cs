@@ -32,10 +32,10 @@
             this.lb_SelectedSpellDescription = new System.Windows.Forms.Label();
             this.btn_RemoveSpellP = new System.Windows.Forms.Button();
             this.btn_AddSpellP = new System.Windows.Forms.Button();
-            this.lb_PriestInfoText = new System.Windows.Forms.Label();
-            this.btn_confirmPriest = new System.Windows.Forms.Button();
-            this.lb_PriestSpellBook = new System.Windows.Forms.ListBox();
-            this.lb_AvailablePriestSpells = new System.Windows.Forms.ListBox();
+            this.lbl_InfoText = new System.Windows.Forms.Label();
+            this.btn_Confirm = new System.Windows.Forms.Button();
+            this.lb_SpellBook = new System.Windows.Forms.ListBox();
+            this.lb_AvailableSpells = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lb_SelectedSpellDescSpellbook
@@ -64,6 +64,7 @@
             this.btn_RemoveSpellP.TabIndex = 16;
             this.btn_RemoveSpellP.Text = "Remove";
             this.btn_RemoveSpellP.UseVisualStyleBackColor = true;
+            this.btn_RemoveSpellP.Click += new System.EventHandler(this.btn_RemoveSpellP_Click);
             // 
             // btn_AddSpellP
             // 
@@ -73,55 +74,57 @@
             this.btn_AddSpellP.TabIndex = 15;
             this.btn_AddSpellP.Text = "Add";
             this.btn_AddSpellP.UseVisualStyleBackColor = true;
+            this.btn_AddSpellP.Click += new System.EventHandler(this.btn_AddSpellP_Click);
             // 
-            // lb_PriestInfoText
+            // lbl_InfoText
             // 
-            this.lb_PriestInfoText.AutoSize = true;
-            this.lb_PriestInfoText.Location = new System.Drawing.Point(12, 9);
-            this.lb_PriestInfoText.Name = "lb_PriestInfoText";
-            this.lb_PriestInfoText.Size = new System.Drawing.Size(35, 13);
-            this.lb_PriestInfoText.TabIndex = 14;
-            this.lb_PriestInfoText.Text = "label3";
+            this.lbl_InfoText.AutoSize = true;
+            this.lbl_InfoText.Location = new System.Drawing.Point(12, 9);
+            this.lbl_InfoText.Name = "lbl_InfoText";
+            this.lbl_InfoText.Size = new System.Drawing.Size(35, 13);
+            this.lbl_InfoText.TabIndex = 14;
+            this.lbl_InfoText.Text = "label3";
             // 
-            // btn_confirmPriest
+            // btn_Confirm
             // 
-            this.btn_confirmPriest.Enabled = false;
-            this.btn_confirmPriest.Location = new System.Drawing.Point(186, 190);
-            this.btn_confirmPriest.Name = "btn_confirmPriest";
-            this.btn_confirmPriest.Size = new System.Drawing.Size(75, 23);
-            this.btn_confirmPriest.TabIndex = 13;
-            this.btn_confirmPriest.Text = "Confirm";
-            this.btn_confirmPriest.UseVisualStyleBackColor = true;
+            this.btn_Confirm.Enabled = false;
+            this.btn_Confirm.Location = new System.Drawing.Point(186, 190);
+            this.btn_Confirm.Name = "btn_Confirm";
+            this.btn_Confirm.Size = new System.Drawing.Size(75, 23);
+            this.btn_Confirm.TabIndex = 13;
+            this.btn_Confirm.Text = "Confirm";
+            this.btn_Confirm.UseVisualStyleBackColor = true;
             // 
-            // lb_PriestSpellBook
+            // lb_SpellBook
             // 
-            this.lb_PriestSpellBook.FormattingEnabled = true;
-            this.lb_PriestSpellBook.Location = new System.Drawing.Point(326, 49);
-            this.lb_PriestSpellBook.Name = "lb_PriestSpellBook";
-            this.lb_PriestSpellBook.Size = new System.Drawing.Size(120, 95);
-            this.lb_PriestSpellBook.TabIndex = 12;
+            this.lb_SpellBook.FormattingEnabled = true;
+            this.lb_SpellBook.Location = new System.Drawing.Point(326, 49);
+            this.lb_SpellBook.Name = "lb_SpellBook";
+            this.lb_SpellBook.Size = new System.Drawing.Size(120, 95);
+            this.lb_SpellBook.TabIndex = 12;
             // 
-            // lb_AvailablePriestSpells
+            // lb_AvailableSpells
             // 
-            this.lb_AvailablePriestSpells.FormattingEnabled = true;
-            this.lb_AvailablePriestSpells.Location = new System.Drawing.Point(15, 49);
-            this.lb_AvailablePriestSpells.Name = "lb_AvailablePriestSpells";
-            this.lb_AvailablePriestSpells.Size = new System.Drawing.Size(120, 95);
-            this.lb_AvailablePriestSpells.TabIndex = 11;
+            this.lb_AvailableSpells.FormattingEnabled = true;
+            this.lb_AvailableSpells.Location = new System.Drawing.Point(15, 49);
+            this.lb_AvailableSpells.Name = "lb_AvailableSpells";
+            this.lb_AvailableSpells.Size = new System.Drawing.Size(120, 95);
+            this.lb_AvailableSpells.TabIndex = 11;
+            this.lb_AvailableSpells.SelectedIndexChanged += new System.EventHandler(this.lb_AvailableSpells_SelectedIndexChanged);
             // 
             // SpellPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 231);
+            this.ClientSize = new System.Drawing.Size(513, 429);
             this.Controls.Add(this.lb_SelectedSpellDescSpellbook);
             this.Controls.Add(this.lb_SelectedSpellDescription);
             this.Controls.Add(this.btn_RemoveSpellP);
             this.Controls.Add(this.btn_AddSpellP);
-            this.Controls.Add(this.lb_PriestInfoText);
-            this.Controls.Add(this.btn_confirmPriest);
-            this.Controls.Add(this.lb_PriestSpellBook);
-            this.Controls.Add(this.lb_AvailablePriestSpells);
+            this.Controls.Add(this.lbl_InfoText);
+            this.Controls.Add(this.btn_Confirm);
+            this.Controls.Add(this.lb_SpellBook);
+            this.Controls.Add(this.lb_AvailableSpells);
             this.Name = "SpellPicker";
             this.Text = "SpellPicker";
             this.ResumeLayout(false);
@@ -135,9 +138,9 @@
         private System.Windows.Forms.Label lb_SelectedSpellDescription;
         private System.Windows.Forms.Button btn_RemoveSpellP;
         private System.Windows.Forms.Button btn_AddSpellP;
-        private System.Windows.Forms.Label lb_PriestInfoText;
-        private System.Windows.Forms.Button btn_confirmPriest;
-        private System.Windows.Forms.ListBox lb_PriestSpellBook;
-        private System.Windows.Forms.ListBox lb_AvailablePriestSpells;
+        private System.Windows.Forms.Label lbl_InfoText;
+        private System.Windows.Forms.Button btn_Confirm;
+        private System.Windows.Forms.ListBox lb_SpellBook;
+        private System.Windows.Forms.ListBox lb_AvailableSpells;
     }
 }

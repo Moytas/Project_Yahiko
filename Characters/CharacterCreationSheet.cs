@@ -13,6 +13,8 @@ namespace Project_Yahiko
 {
     public partial class CharacterCreationSheet : Form
     {
+        //TODO: FORMAT THIS CLASS FILE!!!!!
+
         public Player _player;
         
         public Bushi _Bushi;
@@ -23,65 +25,27 @@ namespace Project_Yahiko
         private int _index = 0;
         
         private DMOptions DM;
-        
+
+        #region Constructor
         public CharacterCreationSheet()
         {
             //Normal Flow
             DM = new DMOptions();
             _player = new Player();
             InitializeComponent();
-            //TestingMODE
-           
             EnableStatRoll();
+
+            //TestingMODE
+            //Onmyoji p = new Onmyoji();
+            //p.CharacterStats.NumMaxSpellsPerLevel = 3;
+            //SpellPicker s = new SpellPicker(p);
+            //s.Show();
+            
             
         }
+        #endregion
 
-        private void NameEnable() // stupid name
-        {
-            tb_FirstName.Enabled = true;
-            tb_LastName.Enabled = false;
-            btn_RandomName.Enabled = true;
-            btn_RandomName.Visible = true;
-        }
-
-        private void CreateRandomPlayer()
-        {
-        }
-
-        private void SetWeapon(Weapon weapon)
-        {
-            
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            CharacterCreationSheet.ActiveForm.Text = String.Format("{0}'s Sheet",tb_FirstName.Text);
-            btn_confirm.Enabled = true;
-        }
-
-        public void GetPlayer(ref Player player)
-        {
-            _player =  player;
-            SetUpWeapon(_player);
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-               
-            }
-        }
-
-        public void SetUpWeapon(Player p)
-        {
-            tb_WeaponName.Text = p.EquipedWeapon.Name;
-            tb_WeaponSpeedValue.Text = p.EquipedWeapon.Speed.ToString();
-            tb_WeaponTypeValue.Text = "B";
-            tb_DmgSValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Small, p.EquipedWeapon.TypeOfDie_Small);
-            tb_DmgLValue.Text = String.Format("{0}d{1}", p.EquipedWeapon.NumOfDie_Large, p.EquipedWeapon.TypeOfDie_Large);
-        }
-
+        #region Stats
         private void EnableStatRoll() //Makes Roll Button appear and shows Str stat
         {
             SetUpRollStatsButton();
@@ -92,22 +56,22 @@ namespace Project_Yahiko
         private void btn_RollStats_Click(object sender, EventArgs e)
         {
             int[] rollResults = new int[3];
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                Dice d6 = new Dice(1,7);
-                rollResults[i] = d6.GetResult(1,6);
-                Thread.Sleep(new Random().Next(10, 990));
+                Dice d6 = new Dice(1, 7);
+                rollResults[i] = d6.GetResult(1, 6);
+                Thread.Sleep(new Random().Next(10, 99));
             }
             int total = 0;
-            foreach(int rollResult in rollResults)
+            foreach (int rollResult in rollResults)
             {
                 total += rollResult;
             }
             lb_RollResult.Text = String.Format("{0} + {1} + {2} = {3}", rollResults[0], rollResults[1], rollResults[2], total);
             lb_RollResult.Visible = true;
-            if(_index < 6)
+            if (_index < 6)
             {
-                switch(_index)
+                switch (_index)
                 {
                     case 0:
                         lb_StrValue.Visible = true;
@@ -155,10 +119,9 @@ namespace Project_Yahiko
                 }
                 _index++;
             }
-            
+
             ChangeRollStatsButtonPosition();
         }
-
         private void ChangeRollStatsButtonPosition()
         {
             if (_index < 6)
@@ -177,6 +140,9 @@ namespace Project_Yahiko
             }
         }
 
+        #endregion;
+
+        #region Race
         private void EnableRacePicker()
         {
             btn_confirm.Location = new Point(cb_Race.Location.X + 150, cb_Race.Location.Y);
@@ -192,11 +158,11 @@ namespace Project_Yahiko
             Races.Add("Halfling");
             Races.Add("Half-Elf");
 
-            foreach(string s in Races)
+            foreach (string s in Races)
             {
                 cb_Race.Items.Add(s);
             }
-           // cb_Race.SelectedItem = cb_Race.Items[0];
+            // cb_Race.SelectedItem = cb_Race.Items[0];
         }
 
         private void cb_Race_SelectedIndexChanged(object sender, EventArgs e)
@@ -204,13 +170,13 @@ namespace Project_Yahiko
             lb_RollResult.Visible = false;
             btn_confirm.Visible = true;
             btn_confirm.Enabled = true;
-            ChangeStats(cb_Race.SelectedIndex);
+            AdjustPlayerStatsAccordingToRace(cb_Race.SelectedIndex);
         }
-        private void ChangeStats(int race)
+        private void AdjustPlayerStatsAccordingToRace(int race)
         {
-            switch(race)
+            switch (race)
             {
-               default://HUMAN & HALF-ELF
+                default://HUMAN & HALF-ELF
                     lb_ChaValue.Text = _player.CharacterStats.Initial_Cha.ToString();
                     lb_ConValue.Text = _player.CharacterStats.Initial_Con.ToString();
                     lb_DexValue.Text = _player.CharacterStats.Initial_Dex.ToString();
@@ -250,10 +216,70 @@ namespace Project_Yahiko
                     lb_StrValue.Text = (_player.CharacterStats.Initial_Str - 1).ToString();
                     lb_WisValue.Text = _player.CharacterStats.Initial_Wis.ToString();
                     break;
-               
+
             }
         }
 
+        #endregion;
+
+        #region Name
+        private void NameEnable() // stupid name
+        {
+            tb_FirstName.Enabled = true;
+            tb_LastName.Enabled = false;
+            btn_RandomName.Enabled = true;
+            btn_RandomName.Visible = true;
+        }
+
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
+        {
+            CharacterCreationSheet.ActiveForm.Text = String.Format("{0}'s Sheet", tb_FirstName.Text);
+            btn_confirm.Enabled = true;
+        }
+
+        private void tbFirstName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+            }
+        }
+        private void btn_RandomName_Click(object sender, EventArgs e)
+        {
+            if (tb_FirstName.Enabled)
+            {
+                Random rand = new Random();
+
+                if (cb_Gender.Text == "Otoko")
+                {
+                    int _r = rand.Next(0, DM.FirstNames_Male.Count);
+                    tb_FirstName.Text = DM.FirstNames_Male[_r];
+                }
+                else
+                {
+                    int _r = rand.Next(0, DM.FirstNames_Female.Count);
+                    tb_FirstName.Text = DM.FirstNames_Female[_r];
+                }
+                tb_FirstName.Select();
+            }
+            else
+            {
+                Random rand = new Random();
+                int _r = rand.Next(0, DM.LastNames.Count);
+                tb_LastName.Text = DM.LastNames[_r];
+                tb_LastName.Select();
+            }
+        }
+
+
+        #endregion;
+
+        private void CreateRandomPlayer()
+        {
+        }
+
+        
+        
         private void btn_confirm_Click(object sender, EventArgs e)
         {
             switch(_index)
@@ -299,7 +325,6 @@ namespace Project_Yahiko
                     
                     if (_player.CharacterClass == 0)
                     {
-                        lb_InfoText.Text = "No available classes... Roll again";
                         Thread.Sleep(3000);
                         RestartChar();
                     }
@@ -311,7 +336,6 @@ namespace Project_Yahiko
                         _player.CharacterStats.ChangeHPWarrior(_player.CharacterStats.Current_Con);
                     }
                     SetHP();
-                    SetNumOfProficiencies();
                     btn_confirm.Enabled = false;
                     btn_confirm.Visible = false;
                     btn_confirm.Location = new Point(cb_Alignment.Location.X + 50, cb_Alignment.Location.Y);
@@ -426,16 +450,25 @@ namespace Project_Yahiko
                             _Bushi =  new Bushi(_player);
                             WeaponSpecialization weaponSpecializationForm = new WeaponSpecialization(_Bushi);
                             weaponSpecializationForm.Show();
-                            this.Hide();
+                            this.Close();
                             break;
                         case 2://Thief
                            _Shinobi = new Shinobi(_player);
                             ThiefSkillsAssignment SkillsForm = new ThiefSkillsAssignment(_Shinobi);
                             SkillsForm.Show();
+                            this.Close();
                             break;
                         case 3://Priest?
+                            _Sohei = new Sohei(_player);
+                            SpellPicker nextForm = new SpellPicker(_Sohei);
+                            nextForm.Show();
+                            this.Close();
                             break;
                         case 4://Mage?
+                            _Onmyoji = new Onmyoji(_player);
+                            SpellPicker _nextForm = new SpellPicker(_Onmyoji);
+                            _nextForm.Show();
+                            this.Close();
                             break;
                     }
                     break;
@@ -444,28 +477,28 @@ namespace Project_Yahiko
             _index++;
         }
 
-        void SetNumOfProficiencies()
-        {
-            switch(_player.CharacterClass)
-            {
-                case 1:
-                    _player.NumNonWeaponProf = 3 + _player.CharacterStats.NumLanguages;
-                    _player.NumWeaponProf = 4;
-                    break;
-                case 2:
-                    _player.NumNonWeaponProf = 3 + _player.CharacterStats.NumLanguages;
-                    _player.NumWeaponProf = 2;
-                    break;
-                case 3:
-                    _player.NumNonWeaponProf = 4 + _player.CharacterStats.NumLanguages;
-                    _player.NumWeaponProf = 2;
-                    break;
-                case 4:
-                    _player.NumNonWeaponProf = 4 + _player.CharacterStats.NumLanguages;
-                    _player.NumWeaponProf = 1;
-                    break;
-            }
-        }
+        //void SetNumOfProficiencies()
+        //{
+        //    switch(_player.CharacterClass)
+        //    {
+        //        case 1:
+        //            _player.NumNonWeaponProf = 3 + _player.CharacterStats.NumLanguages;
+        //            _player.NumWeaponProf = 4;
+        //            break;
+        //        case 2:
+        //            _player.NumNonWeaponProf = 3 + _player.CharacterStats.NumLanguages;
+        //            _player.NumWeaponProf = 2;
+        //            break;
+        //        case 3:
+        //            _player.NumNonWeaponProf = 4 + _player.CharacterStats.NumLanguages;
+        //            _player.NumWeaponProf = 2;
+        //            break;
+        //        case 4:
+        //            _player.NumNonWeaponProf = 4 + _player.CharacterStats.NumLanguages;
+        //            _player.NumWeaponProf = 1;
+        //            break;
+        //    }
+        //}
 
         private void SetMovementRates()
         {
@@ -520,7 +553,7 @@ namespace Project_Yahiko
 
         void SetupAbilities() // FILL THEM IN
         {
-
+            lbl_HitProbValue.Text = 0.ToString();
         }
 
         private void SetAvailableClasses()
@@ -601,33 +634,7 @@ namespace Project_Yahiko
             btn_confirm.BringToFront();
         }
 
-        private void btn_RandomName_Click(object sender, EventArgs e)
-        {
-            if (tb_FirstName.Enabled)
-            {
-                Random rand = new Random();
-                
-                if (cb_Gender.Text == "Otoko")
-                {
-                    int _r = rand.Next(0, DM.FirstNames_Male.Count);
-                    tb_FirstName.Text = DM.FirstNames_Male[_r];
-                }
-                else
-                {
-                    int _r = rand.Next(0, DM.FirstNames_Female.Count);
-                    tb_FirstName.Text = DM.FirstNames_Female[_r];
-                }
-                tb_FirstName.Select();
-            }
-            else
-            {
-                Random rand = new Random();
-                int _r = rand.Next(0, DM.LastNames.Count);
-                tb_LastName.Text = DM.LastNames[_r];
-                tb_LastName.Select();
-            }
-        }
-
+        
         private void cb_Alignment_SelectedIndexChanged(object sender, EventArgs e)
         {
             btn_confirm.Enabled = true;

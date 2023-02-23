@@ -65,13 +65,22 @@
     </Compile>
     <Compile Include="Characters\WeaponProficiency.cs" />
     <Compile Include="Dice.cs" />
-    <Compile Include="NonWeapProfPicker.cs">
+    <Compile Include="Characters\NonWeapProfPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NonWeapProfPicker.Designer.cs">
+    <Compile Include="Characters\NonWeapProfPicker.Designer.cs">
       <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Table_Shinobi.cs" />
+    <Compile Include="Intro-TutorialLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Intro-TutorialLevel.Designer.cs">
+      <DependentUpon>Intro-TutorialLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\TABLE_NonWeapProficiencies.cs" />
+    <Compile Include="Tables\TABLE_PriestSpells.cs" />
+    <Compile Include="Tables\Table_Shinobi.cs" />
+    <Compile Include="Tables\TABLE_WizardSpells.cs" />
     <Compile Include="WeaponSpecialization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Characters\CharacterSheet.resx">
       <DependentUpon>CharacterSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Characters\NonWeapProfPicker.resx">
+      <DependentUpon>NonWeapProfPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Intro-TutorialLevel.resx">
+      <DependentUpon>Intro-TutorialLevel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WeaponSpecialization.resx">
       <DependentUpon>WeaponSpecialization.cs</DependentUpon>

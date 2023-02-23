@@ -131,6 +131,9 @@ namespace Project_Yahiko
                     Priest.WeaponProf.Add(new WeaponProficiency(i, GetDescription(i)));
                     Priest.NumWeaponProf = remainingPoints;
                 }
+                NonWeapProfPicker nextForm = new NonWeapProfPicker(Priest);
+                nextForm.Show();
+                this.Close();
             }
 
             if (Mage != null)
@@ -140,6 +143,9 @@ namespace Project_Yahiko
                     Mage.WeaponProf.Add(new WeaponProficiency(i, GetDescription(i)));
                     Mage.NumWeaponProf = remainingPoints;
                 }
+                NonWeapProfPicker nextForm = new NonWeapProfPicker(Mage);
+                nextForm.Show();
+                this.Close();
             }
 
 

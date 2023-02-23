@@ -188,8 +188,33 @@ namespace Project_Yahiko
         private void btn_Confirm_Click(object sender, EventArgs e)
         {
             //Save character
-            //Show Non Weapon Proficiencies
+            if(lb_Specialized.Items.Count > 0)
+            {  
+                foreach(WeaponProficiency w in DM.WeaponProficiencies)
+                {
+                    if(w.Name == lb_Specialized.Items[0])
+                    {
+                        Player.WeaponSpecialization = w;
+                    }
+                }
+            }
 
+            if(lb_Proficient.Items.Count > 0)
+            {
+                foreach (WeaponProficiency w in DM.WeaponProficiencies)
+                {
+                    for (int i = 0; i < lb_Proficient.Items.Count; i++)
+                    {
+                        if (w.Name == lb_Proficient.Items[i])
+                        {
+                            Player.WeaponProf.Add(w);
+                        }
+                    }
+                }
+            }
+            //Show Non Weapon Proficiencies
+            NonWeapProfPicker nextForm = new NonWeapProfPicker(Player);
+            nextForm.Show();
             this.Close();
         }
     }

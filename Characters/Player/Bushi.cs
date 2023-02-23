@@ -24,18 +24,17 @@ namespace Project_Yahiko
             CharacterRace = p.CharacterRace;
             MovementRate = p.MovementRate;
 
-            NumWeaponProf = p.NumWeaponProf;
-            NumNonWeaponProf = p.NumNonWeaponProf;
+            NumWeaponProf = 4;
+            NumNonWeaponProf = 3;
 
-            XP = p.XP;
+            XP = 0;
             XPToNext = p.XPToNext;
             
             CharacterStats = p.CharacterStats;
-            EquipedArmor = p.EquipedArmor;
-            EquipedWeapon = p.EquipedWeapon;
-            NumNonWeaponProf = p.NumNonWeaponProf;
-            NumWeaponProf = p.NumWeaponProf;
-            Console.WriteLine("char race = " + CharacterRace + " vs p.char race= " + p.CharacterRace);
+            NumNonWeaponProf += p.CharacterStats.NumLanguages;
+            EquipedArmor = new Armor();//CHECK HERE
+            EquipedWeapon = new Weapon();//!
+            
         }
 
         void SetInitialMoney()
