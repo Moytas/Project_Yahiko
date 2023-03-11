@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace Project_Yahiko
 {
-    public partial class Form_Initial : Form
+    public partial class GameIntro : Form
     {
-        public Form_Initial()
+        public GameIntro()
         {
             InitializeComponent();
         }
 
         private void lb_Start_Click(object sender, EventArgs e)
         {
-            Intro_TutorialLevel form = new Intro_TutorialLevel();
-            form.Show();
-            //CharacterCreationSheet cs = new CharacterCreationSheet();
-            //cs.Show();
+           // Intro_TutorialLevel tutorial = new Intro_TutorialLevel();
+            //tutorial.Show();
+            CharacterCreationSheet cs = new CharacterCreationSheet();
+            cs.Show();
         }
     }
 }

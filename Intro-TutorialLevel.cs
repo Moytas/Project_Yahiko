@@ -12,12 +12,10 @@ namespace Project_Yahiko
 {
     public partial class Intro_TutorialLevel : Form
     {
+    int index = 0;
+
         #region Constructors
-        public Intro_TutorialLevel()
-        {
-            InitializeComponent();
-            ShowText(); 
-        }
+       
         public Intro_TutorialLevel(Bushi Player)
         {
             InitializeComponent();
@@ -38,7 +36,7 @@ namespace Project_Yahiko
 
         #region TextBox
         //idea in progress..
-        void ShowIntroText(string text)
+        /*void ShowIntroText(string text)
         {
             int numOfWordsInText = text.Split(' ').Length;
 
@@ -78,7 +76,29 @@ namespace Project_Yahiko
                 }
             }
         }
+        */
+        void ShowIntro()
+    {
+      lbl_Top.Text = "Japan, 1759..";
+      lbl_Mid_Top.Text = "";
+      lbl_Mid_Mid.Text = "";
+      lbl_Mid_Low.Text = "";
+      lbl_Low.Text = "";
+    
+    }
+
+    void ShowNextText()
+    {
+      switch(index)
+      {
+        case 1:
+          break;
+      }
+    }
         #endregion;
 
-    }
+    #region Random
+    #endregion
+
+  }
 }

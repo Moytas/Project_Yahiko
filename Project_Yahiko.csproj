@@ -81,10 +81,10 @@
     <Compile Include="Tables\TABLE_PriestSpells.cs" />
     <Compile Include="Tables\Table_Shinobi.cs" />
     <Compile Include="Tables\TABLE_WizardSpells.cs" />
-    <Compile Include="WeaponSpecialization.cs">
+    <Compile Include="Characters\WeaponSpecialization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WeaponSpecialization.Designer.cs">
+    <Compile Include="Characters\WeaponSpecialization.Designer.cs">
       <DependentUpon>WeaponSpecialization.cs</DependentUpon>
     </Compile>
     <Compile Include="Characters\LevelUp.cs">
@@ -172,7 +172,7 @@
     <EmbeddedResource Include="Intro-TutorialLevel.resx">
       <DependentUpon>Intro-TutorialLevel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WeaponSpecialization.resx">
+    <EmbeddedResource Include="Characters\WeaponSpecialization.resx">
       <DependentUpon>WeaponSpecialization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameIntro.resx">

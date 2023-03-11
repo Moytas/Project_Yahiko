@@ -14,123 +14,208 @@ namespace Project_Yahiko
     {
         DMOptions DM;
         Bushi Player;
-        int Available;
-        const string InitialText = "The formidable bushi is a true master of weapons...\n";
-        string AvailableText;
-        public WeaponSpecialization(Player player)
+        public WeaponSpecialization(Bushi _Player)
         {
+            Player = _Player;
             DM = new DMOptions();
-            Player = new Bushi(player);
             InitializeComponent();
-            InitialSetUp();
-            Available = Player.NumWeaponProf;
-            AvailableText = string.Format("Remaining: {0}", Available);
-            lbl_WeaponSpecializationInfo.Text = InitialText + AvailableText;
+            CreateAvailableList();
+            InitButtons();
+            ShowRemaining();
             btn_Confirm.Enabled = false;
         }
 
-        void InitialSetUp()
+        void ShowRemaining()
         {
-            lb_Available.Items.Clear();
-            lb_Proficient.Items.Clear();
-            lb_Specialized.Items.Clear();
+            lbl_Remaining.Text = string.Format("Remaing proficiencies:{0}", Player.NumWeaponProf);
+        }
 
-            for(int i = 0; i < DM.WeaponProficiencies.Count;i++)
+        void InitButtons()
+        {
+            btn_ForgetAvailableProficient.Enabled = false;
+            btn_ForgetSpecializedProficient.Enabled = false;
+            btn_LearnProficientSpecialized.Enabled = false;
+        }
+
+        void CreateAvailableList()
+        {
+            foreach(Weapon w in DM.WeaponsList)
             {
-                lb_Available.Items.Add(DM.WeaponProficiencies[i].Name);
+                lb_Available.Items.Add(w.Name);
             }
         }
 
-        void UpdateAvailableText()
+        private void ShowDescription(string desc)
         {
-            AvailableText = string.Format("Remaining: {0}", Available);
-            lbl_WeaponSpecializationInfo.Text = InitialText + AvailableText;
+            foreach (WeaponProficiency w in DM.WeaponProficiencies)
+            {
+                if (desc == w.Name)
+                {
+                    lbl_Description.Text = string.Format("Description:{0}", w.Description);
+                    break;
+                }
+            }
+        }
+        private void lb_Available_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowDescription(lb_Available.Text);
         }
 
-        private void btn_LearnAvailable_Click(object sender, EventArgs e)
+        private void btn_LearnAvailableProficient_Click(object sender, EventArgs e)
         {
-            foreach(WeaponProficiency wp in DM.WeaponProficiencies)
+            if(Player.NumWeaponProf > 0)
             {
-                if(wp.Name == lb_Available.Text)
+                Player.NumWeaponProf--;
+                ShowRemaining();
+                lb_Proficient.Items.Add(lb_Available.Text);
+                lb_Available.Items.Remove(lb_Available.Text);
+            }
+            else
+            {
+                if(Player.NumWeaponProf == 0)
                 {
-                    if(Available >= wp.Cost)
+                    btn_LearnAvailableProficient.Enabled = false;
+                }
+            }
+        }
+
+        private void btn_ForgetAvailableProficient_Click(object sender, EventArgs e)
+        {
+            lb_Available.Items.Add(lb_Proficient.Text);
+            lb_Proficient.Items.Remove(lb_Proficient.Text);
+            Player.NumWeaponProf++;
+            ShowRemaining();
+
+            if(lb_Proficient.Items.Count == 0)
+            {
+                btn_ForgetAvailableProficient.Enabled = false;
+            }
+        }
+
+        private void lb_Proficient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowDescription(lb_Proficient.Text);
+
+            if(!btn_ForgetAvailableProficient.Enabled)
+            {
+                btn_ForgetAvailableProficient.Enabled = true;
+            }
+
+            if(!btn_LearnProficientSpecialized.Enabled)
+            {
+                btn_LearnProficientSpecialized.Enabled = true;
+            }
+
+            if(lb_Proficient.Items.Count == 0 && lb_Specialized.Items.Count == 0)
+            {
+                btn_Confirm.Enabled = false;
+            }
+            else
+            {
+                btn_Confirm.Enabled = true;
+            }
+
+        }
+
+        private void btn_LearnProficientSpecialized_Click(object sender, EventArgs e)
+        {
+            if(lb_Specialized.Items.Count == 0)
+            {
+                if(lb_Proficient.Text != "Dankyu" || lb_Proficient.Text != "Hankyu")
+                {
+                    if(Player.NumWeaponProf >= 2)
                     {
-                        lb_Proficient.Items.Add(wp.Name);
-                        lb_Available.Items.Remove(lb_Available.SelectedItem);
-                        Available -= wp.Cost;
-                        Player.NumWeaponProf = Available;
-                        UpdateAvailableText();
-                        if(!btn_Confirm.Enabled)
+                        Player.NumWeaponProf -= 2;
+                        ShowRemaining();
+                        
+                    }
+                }
+                else
+                {
+                    if (Player.NumWeaponProf >= 3)
+                    {
+                        Player.NumWeaponProf -= 3;
+                        ShowRemaining();
+                    }
+                }
+                lb_Specialized.Items.Add(lb_Proficient.Text);
+                lb_Proficient.Items.Remove(lb_Proficient.Text);
+            }
+            else
+            {
+                if(btn_LearnProficientSpecialized.Enabled)
+                {
+                    btn_LearnProficientSpecialized.Enabled = false;
+                }
+            }
+        }
+
+        private void btn_ForgetSpecializedProficient_Click(object sender, EventArgs e)
+        {
+            if (lb_Specialized.Text == "Hankyu" || lb_Specialized.Text == "Dankyu")
+            {
+                Player.NumWeaponProf += 3;
+                ShowRemaining();
+            }
+            else
+            {
+                Player.NumWeaponProf += 2;
+                ShowRemaining();
+            }
+            lb_Proficient.Items.Add(lb_Specialized.Text);
+            lb_Specialized.Items.Remove(lb_Specialized.Text);
+        }
+
+        private void lb_Specialized_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowDescription(lb_Specialized.Text);
+
+            if(!btn_ForgetSpecializedProficient.Enabled)
+            {
+                btn_ForgetSpecializedProficient.Enabled = true;
+            }
+
+            if (lb_Proficient.Items.Count == 0 && lb_Specialized.Items.Count == 0)
+            {
+                btn_Confirm.Enabled = false;
+            }
+            else
+            {
+                btn_Confirm.Enabled = true;
+            }
+        }
+
+        private void btn_Confirm_Click(object sender, EventArgs e)
+        {
+            //Save character
+            if(lb_Specialized.Items.Count > 0)
+            {  
+                foreach(WeaponProficiency w in DM.WeaponProficiencies)
+                {
+                    if(w.Name == lb_Specialized.Items[0])
+                    {
+                        Player.WeaponSpecialization = w;
+                    }
+                }
+            }
+
+            if(lb_Proficient.Items.Count > 0)
+            {
+                foreach (WeaponProficiency w in DM.WeaponProficiencies)
+                {
+                    for (int i = 0; i < lb_Proficient.Items.Count; i++)
+                    {
+                        if (w.Name == lb_Proficient.Items[i])
                         {
-                            btn_Confirm.Enabled = true;
+                            Player.WeaponProf.Add(w);
                         }
                     }
-                    return;
                 }
             }
-        }
-
-        private void btn_LearnProficient_Click(object sender, EventArgs e)
-        {
-            foreach (WeaponProficiency wp in DM.WeaponProficiencies)
-            {
-                if (wp.Name == lb_Proficient.Text)
-                {
-                    if (Available >= wp.Cost + 1)
-                    {
-                        lb_Specialized.Items.Add(wp.Name);
-                        lb_Proficient.Items.Remove(lb_Proficient.SelectedItem);
-                        Available -= wp.Cost + 1;
-                        Player.NumWeaponProf = Available;
-                        UpdateAvailableText();
-                    }
-                    return;
-                }
-            }
-        }
-
-        private void btn_ForgetProficient_Click(object sender, EventArgs e)
-        {
-            foreach (WeaponProficiency wp in DM.WeaponProficiencies)
-            {
-                if (wp.Name == lb_Proficient.Text)
-                {   
-                    lb_Available.Items.Add(wp.Name);
-                    lb_Proficient.Items.Remove(lb_Proficient.SelectedItem);
-                    Available += wp.Cost;
-                    Player.NumWeaponProf = Available;
-                    UpdateAvailableText();
-                    if(lb_Proficient.Items.Count == 0)
-                    {
-                        btn_Confirm.Enabled = false;
-                    }
-                    return;
-                }
-            }
-        }
-
-        private void btn_ForgetSpecialized_Click(object sender, EventArgs e)
-        {
-            foreach (WeaponProficiency wp in DM.WeaponProficiencies)
-            {
-                if (wp.Name == lb_Specialized.Text)
-                {
-                    lb_Proficient.Items.Add(wp.Name);
-                    lb_Specialized.Items.Remove(lb_Specialized.SelectedItem);
-                    Available += wp.Cost + 1;
-                    Player.NumWeaponProf = Available;
-                    UpdateAvailableText();
-                    return;
-                }
-            }
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            //save char
+            //Show Non Weapon Proficiencies
+            NonWeapProfPicker nextForm = new NonWeapProfPicker(Player);
+            nextForm.Show();
             this.Close();
         }
-
-       
     }
 }
