@@ -7,12 +7,31 @@ using System.Threading;
 
 namespace Project_Yahiko
 {
-    public class Bushi : Player
-    {
-        public WeaponProficiency WeaponSpecialization;
+  public class Bushi : Player
+  {
+    public WeaponProficiency WeaponSpecialization;
 
-        public Bushi()
-        { }
+    public Bushi() //FOR TESTING ONLY
+    {
+      FirstName = "Fname";
+      LastName = "Lname";
+
+      CharacterClass = 1;
+
+      CharacterRace = 1; 
+      MovementRate = 12;
+
+      NumWeaponProf = 4;
+      NumNonWeaponProf = 3;
+
+      XP = 0;
+      XPToNext = 0;
+ 
+      //NumNonWeaponProf += p.CharacterStats.NumLanguages;
+      EquipedArmor = new Armor();//CHECK HERE
+      EquipedWeapon = new Weapon();//!
+    } 
+  
 
         public Bushi(Player p)
         {

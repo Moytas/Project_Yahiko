@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +21,26 @@ namespace Project_Yahiko
 
     bool isCritical = false;
 
+    void Initialize()
+    {
+      this.Text = string.Format("{0} VS {1} Round: {2}", Player_Warrior.FirstName, "Test", 1);
+      SetDmText("mpla mpla mpla mpla");
+      
+      Console.WriteLine("AAA");
+      SetUpForOptions();
+    }
+
     #region Constructors
+    //TEST
+    public CombatScreen()
+    {
+      Player_Warrior = new Bushi();
+      InitializeComponent();
+
+      Initialize();
+
+    }
+
     public CombatScreen(Bushi Player)
     {
       Player_Warrior = Player;
@@ -46,22 +66,55 @@ namespace Project_Yahiko
     }
     #endregion
 
-    #region Panels
+    #region Panel Management
 
-    void SwitchPanels()
+    
+    void ShowOptionsPanel()
     {
-      InfoArea.Enabled = !InfoArea.Enabled;
-      OptionsPanel.Enabled = !OptionsPanel.Enabled;
+     
+    }
+
+    void SetUpForInitiative()
+    {
+     
+    }
+
+    void SetUpForOptions()
+    {
+      if(InfoPanel.Visible == false)
+      {
+        InfoPanel.Visible = true;
+      }
+
+      Button Attack = new Button();
+      Attack.Parent = InfoPanel;
+      Attack.BackColor = Color.Red;
+      Attack.ForeColor = Color.White;
+      Attack.Text = "Attack with ...";
+      Attack.Click += Attack_Click;
+    }
+
+    private void Attack_Click(object sender, EventArgs e)
+    {
+      int result = PlayerAction_RollInitiative();
+      if (result == 0)
+      {
+        lbl_DmText.Text = "ERROR";
+      }
+      else
+      {
+        lbl_DmText.Text = result.ToString();
+      }
     }
 
     #endregion
 
     #region Text
 
-    void SetText(string txt)
+    void SetDmText(string txt)
     {
-      lbl_InfoText.Text = "";
-      lbl_InfoText.Text = txt;
+      lbl_DmText.Text = "";
+      lbl_DmText.Text = txt;
     }
 
     #endregion
@@ -223,5 +276,10 @@ namespace Project_Yahiko
     }
 
     #endregion
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+     
+    }
   }
 }

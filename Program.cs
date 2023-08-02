@@ -16,7 +16,8 @@ namespace Project_Yahiko
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameIntro());
-        }
+      //Application.Run(new GameIntro());
+      Application.Run(new CombatScreen());
+    }
     }
 }
